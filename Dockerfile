@@ -35,4 +35,4 @@ EXPOSE 8501
 
 # Default: run the main extraction pipeline. Override at `docker run` /
 # `docker compose run` time to run polygon resolution or the Streamlit app.
-CMD ["groundsource-extract", "--limit", "5"]
+CMD ["fonte-extract", "--limit", "5"]

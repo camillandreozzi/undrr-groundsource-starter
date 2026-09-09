@@ -3,13 +3,23 @@ eval/prefill_gold_validation.py — build the gold-run validation queue.
 
 Flattens a prompt-5 extraction JSONL (default: the `gold` production run) to
 one row per verifiable event, scores a label-free risk heuristic, and queues a
-stratified, risk-ranked sample (~100 events) for a single correct/partial/wrong
-verdict per event. Everything is automated except the verdict.
+sample for a single correct/partial/wrong verdict per event. Everything is
+automated except the verdict.
+
+Two sampling modes, and the choice decides what the resulting accuracy means:
+
+  --sampling random  (default)  Proportional to hazard-family share of the
+      population, drawn uniformly within family. The judged set is
+      representative, so accuracy estimates population accuracy.
+  --sampling risk               Highest auto_risk first, round-robin across
+      strata. Deliberately over-weights hard cases: good for surfacing failure
+      modes, but the resulting accuracy is a lower bound, not an estimate.
 
 Adds:
   stratum      hazard bucket used for coverage (the event_hazard)
-  auto_risk    0..1 heuristic risk that the extraction is wrong
-  review_rank  order to work through (risk-first, balanced across strata)
+  auto_risk    0..1 heuristic risk that the extraction is wrong (always scored,
+               and useful as a covariate even when sampling randomly)
+  review_rank  order to work through
   in_queue     Y for the capped sample to actually judge, N otherwise
   verdict      left blank for the human (correct | partial | wrong)
   notes        left blank for the human
@@ -28,9 +38,12 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import random
 import shutil
 from datetime import datetime
 from pathlib import Path
+
+from fonte.hazard_families import hazard_family
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SOURCE = REPO_ROOT / "outputs" / "gold" / "event_extractions.jsonl"
@@ -168,6 +181,46 @@ def queue_round_robin(events: list[dict], target: int) -> None:
         e["review_rank"] = rank
 
 
+def queue_random(events: list[dict], target: int, seed: int) -> None:
+    """Mark ~target events in_queue=Y as a representative random sample.
+
+    Allocation is proportional to each hazard family's share of the population
+    (largest-remainder), and the draw within a family is uniform. That makes the
+    judged set an unbiased estimate of population accuracy — unlike the
+    risk-first queue, which deliberately over-weights hard cases — while still
+    guaranteeing the family cells the report breaks results down by.
+    """
+    rng = random.Random(seed)
+    target = min(target, len(events))
+
+    by_family: dict[str, list[dict]] = {}
+    for e in events:
+        by_family.setdefault(hazard_family(e["stratum"]), []).append(e)
+
+    # Largest-remainder allocation so the quotas sum to exactly `target`.
+    total = len(events)
+    exact = {f: len(g) * target / total for f, g in by_family.items()}
+    quota = {f: min(int(x), len(by_family[f])) for f, x in exact.items()}
+    while sum(quota.values()) < target:
+        candidates = [f for f in by_family if quota[f] < len(by_family[f])]
+        if not candidates:
+            break
+        f = max(candidates, key=lambda f: (exact[f] - quota[f], len(by_family[f])))
+        quota[f] += 1
+
+    picked: list[dict] = []
+    for family, group in by_family.items():
+        picked.extend(rng.sample(group, quota[family]))
+    rng.shuffle(picked)
+
+    for e in events:
+        e["in_queue"] = "N"
+        e["review_rank"] = ""
+    for rank, e in enumerate(picked, start=1):
+        e["in_queue"] = "Y"
+        e["review_rank"] = rank
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--source", type=Path, default=DEFAULT_SOURCE,
@@ -176,13 +229,20 @@ def main() -> None:
                     help="Validation CSV to write.")
     ap.add_argument("--target", type=int, default=100,
                     help="Approximate number of events to queue for judging.")
+    ap.add_argument("--sampling", choices=("random", "risk"), default="random",
+                    help="random: representative sample, supports a population "
+                         "accuracy estimate (default). risk: highest auto_risk "
+                         "first, balanced across strata — finds failure modes but "
+                         "over-weights hard cases, so it measures a lower bound.")
+    ap.add_argument("--seed", type=int, default=42,
+                    help="Seed for --sampling random.")
     args = ap.parse_args()
 
     if not args.source.exists():
         ap.error(
             f"Source extraction not found: {args.source}\n"
             "Run the gold extraction first, e.g.:\n"
-            "  groundsource-extract --prompt 5 --limit 2000 --workers 12 "
+            "  fonte-extract --prompt 5 --limit 2000 --workers 12 "
             "--reasoning-effort medium --output-dir outputs/gold --resume"
         )
 
@@ -196,7 +256,10 @@ def main() -> None:
         e["verdict"] = ""
         e["notes"] = ""
 
-    queue_round_robin(events, args.target)
+    if args.sampling == "random":
+        queue_random(events, args.target, args.seed)
+    else:
+        queue_round_robin(events, args.target)
 
     # Output rows ordered: queued first by review_rank, then the rest by risk.
     queued = [e for e in events if e["in_queue"] == "Y"]
@@ -217,13 +280,23 @@ def main() -> None:
             w.writerow({c: e.get(c, "") for c in OUTPUT_FIELDS})
 
     n_strata = len({e["stratum"] for e in queued})
-    print(f"{len(events)} verifiable events; queued {len(queued)} across {n_strata} hazard strata.")
-    counts: dict[str, int] = {}
+    print(f"{len(events)} verifiable events; queued {len(queued)} ({args.sampling} sampling) "
+          f"across {n_strata} hazard strata.")
+
+    # Show the queue against the population, so any skew is visible up front.
+    print(f"\n{'hazard family':<16}{'queued':>8}{'share':>8}{'population':>12}{'share':>8}")
+    pop: dict[str, int] = {}
+    for e in events:
+        f = hazard_family(e["stratum"])
+        pop[f] = pop.get(f, 0) + 1
+    qc: dict[str, int] = {}
     for e in queued:
-        counts[e["stratum"]] = counts.get(e["stratum"], 0) + 1
-    for s, n in sorted(counts.items(), key=lambda kv: kv[1], reverse=True):
-        print(f"  {s}: {n}")
-    print(f"Wrote {args.out}")
+        f = hazard_family(e["stratum"])
+        qc[f] = qc.get(f, 0) + 1
+    for f in sorted(pop, key=lambda f: pop[f], reverse=True):
+        n_q = qc.get(f, 0)
+        print(f"  {f:<14}{n_q:>8}{n_q / len(queued):>7.1%}{pop[f]:>12}{pop[f] / len(events):>8.1%}")
+    print(f"\nWrote {args.out}")
 
 
 if __name__ == "__main__":

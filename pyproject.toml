@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "undrr-groundsource-starter"
+name = "undrr-fonte-starter"
 version = "0.1.0"
-description = "UNDRR Groundsource extraction and polygon-resolution prototype."
+description = "UNDRR FONTE extraction and polygon-resolution prototype."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -31,11 +31,17 @@ dependencies = [
 dev = [
     "pytest>=8.0",
 ]
+# The NER benchmark baseline (benchmark_ner/). Kept out of the main dependency
+# set so the extraction pipeline does not carry a model runtime it never uses.
+# The `en_core_web_lg` model is not on PyPI: `python -m spacy download en_core_web_lg`.
+ner = [
+    "spacy>=3.8",
+]
 
 [project.scripts]
-groundsource-extract = "groundsource.app_event_focus:main"
-groundsource-polygons = "groundsource.run_polygon_resolution:main"
-groundsource-upload = "groundsource.upload_outputs:main"
+fonte-extract = "fonte.app_event_focus:main"
+fonte-polygons = "fonte.run_polygon_resolution:main"
+fonte-upload = "fonte.upload_outputs:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

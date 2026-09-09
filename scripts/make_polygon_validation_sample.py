@@ -50,7 +50,7 @@ from typing import Iterable
 import geopandas as gpd
 import pandas as pd
 
-from groundsource.run_polygon_resolution import explode_extractions, event_uuid
+from fonte.run_polygon_resolution import explode_extractions, event_uuid
 
 
 LOG = logging.getLogger("polygon_validation")
@@ -188,9 +188,9 @@ PRESENTATION_COLUMNS = [
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--extractions", type=Path, required=True,
-                   help="Source JSONL produced by groundsource-extract")
+                   help="Source JSONL produced by fonte-extract")
     p.add_argument("--geometries", type=Path, required=True,
-                   help="Parquet produced by groundsource-polygons")
+                   help="Parquet produced by fonte-polygons")
     p.add_argument("--output-dir", type=Path, required=True,
                    help="Directory for the review CSV and summary JSON")
     p.add_argument("--high-conf-n", type=int, default=15)
@@ -223,7 +223,7 @@ def main() -> int:
     if "resolution_geometry_source" not in gdf.columns:
         LOG.error(
             "Column 'resolution_geometry_source' is missing from the parquet — "
-            "you're using an older resolver output. Re-run groundsource-polygons "
+            "you're using an older resolver output. Re-run fonte-polygons "
             "(it'll be cheap; the Nominatim cache is hot) to regenerate the parquet."
         )
         return 1

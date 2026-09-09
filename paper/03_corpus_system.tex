@@ -1,0 +1,114 @@
+% ---------------------------------------------------------------------------
+% Corpus, task definition and deployed system.
+% \input{sections/03_corpus_system} — expects natbib (\citep) and, for
+% Figure 1, TikZ with libraries: arrows.meta, positioning.
+% Counts here are the final production figures; accuracy lives in §Results.
+% ---------------------------------------------------------------------------
+
+\section{Corpus and Deployed System}
+\label{sec:corpus}
+
+\subsection{Corpus, task and output contract}
+\label{ssec:corpus-task}
+
+The system reads UNDRR's internal document lake, the text layer behind
+PreventionWeb. Its contents are submitted rather than collected: national
+disaster risk reduction strategies and Sendai Framework reporting from member
+states, guidance material from UN agencies, project reports and evaluations
+from NGOs, post-disaster needs assessments, training documentation. Events
+appear inside them as case studies, annexes and background, not as the
+document's subject. UNDRR holds no redistribution rights over the knowledge
+base, so the corpus cannot be released with the paper; we report its
+provenance, composition and access constraints as a data statement, and
+document the derived record table separately
+\citep{bender2018DataStatements,gebru2021Datasheets}.
+
+The unit of processing is one document. The hazard is often named in a
+heading, the date in a preceding clause, the affected districts two paragraphs
+later; treating the document rather than the sentence as the extraction
+context is the established response to that dispersion
+\citep{li2021WikiEvents,ebner2020RAMS,tong2022DocEE}. Each document is
+truncated to its first 12{,}000 characters, a cost-driven cutoff we have not
+validated against a full-length re-run (\S\ref{sec:limitations}).
+
+The output contract is a list of event records, possibly empty. Each carries a
+hazard type from a controlled vocabulary, one or more event dates, one or more
+affected-location strings with a parallel self-tagged administrative level, a
+stated confidence, up to five impact statements, up to three short evidence
+snippets from the source, and an explicit \texttt{missing\_information} list.
+Hazard labels are constrained to the PreventionWeb vocabulary --- 19 main
+labels plus five collection labels --- which operationalises the UNDRR--ISC
+Hazard Information Profiles, a multi-hazard classification developed through
+global expert consultation \citep{murray2021HazardProfiles}. The prompt
+supplies the mapping rules explicitly: \emph{typhoon} and \emph{storm surge}
+map to \textsc{Cyclone, Hurricane and Typhoon}, dam and transport failures to
+\textsc{Technological hazard}. Compound events join exact labels with a pipe
+(\texttt{Earthquake | Tsunami}); a real event with no exact label is dropped
+rather than approximated.
+
+A record is \emph{verifiable} only if it has a hazard label, at least one
+event date, at least one location passing the location rules, and stated
+confidence of high or medium. Three things are excluded by construction:
+general risk statements, future projections and scenarios, and preparedness
+activity with no actual event behind it. Publication and workshop dates are
+likewise excluded from \texttt{event\_dates} --- the densest dates in these
+documents, and the easiest to mistake for the event.
+
+\subsection{Extraction and geocoding pipeline}
+\label{ssec:pipeline}
+
+Documents are pulled by one SQL query over two Databricks tables, joining
+per-asset text to chunk-level metadata and filtering empty text. Preprocessing
+is truncation and nothing else: no sentence splitting, no hazard keyword
+filter, no genre pre-classification. Every retrieved document reaches the
+model.
+
+\input{figures/fig_pipeline}
+
+Five prompts were compared during development, varying location strictness,
+case-study recall, an explicit verification step and schema compactness
+(\S\ref{sec:prompts}); one was frozen for production and every number in this
+paper comes from it. Extraction is one call per document to an
+instruction-tuned model, with no fine-tuning and no in-domain event labels to
+fine-tune on; the prompt carries the label semantics and decision rules a
+trained model would otherwise absorb from data
+\citep{sainz2024GoLLIE,jiao2023InstructIE}. The call is constrained to a
+Pydantic model exposed to the API as a JSON schema, following work that uses
+formal output constraints and typed class definitions for structured tasks
+\citep{geng2023GrammarConstrained,wang2023Code4Struct}; the constraint is
+warranted because unconstrained models still fail schema validity at
+non-trivial rates \citep{lu2025SchemaRL}. It buys parseability, not truth, and
+may itself shift model behaviour \citep{schall2025HiddenCost} --- which is why
+\S\ref{sec:validation} judges records against sources rather than against the
+schema. A call that fails after retry is written as an error row rather than
+dropped, so a resume re-queues it; post-parse validators coerce the parallel
+admin-level list to the allowed tags and drop non-verifiable, low-confidence
+and duplicate records.
+
+Locations are resolved behind a swappable interface, \texttt{resolve(text,
+country\_hint)}, because geoparser choice is a known source of incomparability
+and production will not keep this one
+\citep{gritta2018Missing,halterman2023Mordecai3}. The implementation queries
+Nominatim over OpenStreetMap, throttled and cached. A raw mention rarely
+matches OSM directly, so each is walked down a rewrite ladder: the original
+string; a possessive rewrite splitting owner from feature and converting the
+owner to a country code (\emph{Thailand's Andaman coast} $\rightarrow$
+\emph{Andaman coast}, \texttt{th}); facility-noun rewrites (\emph{Beirut
+seaport} $\rightarrow$ \emph{Port of Beirut}); a leading-qualifier strip
+(\emph{northern}, \emph{areas around}); and last, the owner country alone.
+Where the document names exactly one country it is passed as a hint;
+multi-country reports pass none. This country-first ordering follows resolvers
+that fix larger administrative units before using them as context for smaller
+ones \citep{zhang2023GeoNorm}, and targets the failure mode that dominates our
+error analysis: one string denoting places in different countries
+\citep{gritta2018WhichMelbourne}.
+
+The resolver returns a Polygon or MultiPolygon in EPSG:4326, falling back to a
+bounding box or a population-scaled point buffer where OSM has no polygon. The
+country-level last resort is flagged and its confidence capped, so a coarse
+geometry stays visible as coarse rather than passing as a resolved district.
+Every emitted row keeps its evidence snippets, source identifier and URL,
+prompt and schema version, the ladder step and country hint behind the query,
+the returned administrative level, and the geometry's provenance. That trace
+is the audit artifact: a downstream user can contest the path from a sentence
+in a national report to a polygon on a map \citep{raji2020InternalAuditing}.

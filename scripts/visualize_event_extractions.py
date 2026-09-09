@@ -4,12 +4,13 @@ import json
 import logging
 import os
 import tempfile
+from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple
 
 os.environ.setdefault(
     "MPLCONFIGDIR",
-    str(Path(tempfile.gettempdir()) / "undrr-groundsource-mplconfig"),
+    str(Path(tempfile.gettempdir()) / "undrr-fonte-mplconfig"),
 )
 
 import folium
@@ -17,6 +18,8 @@ import geopandas as gpd
 import pandas as pd
 from branca.element import Element
 from folium.plugins import Fullscreen
+
+from fonte.hazard_families import hazard_family
 
 
 LIST_COLUMNS = ["event_dates", "affected_locations", "key_impacts"]
@@ -747,10 +750,19 @@ def save_hist(series: pd.Series, title: str, xlabel: str, output_path: Path, bin
 
 
 
-def build_summary(df: pd.DataFrame) -> dict:
+def _value_counts(series: pd.Series, top_n: Optional[int] = None) -> dict:
+    vc = series.fillna("").astype(str).str.strip().replace("", pd.NA).dropna().value_counts()
+    if top_n is not None:
+        vc = vc.head(top_n)
+    return {str(k): int(v) for k, v in vc.items()}
+
+
+def build_summary(df: pd.DataFrame, top_n: int = 15, n_source_columns: Optional[int] = None) -> dict:
+    # `df` has the derived *_count columns appended by the time we get here, so
+    # report the column count of the file as read, not of the working frame.
     summary = {
         "n_rows": int(len(df)),
-        "n_columns": int(len(df.columns)),
+        "n_columns": int(n_source_columns if n_source_columns is not None else len(df.columns)),
     }
     if "asset_key" in df.columns:
         summary["n_unique_asset_key"] = int(df["asset_key"].nunique(dropna=True))
@@ -760,6 +772,38 @@ def build_summary(df: pd.DataFrame) -> dict:
         if col in df.columns:
             vc = df[col].value_counts(dropna=False)
             summary[f"{col}_counts"] = {str(k): int(v) for k, v in vc.items()}
+
+    # Event-level view: one row per extracted event, so the verifiable rows are
+    # the events and the documents behind them are what the corpus yielded.
+    if "is_verifiable_event" in df.columns:
+        verifiable = df[df["is_verifiable_event"].fillna(False).astype(bool)]
+        summary["n_verifiable_events"] = int(len(verifiable))
+        if "asset_key" in df.columns:
+            docs_with = int(verifiable["asset_key"].nunique(dropna=True))
+            total_docs = int(df["asset_key"].nunique(dropna=True))
+            summary["n_documents_with_event"] = docs_with
+            summary["n_documents_without_event"] = total_docs - docs_with
+            summary["document_event_rate"] = round(docs_with / total_docs, 4) if total_docs else 0.0
+
+        if "event_confidence" in df.columns:
+            summary["event_confidence_counts"] = _value_counts(verifiable["event_confidence"])
+        if "event_hazard" in df.columns:
+            summary["top_event_hazards"] = _value_counts(verifiable["event_hazard"], top_n)
+            families = verifiable["event_hazard"].fillna("").astype(str).map(hazard_family)
+            summary["hazard_family_counts"] = {
+                str(k): int(v) for k, v in families.value_counts().items()
+            }
+
+    if "language" in df.columns:
+        summary["language_counts"] = _value_counts(df["language"], top_n)
+
+    # Confidence log-probabilities are optional in the extractor output; report
+    # how many rows actually carry one so a missing calibration signal is visible.
+    for col in ["event_confidence_logprob", "event_confidence_prob"]:
+        if col in df.columns:
+            summary[f"n_rows_with_{col}"] = int(
+                df[col].fillna("").astype(str).str.strip().ne("").sum()
+            )
 
     for col in LIST_COLUMNS:
         if col in df.columns:
@@ -850,23 +894,108 @@ def save_summary_json(summary: dict, output_path: Path) -> None:
 
 
 
-def save_report(df: pd.DataFrame, summary: dict, output_path: Path) -> None:
+def _count_table(title: str, counts: dict, total: Optional[int] = None) -> List[str]:
+    if not counts:
+        return []
+    denom = total if total else sum(counts.values())
+    lines = [f"### {title}", "", "| Value | Rows | Share |", "|---|---:|---:|"]
+    for k, v in counts.items():
+        share = f"{v / denom:.1%}" if denom else "–"
+        lines.append(f"| {k} | {v:,} | {share} |")
+    lines.append("")
+    return lines
+
+
+def save_report(df: pd.DataFrame, summary: dict, output_path: Path,
+                flagged: Optional[pd.DataFrame] = None, source: Optional[Path] = None) -> None:
+    n_rows = summary.get("n_rows", 0)
     lines = [
         "# Event extraction QA report",
         "",
-        f"- Rows: {summary.get('n_rows', 0)}",
-        f"- Columns: {summary.get('n_columns', 0)}",
+        f"Generated: {datetime.now():%Y-%m-%d %H:%M}",
     ]
+    if source is not None:
+        lines.append(f"Source: `{source}`")
+    lines.extend([
+        "",
+        "## Shape",
+        "",
+        f"- Rows: {n_rows:,}  *(one row per extracted event; documents with several events fan out)*",
+        f"- Columns: {summary.get('n_columns', 0)}",
+    ])
     if "n_unique_asset_key" in summary:
-        lines.append(f"- Unique asset_key: {summary['n_unique_asset_key']}")
-        lines.append(f"- Duplicate asset_key rows: {summary['n_duplicate_asset_key_rows']}")
+        lines.append(f"- Unique asset_key: {summary['n_unique_asset_key']:,}")
+        lines.append(
+            f"- Duplicate asset_key rows: {summary['n_duplicate_asset_key_rows']:,}"
+            "  *(rows beyond the first for each document — expected, one per extra event)*"
+        )
 
     for col in ["is_single_actual_event", "is_verifiable_event"]:
         if f"{col}_counts" in summary:
             lines.append(f"- {col}: {summary[f'{col}_counts']}")
 
+    if "n_verifiable_events" in summary:
+        lines.extend([
+            "",
+            "## Events extracted",
+            "",
+            f"- Verifiable events: {summary['n_verifiable_events']:,}",
+        ])
+        if "n_documents_with_event" in summary:
+            lines.append(f"- Documents with at least one event: {summary['n_documents_with_event']:,}")
+            lines.append(f"- Documents with no event: {summary['n_documents_without_event']:,}")
+            lines.append(f"- Document event rate: {summary['document_event_rate']:.1%}")
+        lines.append("")
+
+    n_events = summary.get("n_verifiable_events") or None
+    lines += _count_table("Event confidence", summary.get("event_confidence_counts", {}), n_events)
+    lines += _count_table("Hazard family", summary.get("hazard_family_counts", {}), n_events)
+    lines += _count_table("Top hazards", summary.get("top_event_hazards", {}), n_events)
+    lines += _count_table("Language (all rows)", summary.get("language_counts", {}), n_rows)
+
+    logprob_keys = [k for k in summary if k.startswith("n_rows_with_event_confidence_")]
+    if logprob_keys:
+        lines.extend(["### Confidence calibration coverage", ""])
+        all_empty = all(summary[k] == 0 for k in logprob_keys)
+        for k in sorted(logprob_keys):
+            col = k.replace("n_rows_with_", "")
+            n = summary[k]
+            note = "  **← not populated for this run**" if n == 0 else ""
+            lines.append(f"- Rows with `{col}`: {n:,} / {n_rows:,}{note}")
+        if all_empty:
+            lines.extend([
+                "",
+                "> Expected when the run used a reasoning effort. The extractor requests",
+                "> `logprobs` only when none is set (`app_event_focus.py:611-616`), because",
+                "> reasoning models do not return token logprobs. Note `--reasoning-effort",
+                "> none` does not re-enable them — the string is truthy; only an empty value",
+                "> or an unset `AZURE_OPENAI_REASONING_EFFORT` does.",
+            ])
+        lines.append("")
+
+    if flagged is not None and not flagged.empty:
+        flag_cols = [c for c in flagged.columns
+                     if c not in {"asset_key", "title", "content_url", "flag_count"}]
+        lines.extend([
+            "## QA flags",
+            "",
+            f"- Rows with at least one flag: {len(flagged):,} / {n_rows:,} ({len(flagged) / n_rows:.1%})"
+            if n_rows else f"- Rows with at least one flag: {len(flagged):,}",
+            "",
+            "| Flag | Rows |",
+            "|---|---:|",
+        ])
+        for col in flag_cols:
+            lines.append(f"| {col} | {int(flagged[col].sum()):,} |")
+        lines.extend([
+            "",
+            "> `duplicate_asset_key` counts every row of a multi-event document, so it",
+            "> is a normal consequence of the one-row-per-event shape rather than a",
+            "> defect. The flags worth acting on are the others.",
+            "",
+        ])
+
     lines.extend([
-        "",
         "## Main QA questions",
         "",
         "- Are there duplicate asset_keys?",
@@ -874,10 +1003,15 @@ def save_report(df: pd.DataFrame, summary: dict, output_path: Path) -> None:
         "- Are there extraction errors in key_impacts?",
         "- Are list fields unusually long?",
         "- Do the hazard, language, and country distributions look plausible?",
+        "",
+        "> `countries`, `themes`, `hazards` and `organizations` are upstream source",
+        "> metadata, not extraction output. They carry known noise (continent names",
+        "> mixed with countries; organisation names split on `, `), so treat their",
+        "> distributions as descriptive of the corpus, not of extraction quality.",
     ])
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text("\n".join(lines), encoding="utf-8")
+    output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     logging.info("Wrote %s", output_path)
 
 
@@ -896,6 +1030,7 @@ def main() -> None:
         return
 
     df = read_input(args.input)
+    n_source_columns = len(df.columns)
 
     for col in ["is_single_actual_event", "is_verifiable_event"]:
         if col in df.columns:
@@ -905,12 +1040,14 @@ def main() -> None:
         if col in df.columns:
             df[f"{col}_count"] = count_items(df[col])
 
-    summary = build_summary(df)
+    summary = build_summary(df, top_n=args.top_n, n_source_columns=n_source_columns)
     save_summary_json(summary, args.output_dir / "summary.json")
-    save_report(df, summary, args.output_dir / "qa_report.md")
 
     flagged = generate_flags(df)
     write_table(flagged, args.output_dir / "flagged_rows.csv")
+
+    save_report(df, summary, args.output_dir / "qa_report.md",
+                flagged=flagged, source=args.input)
 
     if "is_single_actual_event" in df.columns:
         series = df["is_single_actual_event"].fillna("NA").astype(str).value_counts()

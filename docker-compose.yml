@@ -1,7 +1,7 @@
 services:
   extractor:
     build: .
-    image: undrr-groundsource:latest
+    image: undrr-fonte:latest
     container_name: undrr-extractor
     env_file: .env
     volumes:
@@ -14,9 +14,9 @@ services:
       # on the host so reruns stay fast.
       - ./.nominatim_cache.json:/app/.nominatim_cache.json
     # Default command is the extraction pipeline. Run polygon resolution
-    # with: `docker compose run --rm extractor groundsource-polygons ...`
+    # with: `docker compose run --rm extractor fonte-polygons ...`
     command:
-      - groundsource-extract
+      - fonte-extract
       - --limit
       - "10000"
       - --resume
@@ -30,7 +30,7 @@ services:
 
   review:
     # Streamlit gold-review UI. Start with `docker compose up review`.
-    image: undrr-groundsource:latest
+    image: undrr-fonte:latest
     container_name: undrr-review
     depends_on:
       - extractor

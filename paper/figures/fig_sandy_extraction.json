@@ -1,0 +1,85 @@
+{
+  "_provenance": {
+    "asset_key": "2ac6c0c345fde548a8a65794f5cb82fc1dc4eab399c6f4f0e73980ea41b9a806",
+    "title": "Critical infrastructure systems: A case study of the interconnectedness of risks posed by Hurricane Sandy for New York City",
+    "content_url": "https://www.preventionweb.net/publication/critical-infrastructure-systems-case-study-interconnectedness-risks-posed-hurricane",
+    "publication_year": "2014",
+    "language": "English",
+    "source_text_file": "fig_sandy_source_text.txt",
+    "source_text_chars": 12000,
+    "full_document_chars": 40757,
+    "source_text_note": "Verbatim extraction window passed to the model, not the full document; the pipeline truncates each attachment to 12,000 characters.",
+    "extraction_run": "outputs/event_extractions/event_extractions.jsonl",
+    "geometry_run": "outputs/event_extractions/event_geometries.parquet",
+    "figure": "fig_sandy_footprint.pdf",
+    "human_verdict": "correct (eval/production_validation.csv)"
+  },
+  "llm_output_raw": {
+    "asset_key": "2ac6c0c345fde548a8a65794f5cb82fc1dc4eab399c6f4f0e73980ea41b9a806",
+    "title": "Critical infrastructure systems: A case study of the interconnectedness of risks posed by Hurricane Sandy for New York City",
+    "publication_year": "2014",
+    "language": "English",
+    "countries": "United States of America",
+    "themes": "Risk identification and assessment, Critical infrastructure",
+    "hazards": "{\"id\":343,\"name\":\"Cyclone, Hurricane and Typhoon\"}",
+    "organizations": "Earth Institute, the",
+    "content_url": "https://www.preventionweb.net/publication/critical-infrastructure-systems-case-study-interconnectedness-risks-posed-hurricane",
+    "event_index": 1,
+    "event_count": 1,
+    "is_single_actual_event": true,
+    "is_verifiable_event": true,
+    "event_hazard": "Cyclone, Hurricane and Typhoon",
+    "event_dates": "2012-10-29",
+    "affected_locations": "New York City | Manhattan | Brooklyn | Port Reading, New Jersey | Linden, New Jersey",
+    "location_admin_levels": "city | admin2 | admin2 | neighbourhood | city",
+    "key_impacts": "Storm surge flooding in New York City exceeded the 100-year floodplain by 53% citywide | Approximately 8,500,000 customers lost power at peak | Two refineries (Hess Port Reading and Phillips 66 Bayway in Linden) were shut down, reducing capacity by 26.3% of 1,170,200 BPD | Gas stations in New Jersey could not operate due to power outages | Three health care facilities in Manhattan and Brooklyn evacuated all patients due to the outage",
+    "event_confidence": "high",
+    "event_confidence_logprob": null,
+    "event_confidence_prob": null,
+    "evidence_snippets": "Arrival on the evening of October 29 coincided with high tide and generated a massive surge | Approximately 8,500,000 customers lost power at peak during Sandy | As of November 6, 2012, Hess Port Reading and Phillips 66 Bayway refineries were shut down | Gas stations in NJ could not operate because of the outage | Three health care facilities in Manhattan and Brooklyn had to emergently evacuate all patients due to the outage",
+    "missing_information": "No quantified counts for evacuations beyond facility number | Specific flooded neighborhoods beyond borough/city level not detailed"
+  },
+  "llm_output_parsed": {
+    "event_index": 1,
+    "event_count": 1,
+    "is_single_actual_event": true,
+    "is_verifiable_event": true,
+    "event_hazard": "Cyclone, Hurricane and Typhoon",
+    "event_confidence": "high",
+    "event_dates": [
+      "2012-10-29"
+    ],
+    "affected_locations": [
+      "New York City",
+      "Manhattan",
+      "Brooklyn",
+      "Port Reading, New Jersey",
+      "Linden, New Jersey"
+    ],
+    "location_admin_levels": [
+      "city",
+      "admin2",
+      "admin2",
+      "neighbourhood",
+      "city"
+    ],
+    "key_impacts": [
+      "Storm surge flooding in New York City exceeded the 100-year floodplain by 53% citywide",
+      "Approximately 8,500,000 customers lost power at peak",
+      "Two refineries (Hess Port Reading and Phillips 66 Bayway in Linden) were shut down, reducing capacity by 26.3% of 1,170,200 BPD",
+      "Gas stations in New Jersey could not operate due to power outages",
+      "Three health care facilities in Manhattan and Brooklyn evacuated all patients due to the outage"
+    ],
+    "evidence_snippets": [
+      "Arrival on the evening of October 29 coincided with high tide and generated a massive surge",
+      "Approximately 8,500,000 customers lost power at peak during Sandy",
+      "As of November 6, 2012, Hess Port Reading and Phillips 66 Bayway refineries were shut down",
+      "Gas stations in NJ could not operate because of the outage",
+      "Three health care facilities in Manhattan and Brooklyn had to emergently evacuate all patients due to the outage"
+    ],
+    "missing_information": [
+      "No quantified counts for evacuations beyond facility number",
+      "Specific flooded neighborhoods beyond borough/city level not detailed"
+    ]
+  }
+}

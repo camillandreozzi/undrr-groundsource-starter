@@ -22,30 +22,16 @@ pass in Stage 3.
 from __future__ import annotations
 
 import argparse
-import re
 from pathlib import Path
 
 import pandas as pd
+
+from fonte.hazard_families import HAZARD_FAMILIES, hazard_family
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_UNIFIED = REPO_ROOT / "eval" / "unified.parquet"
 DEFAULT_SAMPLE = REPO_ROOT / "eval" / "review_sample.csv"
-
-# Hazard family taxonomy. Order matters for the regex search — we take
-# the first match. The "other" family is implicit (anything that matches
-# none of the patterns).
-HAZARD_FAMILIES: tuple[tuple[str, re.Pattern], ...] = (
-    ("flood", re.compile(r"flood|inundation|deluge", re.I)),
-    ("earthquake", re.compile(r"earthquake|seismic|quake|tsunami", re.I)),
-    ("cyclone", re.compile(r"cyclone|hurricane|typhoon|storm", re.I)),
-    ("drought", re.compile(r"drought|famine|water scarcity", re.I)),
-    ("wildfire", re.compile(r"wildfire|bushfire|forest fire|fire", re.I)),
-    ("landslide", re.compile(r"landslide|mudslide|rockfall", re.I)),
-    ("volcano", re.compile(r"volcan|eruption|lahar", re.I)),
-    ("heat", re.compile(r"heat ?wave|extreme heat", re.I)),
-)
-
 
 def _pooled_hazards(row: pd.Series, run_ids: list[str]) -> str:
     """Concatenate non-empty hazard strings across runs for family detection."""
@@ -57,11 +43,7 @@ def _pooled_hazards(row: pd.Series, run_ids: list[str]) -> str:
     return " | ".join(parts)
 
 
-def _hazard_family(pooled: str) -> str:
-    for fam, pat in HAZARD_FAMILIES:
-        if pat.search(pooled):
-            return fam
-    return "other"
+_hazard_family = hazard_family
 
 
 def _run_ids_from_columns(cols: list[str]) -> list[str]:

@@ -1,0 +1,196 @@
+1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CRITICAL INFRASTRUCTURE SYSTEMS: A CASE STUDY OF THE 
+INTERCONNECTEDNESS OF RISKS POSED BY HURRICANE SANDY FOR NEW YORK 
+CITY 
+Masahiko Haraguchi 
+ Soojun Kim 
+ 
+Columbia Water Center, the 
+Earth Institute, Columbia 
+University  
+Prepared for the Global Assessment Report on Disaster Risk Reduction 2015  
+March 14, 2014 
+INPUT PAPER  
+
+2 
+ 
+Table of Contents 
+ 
+Abstract ......................................................................................................................... 1 
+1. Introduction ............................................................................................................. 1 
+2. Literature Review ...................................................................................................... 3 
+3. Methodology and Data............................................................................................... 6 
+4. Result of the Analysis ................................................................................................ 9 
+4.1 Estimation of direct and indirect damages ............................................................ 9 
+4.2 Comparing damages calculated based on inundation areas with actual changes in 
+service reported in government’s reports  ................................................................ 11 
+5. Initiatives to Prepare for Future Disasters .................................................................. 11 
+6. Summary  .............................................................................................................. 12 
+Bibliography ................................................................................................................. 13 
+ 
+Figure 1 : MTA River Crossings Damaged by Sandy (Metropolitan Transportation Authority, 
+2013)  ............................................................................................................ 6 
+Figure 2 : Schematic Features of Interdependent Infrastructures ........................................ 8 
+Figure 3 : Concept diagram to estimate the direct and indirect damages ............................. 9 
+Figure 4 : The spatial information of each sector affected by the storm surge in the NYC ... 10 
+ 
+Table 1 : Relevant indicators in HFA to Interconnected and interdependent risks ................. 2 
+Table 2 : Metropolitan Transportation Authority (MTA) River Crossings Damaged by Sandy .. 6 
+Table 3 : Direct and indirect damage in each sector .......................................................... 7 
+Table 4 : GIS data sources .............................................................................................. 9 
+Table 5 : Direct and indirect damages in each sector ....................................................... 10 
+Table 6 : Focused areas by Consolidated Edison Co. to prepare for future similar storms .... 12 
+ 
+
+1 
+ 
+Abstract 
+The goal of this paper is to investigate the impact of Hurricane Sandy from the perspective 
+of interdependence among different sectors of critical infrastructure in New York City and to 
+assess the interconnected nature of risks posed by such a hurricane. Critical  areas and 
+sectors where interdependent risks led to a catastrophic cascading effect are identified. This 
+study uses indirect damages of each sector to estimate the degree of interdependence 
+among the sectors. The study examines the impact of the hurricane on different critical 
+infrastructures by combining hazard maps of actual inundation areas with maps of critical 
+infrastructure. The direct damages of each sector are calculated from the inundation areas in 
+the flood map. The indirect damages are estimated by considering the areas that were not 
+inundated but affected by Sandy through the interconnected infrastructure. The electricity 
+sector was the key sector to propagate risks to other sectors. The examination of new 
+initiatives to increase the resilience of critical infrastructures in New York City after Sandy 
+reveals that these initiatives focus primarily  on building hard infrastructures to decrease 
+direct damages. They understate the importance of interdependent risk across sectors. 
+Future disaster risk reduction strategies must address interdependent infrastructures to 
+reduce indirect damages.  
+1. Introduction 
+At the end of October 2012, Hurricane Sandy caused enormous damages from the Caribbean 
+Sea to the northeastern coast of the United States. Sandy caused more than 200 fatalities 
+along its track (Kunz et al., 2013).  Even though Sandy was not the most severe storm event 
+in terms of wind speed and precipitation, it produced tremendous economic damage, 
+particularly in the United States. Kunz et al. (2013) concluded that the total damage might 
+exceed USD 100 billion, estimating direct damage to be between USD 78 and 97 billion and 
+indirect damage to be between USD 10 to 16 billion primarily due to business interruption.  
+Many storms hit New York with higher winds than Sandy’s 80-mile-per-hour peak wind gusts 
+and many storms have brought more rain than the half inch that Sandy dropped in parts of 
+New York. However, Sandy’s storm surge was unlike anything seen before (New York City 
+Government, 2013). Its arrival on the evening of October 29 coincided almost exactly with 
+high tide and generated a massive surge on the Atlantic Ocean and in New York Harbor. The 
+storm surge caused flooding that exceeded the 100-year floodplain boundaries by 53% 
+citywide (New York City Government, 2013). Though both wind and storm surge by 
+hurricanes produce damages in many cases, specifically the most damage resulted from 
+storm surge in New York City during Sandy. 
+The indirect damage due to business interruption resulted primarily from interconnected risks 
+within infrastructures. The concept of interdependence of risks is very important to formulate 
+a strategy to reduce disaster risks. The interconnected risks of critical system failures may 
+relate to catastrophic cascade effects due to functional interdependence or physical 
+proximity. Heterogeneous networks, in general, are  particularly vulnerable to attacks in that 
+a large-scale cascade may be triggered by disabling a single key node (Motter & Lai, 2002). 
+Therefore, national disaster risk management strategies must address interdependence 
+between different sectors of critical infrastructure. This interdependence is also enhanced by 
+
+2 
+ 
+an increasing degree of economic integration. Mapping and modelling of complex risks  
+enable policy makers to address hazards and their economic cascading effects that do not 
+travel linear pathways(Radisch, 2013).  The concept of interconnected risks is not explicitly 
+included in Indicator in Hyogo Framework for Action (HFA). Yet, several indicators 4.2, 4.3, 
+4.6, and 5.3 are relevant to interconnected risks (Table 1).  
+Indicator 
+Descriptions of indicator 
+Indicator 4.2 
+Social development policies and plans are being implemented to reduce the 
+vulnerability of populations most at risk 
+Indicator 4.3 
+ 
+Economic and productive sectorial policies and plans have been implemented to 
+reduce the vulnerability of economic activities 
+Indicator 4.6 
+ 
+Procedures are in place to assess the disaster risk impacts of major development 
+projects, especially infrastructure 
+Indicator 5.3 
+Financial reserves and contingency mechanisms are in place to support effective 
+response and recovery when required. 
+Table 1 : Relevant indicators in HFA to Interconnected and interdependent risks 
+In the HFA progress reports to review the progress of the HFA, some countries such as the 
+United States, Germany, Bulgaria, and Australia, have recognized the importance of the 
+interconnected risks of critical system failures. Government operations and business activities 
+heavily depend on reliable public infrastructures and utilities, efficient urban systems, an 
+educated workforce and reliable public service. Therefore, reducing disaster risks in critical 
+infrastructures produces favorable outcomes for both the public and private sectors. 
+Hurricane Sandy is a very important example of examining interconnected risks posed by 
+disasters because it caused extensive damage to electric transmission and distribution 
+infrastructures in the Northeast and Mid-Atlantic region of the United States. Both electric 
+and petroleum infrastructures are critically interdependent with other infrastructures such as 
+water, communication, transportation, food supply and private sector supply chains.  For 
+example, approximately 8,500,000 customers lost power at peak  during Sandy (U.S. 
+Department of Energy, 2013). The hurricane also damaged the region’s petroleum 
+infrastructures. As of November 6 2012, two refineries in the path of Sandy, i.e. Hess Port 
+Reading Refinery in Port Reading, New Jersey and Bayway Refinery Phillips 66 in Linden, 
+New Jersey, were shut down. This resulted in the loss of 26.3% of the total operating 
+capacity of 1,170,200 Barrels Per Day (U.S. Department of Energy, 2012). The loss of the 
+electricity and fuel sectors propagated to other sectors. Gas stations in NJ could not operate 
+because of the outage. Three health care facilities in Manhattan and Brooklyn had to 
+emergently evacuate all patients due to the outage.  
+The goal of this paper is to investigate the impact of Hurricane Sandy from the perspective 
+of interdependence between different sectors of critical infrastructure and identify  
+interconnectedness of risks posed by the natural hazard. The collapse of power utilities and 
+petroleum infrastructures triggered failures in other infrastructure systems such as health 
+care facilities, public transportation systems, the supply of necessities, and emergency 
+facilities in the New York metropolitan area. The study examines the impact of the hurricane 
+on different critical infrastructures such as utility, transport, and healthcare by combining 
+hazard maps of actual inundation areas with maps of critical infrastructure. Areas and 
+sectors where interdependent risks exist are identified. Maps that identify vulnerable sectors 
+
+3 
+ 
+which tend to increase interconnected risks are developed.  A scenario that produced domino 
+effects in the case of Hurricane Sandy is also developed.  
+2. Literature Review 
+Methodology of previous studies 
+There are several ways to estimate the direct and indirect economic losses induced by 
+interdependent risks. Satumtira and Dueñas-Osorio (2010) review research in the field of 
+infrastructure interdependence from the 1980’s to 2010. They categorize four methodologies 
+under mathematical models in the field: Agent-based, input-output, network or graph theory, 
+and all other emerging models. One of the main approaches is to use the input-output model 
+proposed by Leontief (1986). Indirect economic losses are usually quantiﬁed in terms of 
+production losses in the affected region with the help of input-output models (Okuyama, 
+2007). For example, Wei, Dong, and Sun (2010) deploy the inoperability Input-Output Model 
+(IIM) to assess the impacts of supply chain disruptions. Wei et al. (2010) formulate an 
+Ordered Weighted Averaging Operator to evaluate the interdependency matrix, which is a 
+key component of the IIM. Furthermore, Kajitani and Tatano (2014) investigate a method for 
+estimating the production capacity loss rate (PCLR) of industrial sectors damaged by a 
+disaster. They propose a method of PCLR estimation that considers the two main causes of 
+capacity losses, namely damage to production facilities and disruption of lifeline systems. 
+This study  utilizes indirect damages of each sector to estimate the degree of 
+interdependence between each sector. To estimate indirect damages of each sector, this 
+study uses GIS mapping and compares the hypothetical damages calculated from the 
+inundation areas with actual damages reported by government agencies.  
+Economic Losses through Interdependent Infrastr

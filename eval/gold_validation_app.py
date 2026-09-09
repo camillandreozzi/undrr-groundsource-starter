@@ -12,12 +12,20 @@ saves and jumps to the next unreviewed event. Optional notes per event.
 
 Reads/writes eval/gold_validation.csv (built by prefill_gold_validation.py),
 editing in place with one timestamped backup per session before the first write.
+
+Point it at a different queue with the GOLD_VALIDATION_CSV env var, or by
+passing the path after `--`:
+
+    GOLD_VALIDATION_CSV=eval/production_validation.csv \
+        streamlit run eval/gold_validation_app.py
+    streamlit run eval/gold_validation_app.py -- eval/production_validation.csv
 """
 from __future__ import annotations
 
 import csv
 import os
 import shutil
+import sys
 import tempfile
 from datetime import datetime
 from pathlib import Path
@@ -81,6 +89,17 @@ def create_backup(path: Path) -> Path:
         counter += 1
     shutil.copy2(path, backup)
     return backup
+
+
+def resolve_csv_path() -> Path:
+    env = os.environ.get("GOLD_VALIDATION_CSV", "").strip()
+    if env:
+        return Path(env).expanduser().resolve()
+    # Streamlit forwards args after `--` into sys.argv.
+    for arg in sys.argv[1:]:
+        if arg and not arg.startswith("-"):
+            return Path(arg).expanduser().resolve()
+    return DEFAULT_VALIDATION_PATH
 
 
 def queue_rows(rows: list[dict[str, str]]) -> list[int]:
@@ -176,7 +195,8 @@ def main() -> None:
     st.set_page_config(page_title="Gold Validation", layout="wide")
     st.title("Gold Validation — prompt 5")
 
-    path = DEFAULT_VALIDATION_PATH
+    path = resolve_csv_path()
+    st.caption(f"Queue: `{path}`")
     try:
         _ensure_backup(path)
         fieldnames, rows = read_csv(path)

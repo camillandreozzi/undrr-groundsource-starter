@@ -1,8 +1,8 @@
 """
-groundsource.polygon_resolver
+fonte.polygon_resolver
 -------------------
 
-Resolve free-text location strings (as produced by groundsource-extract's
+Resolve free-text location strings (as produced by fonte-extract's
 `affected_locations` field) into geometries that match Google Groundsource's
 output schema:
 
@@ -356,7 +356,7 @@ class NominatimResolver:
         if not user_agent or "example" in user_agent.lower():
             raise ValueError(
                 "Provide a real, descriptive User-Agent (e.g. "
-                "'undrr-groundsource/0.1 (camilla@undrr.org)') per Nominatim policy."
+                "'undrr-fonte/0.1 (camilla@undrr.org)') per Nominatim policy."
             )
         self.user_agent = user_agent
         self.endpoint = endpoint or self.DEFAULT_ENDPOINT

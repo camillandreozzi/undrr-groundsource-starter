@@ -36,6 +36,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from fonte.hazard_families import hazard_family
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_GOLD = REPO_ROOT / "eval" / "gold.csv"
@@ -55,27 +57,7 @@ FIELD_WEIGHTS = {
     "event_dates_overlap": 0.5,
 }
 
-# Same hazard family taxonomy as the sampler — kept in sync by copy
-# rather than import to keep these scripts independent.
-HAZARD_FAMILIES: tuple[tuple[str, re.Pattern], ...] = (
-    ("flood", re.compile(r"flood|inundation|deluge", re.I)),
-    ("earthquake", re.compile(r"earthquake|seismic|quake|tsunami", re.I)),
-    ("cyclone", re.compile(r"cyclone|hurricane|typhoon|storm", re.I)),
-    ("drought", re.compile(r"drought|famine|water scarcity", re.I)),
-    ("wildfire", re.compile(r"wildfire|bushfire|forest fire|fire", re.I)),
-    ("landslide", re.compile(r"landslide|mudslide|rockfall", re.I)),
-    ("volcano", re.compile(r"volcan|eruption|lahar", re.I)),
-    ("heat", re.compile(r"heat ?wave|extreme heat", re.I)),
-)
-
-
-def _hazard_family(s: str) -> str:
-    if not s:
-        return "other"
-    for fam, pat in HAZARD_FAMILIES:
-        if pat.search(s):
-            return fam
-    return "other"
+_hazard_family = hazard_family
 
 
 # Rough country → continent mapping for the "region" segment. Only the

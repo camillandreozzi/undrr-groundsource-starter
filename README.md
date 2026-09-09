@@ -1,26 +1,26 @@
-# UNDRR Groundsource Starter
+# UNDRR FONTE Starter
 
 Prototype pipeline for extracting disaster-event records from Databricks text,
-running prompt experiments, and resolving affected locations to Groundsource-style
+running prompt experiments, and resolving affected locations to Google Groundsource-style
 geometries.
 
 ## Repository Layout
 
 ```text
-src/groundsource/   installable extraction and polygon-resolution package
+src/fonte/   installable extraction and polygon-resolution package
 scripts/            one-off QA, comparison, and validation helpers
 eval/               prompt-evaluation runbook, gold labels, and scoring tools
 tests/              lightweight local tests
 data/               small reference geodata used by polygon post-processing
 outputs/            generated runs and maps; gitignored
-extract/            default $EXTRACT_OUTPUT_DIR destination for groundsource-extract; gitignored
+extract/            default $EXTRACT_OUTPUT_DIR destination for fonte-extract; gitignored
 ```
 
 The main entry points are installed as console commands:
 
-- `groundsource-extract` runs the Databricks to Azure OpenAI extraction pipeline.
-- `groundsource-polygons` resolves extracted locations to geometries.
-- `groundsource-upload` uploads extraction outputs to Azure Blob Storage.
+- `fonte-extract` runs the Databricks to Azure OpenAI extraction pipeline.
+- `fonte-polygons` resolves extracted locations to geometries.
+- `fonte-upload` uploads extraction outputs to Azure Blob Storage.
 
 ## Setup
 
@@ -44,25 +44,25 @@ Fill `.env` with your Azure OpenAI and Databricks values. Keep `.env`,
 make test
 
 # Check Databricks connectivity without calling Azure OpenAI.
-groundsource-extract --db-only --limit 3
+fonte-extract --db-only --limit 3
 
 # Run a small extraction.
-groundsource-extract --limit 5 --output-dir outputs/event_extractions
+fonte-extract --limit 5 --output-dir outputs/event_extractions
 
 # Long runs: checkpoint + stop + resume. The extractor refreshes
 # event_extractions.jsonl/.csv and checkpoint_status.json every
 # --checkpoint-every documents (default 5000), so results are checkable
 # mid-run. Ctrl-C (or SIGTERM / docker stop) shuts down gracefully and
 # writes a final checkpoint; rerun with --resume to pick up where it left off.
-groundsource-extract --limit 100000 --workers 4 --resume \
+fonte-extract --limit 100000 --workers 4 --resume \
   --checkpoint-every 5000 --output-dir outputs/full_run
 
 # Resolve polygons from an extraction JSONL.
-groundsource-polygons \
+fonte-polygons \
   --input outputs/event_extractions/event_extractions.jsonl \
   --output outputs/event_extractions/event_geometries.parquet \
   --coastline data/ne_50m_coastline.zip \
-  --user-agent "undrr-groundsource/0.1 (you@example.org)"
+  --user-agent "undrr-fonte/0.1 (you@example.org)"
 
 # Build an interactive map from the resolved polygons.
 # Writes outputs/event_extractions/polygon_map.html.
@@ -77,7 +77,7 @@ You can also use `make setup`, `make extract`, `make polygons`,
 
 ## Demo Extraction And Upload
 
-`make extract` (no explicit `--output-dir`) and `groundsource-upload`
+`make extract` (no explicit `--output-dir`) and `fonte-upload`
 (no explicit `--source`) both default to the local folder configured by
 `EXTRACT_OUTPUT_DIR` in `.env` (e.g. `extract/demo`):
 
@@ -101,18 +101,18 @@ Docker gives you a clean Python 3.11 runtime with the same package entry points.
 
 ```bash
 docker compose build
-docker compose run --rm extractor groundsource-extract --db-only --limit 3
-docker compose run --rm extractor groundsource-extract --limit 5
+docker compose run --rm extractor fonte-extract --db-only --limit 3
+docker compose run --rm extractor fonte-extract --limit 5
 ```
 
 Polygon resolution from Docker:
 
 ```bash
-docker compose run --rm extractor groundsource-polygons \
+docker compose run --rm extractor fonte-polygons \
   --input outputs/event_extractions/event_extractions.jsonl \
   --output outputs/event_extractions/event_geometries.parquet \
   --coastline data/ne_50m_coastline.zip \
-  --user-agent "undrr-groundsource/0.1 (you@example.org)"
+  --user-agent "undrr-fonte/0.1 (you@example.org)"
 ```
 
 Start the review UI:
@@ -123,8 +123,8 @@ docker compose up review
 
 ## Prompt And Evaluation Workflows
 
-Edit prompt variants in `src/groundsource/prompts.py`. The extraction schema
-lives in `src/groundsource/app_event_focus.py`.
+Edit prompt variants in `src/fonte/prompts.py`. The extraction schema
+lives in `src/fonte/app_event_focus.py`.
 
 Prompt-comparison and gold-labelling steps live in `eval/README.md`.
 
@@ -139,7 +139,7 @@ For a fresh machine, prefer this order:
 1. Install with `requirements-dev.txt -c constraints.txt`.
 2. Copy `.env.example` to `.env`.
 3. Run `make test`.
-4. Run `groundsource-extract --db-only --limit 3`.
+4. Run `fonte-extract --db-only --limit 3`.
 5. Run a tiny extraction and polygon pass before scaling up.
 
 More details are in `docs/reproducibility.md`.

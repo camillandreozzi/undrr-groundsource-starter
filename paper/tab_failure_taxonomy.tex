@@ -1,0 +1,95 @@
+% ---------------------------------------------------------------------------
+% Diagnostic taxonomy for the production output.
+% Requires: booktabs, tabularx. Exemplars are traceable to an asset_key prefix
+% in outputs/event_extractions/event_extractions.jsonl; see
+% docs/FAILURE_TAXONOMY.md for the full audit and the counting method.
+% ---------------------------------------------------------------------------
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{
+@{}>{\raggedright\arraybackslash}p{0.155\textwidth}
+>{\raggedright\arraybackslash}X
+>{\raggedright\arraybackslash}p{0.30\textwidth}@{}}
+\toprule
+\textbf{Category} &
+\textbf{Observed pattern and interpretation} &
+\textbf{Example} \\
+\midrule
+
+Temporal normalisation &
+The first date is expressed as a free phrase, covering 428 distinct surface
+forms. Intervals, seasons, decades, and event-relative expressions require
+interpretation beyond direct ISO parsing. Such expressions are not necessarily
+extraction errors. &
+\texttt{2017 (meteorological year: May 2017 -- April 2018)} ($n{=}11$), a
+parenthetical gloss written into a date field; also
+\texttt{2005-08-25 to 2005-08-30}, \texttt{summer 2007}, \texttt{1970s},
+\texttt{2017 Atlantic hurricane season}. \\
+\addlinespace
+
+Potential publication-date substitution &
+All extracted dates have year precision and equal the document's publication
+year. This is a candidate indicator of metadata leakage; contemporaneous
+reporting can produce the same pattern legitimately. &
+\texttt{7260abd2fda7c13c} --- Drought, \texttt{2018}, Cape Town, in a document
+published in 2018. The ``Day Zero'' drought spans 2015--2018, so the year is
+defensible but indistinguishable from a metadata default. \\
+\addlinespace
+
+Synthesised temporal anchors &
+Relative expressions are combined with document-date fragments, for example,
+``past two years before 2010-10''. A parser may incorrectly interpret the
+embedded fragment as the event date. &
+\texttt{3090f7dd140e14b7} --- \texttt{past two years before 2010-10} on six of
+seven events, and \texttt{most recently before 2010-10-28} on the seventh,
+where the evidence field itself records only ``in the past two years''. \\
+\addlinespace
+
+Geographical role confusion &
+Locations were flagged as possible hazard origins or associated features rather
+than directly affected places, including epicentres, faults, facilities, and
+rivers. Resolving these mentions can produce geometries inconsistent with the
+intended affected-location relation. &
+\texttt{10fea7a69d549bb8} --- Earthquake, 1976, sole location
+\texttt{Motagua Fault}; \texttt{b7a109e614530d13} --- Landslide,
+\texttt{Hunza River}; \texttt{80d28a2163122619} ---
+\texttt{Deep Horizon oil rig \textbar{} Louisiana's coastal waters}, both
+rejected by the human annotator. \\
+\addlinespace
+
+Descriptive location expressions &
+Descriptions are emitted in place of sufficiently specified toponyms,
+complicating candidate generation and geographical disambiguation. &
+\texttt{Brisbane River catchment area}, \texttt{coastal areas of Nias},
+\texttt{Texas--Louisiana border area}, \texttt{Colchester area}. Faithful to
+the source and unresolvable by the gazetteer. \\
+\addlinespace
+
+Source fidelity in location naming &
+Location names are corrected or expanded using information whose support in the
+source requires checking. Plausible corrections may aid resolution while
+weakening traceability if the transformation is undocumented. &
+\texttt{3d46c98a726cb91b} --- source reads ``Bijnaour, Moradabad and
+Bulandshahar''; emitted as
+\texttt{Bijnor \textbar{} Moradabad \textbar{} Bulandshahr}. Elsewhere the
+correction surfaces inside the field itself:
+\texttt{Agastyamuni (spelled Agostyamuni), Rudraprayag district}. \\
+\addlinespace
+
+Administrative redundancy &
+A country is emitted alongside its own subregions, contrary to the applicable
+output rule. This can duplicate spatial representations at different
+administrative scales. &
+\texttt{eefa9abdf1c50ae5} --- Earthquake, 1988,
+\texttt{Spitak \textbar{} Armenia} tagged \texttt{city \textbar{} country}, so
+the same event carries both a point-scale and a national footprint. \\
+\bottomrule
+\end{tabularx}
+\caption{Diagnostic taxonomy for the production output. Screening counts are
+not mutually exclusive and must not be summed to estimate overall error
+prevalence. Examples are quoted verbatim from the run and keyed by
+\texttt{asset\_key} prefix.}
+\label{tab:failure-taxonomy}
+\end{table*}

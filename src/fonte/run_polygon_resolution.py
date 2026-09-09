@@ -1,8 +1,8 @@
 """
-groundsource.run_polygon_resolution
+fonte.run_polygon_resolution
 -------------------------
 
-Demo runner: read the pipeline's JSONL output (as produced by groundsource-extract),
+Demo runner: read the pipeline's JSONL output (as produced by fonte-extract),
 resolve every `affected_locations` value to a geometry, and write a parquet
 matching Google Groundsource's schema:
 
@@ -18,10 +18,10 @@ Usage
     pip install geopandas shapely pyarrow rapidfuzz requests
 
     # then:
-    groundsource-polygons \
+    fonte-polygons \
         --input  outputs/test_400/event_extractions.jsonl \
         --output outputs/test_400/event_geometries.parquet \
-        --user-agent "undrr-groundsource/0.1 (your-email@undrr.org)"
+        --user-agent "undrr-fonte/0.1 (your-email@undrr.org)"
 
 The cache file (default: .nominatim_cache.json next to the script) makes
 reruns essentially free, so iterate freely.
@@ -46,8 +46,8 @@ import geopandas as gpd
 import pandas as pd
 from shapely.geometry import MultiPolygon, Polygon
 
-from groundsource.polygon_resolver import NominatimResolver, ResolutionResult
-from groundsource.geometry_postprocess import (
+from fonte.polygon_resolver import NominatimResolver, ResolutionResult
+from fonte.geometry_postprocess import (
     HazardAwarePostprocessor,
     is_sub_national_hazard,
 )
@@ -61,7 +61,7 @@ EQUAL_AREA_EPSG = 6933
 
 
 # ---------------------------------------------------------------------------
-# Input parsing: matches groundsource-extract JSONL output.
+# Input parsing: matches fonte-extract JSONL output.
 # ---------------------------------------------------------------------------
 
 def _split_pipes(s: Optional[str]) -> list[str]:
@@ -227,7 +227,7 @@ def parse_args() -> argparse.Namespace:
                    help="Path to write the geo-parquet")
     p.add_argument("--user-agent", required=True,
                    help="Descriptive UA for Nominatim, e.g. "
-                        "'undrr-groundsource/0.1 (camilla@undrr.org)'")
+                        "'undrr-fonte/0.1 (camilla@undrr.org)'")
     p.add_argument("--cache", type=Path, default=Path(".nominatim_cache.json"),
                    help="Local cache for Nominatim responses")
     p.add_argument("--limit", type=int, default=None,

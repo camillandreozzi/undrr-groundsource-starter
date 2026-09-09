@@ -22,7 +22,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from groundsource.polygon_resolver import NominatimResolver, fallback_ladder
+from fonte.polygon_resolver import NominatimResolver, fallback_ladder
 
 # Mix of granularities + difficulty levels. (resolved, tag) — `resolved` is
 # the expected outcome under the v2 ladder (possessive + facility rewrites).

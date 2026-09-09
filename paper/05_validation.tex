@@ -1,0 +1,190 @@
+% ---------------------------------------------------------------------------
+% Validation / evaluation design.
+% \input{sections/05_validation} — expects booktabs, and \citep from natbib.
+% Numbers here are population counts (final). Accuracy figures live in §Results.
+% ---------------------------------------------------------------------------
+
+\section{Validation Design}
+\label{sec:validation}
+
+The corpus carries no event annotations, and none exist for it elsewhere: the
+documents are guidance, evaluation and reporting material submitted by
+individual organisations, not a wire feed with a registry behind it. Any
+accuracy claim therefore has to be built rather than looked up. We build it
+from three components: a human judging pass over a representative sample of
+extracted events (\S\ref{ssec:event-sample}), a second pass over the geocoding
+step that turns location strings into footprints (\S\ref{ssec:polygon-sample}),
+and a non-LLM baseline judged on the same documents under the same rubric, so
+that the system's accuracy has a reference point rather than only an absolute
+value (\S\ref{ssec:baseline}).
+
+Two design commitments run through all three. First, every sample is drawn to
+mirror its population, not to surface interesting cases; the pipeline also
+implements a risk-ranked sampling mode that over-weights hard extractions, and
+we report which mode produced each number, because the two answer different
+questions --- an estimate versus a lower bound. Second, all sampling is seeded
+(42) and the queues regenerate byte-identically from the released scripts, so
+the composition of the evaluation set is auditable independently of the
+verdicts recorded in it.
+
+\subsection{Event sample}
+\label{ssec:event-sample}
+
+The production run over 10{,}000 documents yields 3{,}572 verifiable events
+(\S\ref{sec:corpus}). We queue 175 of them for human judgement. Allocation
+across the nine hazard families is proportional to each family's share of the
+population under largest-remainder rounding, and the draw within a family is
+uniform. Proportional allocation, rather than equal cells per family, is what
+allows the pooled figure to be read as a population estimate; it costs
+precision in the small families, which we address by reporting them as
+directional only.
+
+Because the allocation is stratified on hazard family alone, the dimensions it
+is \emph{not} stratified on serve as a balance check. The queue is
+54.9\% high-confidence against 54.7\% in the population, with a mean
+label-free risk score of 0.591 against 0.592; every family cell matches the
+population share within 0.3\,pp. We report these rather than asserting
+representativeness.
+
+The risk score deserves a note, since it is computed for every event but used
+for nothing in the primary analysis. It is a label-free heuristic --- stated
+confidence, multi-event documents, vague or year-only dates, country-level
+admin tags, thin evidence, non-empty \texttt{missing\_information} --- and in
+the alternative sampling mode it drives selection. Under random sampling it is
+retained only as a covariate, which lets us ask after the fact whether the
+system's own difficulty signals predict human verdicts.
+
+\subsection{Geocoding sample}
+\label{ssec:polygon-sample}
+
+Geocoding is validated separately from extraction, because a correct location
+string resolved to the wrong footprint and a hallucinated location string are
+different failures with different fixes. The unit here is the (event,
+location) mention: 5{,}463 in the run, of which 4{,}435 (81.2\%) resolve to a
+geometry.
+
+Sampling is two-stage. Stage one draws 400 rows across three strata: 150
+\textsc{high} (resolver confidence $\geq$ 0.7, no fallback step, geometry taken
+directly from an OSM polygon, and a recognised administrative tier), 150
+\textsc{low} (resolved but failing any of those conditions), and 100
+\textsc{unresolved} (a mention that produced no geometry at all, recovered by
+anti-join against the extraction file). Stage two caps this at a 60-row judging
+queue, reallocated in proportion to the underlying pool sizes
+(2{,}607 / 1{,}828 / 1{,}028), giving 29 / 20 / 11. The two-stage design keeps
+the oversampled thin stratum available for error analysis while making the
+judged queue itself representative of all 5{,}463 mentions.
+
+\subsection{Judging protocol}
+\label{ssec:protocol}
+
+Events receive one verdict --- \textsc{correct}, \textsc{partial},
+\textsc{wrong} --- in a review interface that displays the full extraction
+beside the source document. The distinction is about \emph{completeness of a
+usable record}, not about field-by-field string agreement:
+
+\begin{itemize}\itemsep2pt
+  \item \textsc{correct}: hazard, date and location are all supported by the
+    document, and a downstream user would enter this row as-is.
+  \item \textsc{partial}: the event is real and correctly identified, but at
+    least one field is imprecise, incomplete or over-broad in a way that
+    still leaves the record useful --- a year where the document gives a
+    month, one of three affected provinces, a hazard label that is right at
+    the family level but not the specific one.
+  \item \textsc{wrong}: the event is not in the document, is not an event
+    (a scenario, an exercise, a projection), or a field is contradicted by
+    the source.
+\end{itemize}
+
+Verdicts are given against the document, not against the world. An extraction
+that faithfully reproduces an inaccurate source is \textsc{correct} under this
+rubric; the pipeline is a reading system, and holding it to the accuracy of the
+underlying reporting would measure the corpus instead. Two rates follow:
+$\text{accuracy} = \text{correct}/\text{judged}$ and
+$\text{useful rate} = (\text{correct}+\text{partial})/\text{judged}$. We report
+both throughout, since the gap between them is the quantity a deployment
+actually negotiates.
+
+Geocoding rows are judged per field rather than holistically ---
+\textsc{location} (is this the place the document means?), \textsc{geometry}
+(is the returned footprint that place?), \textsc{admin level} (is it at the
+right granularity?), \textsc{date} --- with an OpenStreetMap link centred on
+the resolved geometry at a zoom scaled to its area, so a country polygon
+returned for a district is visible as such on opening.
+
+\subsection{A non-LLM baseline}
+\label{ssec:baseline}
+
+Reporting an accuracy figure for an LLM pipeline with nothing beside it invites
+the reader to supply their own reference point. We therefore run a classical
+extraction baseline over the same input and judge it under the same protocol.
+
+The baseline is spaCy \texttt{en\_core\_web\_lg} NER combined with a hazard
+lexicon compiled from the same PreventionWeb label vocabulary the LLM prompt
+specifies, so the two runs emit the same \texttt{event\_hazard} strings and
+segment identically by family. Hazard mentions are located by pattern; a
+$\pm 1$-sentence window around each is scanned for \textsc{gpe}/\textsc{loc}/
+\textsc{fac} entities and for \textsc{date} entities that normalise to an
+absolute anchor; a window with at least one of each becomes a candidate event,
+and candidates sharing a hazard label within a document are merged into one
+row, mirroring the one-row-per-distinct-event contract the LLM is held to.
+
+Three things are deliberately held constant. The baseline reads the same
+10{,}000 documents (verified by \texttt{asset\_key} overlap against the
+production run, since the source query is time-ordered rather than a pinned
+list) and the same 12{,}000-character window. It writes the identical output
+schema, so the geocoder, the sampling scripts and the review interface run on
+it unchanged. And its locations are resolved by the same Nominatim-backed
+resolver against the same cache. What differs between the two runs is the
+extraction step and nothing else.
+
+\subsection{Paired comparison}
+\label{ssec:paired}
+
+The baseline queue is not an independent sample. For each of the 175 events
+already queued from the LLM run, we emit the baseline's extraction for the
+\emph{same document}, in the same review order, judged with the same rubric in
+the same interface. Where a document yields several baseline events, the
+counterpart is the one whose hazard family matches the LLM event, falling back
+to the highest-confidence candidate; where the baseline found nothing at all,
+the row is queued with empty extraction fields and judged as a miss rather than
+dropped, since dropping it would silently condition the comparison on the
+baseline having produced something.
+
+Pairing makes the difference testable on the discordant pairs. We report an
+exact two-sided McNemar test on both binarisations (\textsc{correct}, and
+\textsc{correct}$\,\cup\,$\textsc{partial}); exact rather than $\chi^2$ because
+at $n=175$ the discordant cells are small, which is where the asymptotic
+approximation is least reliable.
+
+One asymmetry remains: metrics defined on the LLM's own positives cannot
+express a recall advantage for the baseline. We therefore add a third arm ---
+50 events the baseline extracted from documents where the LLM returned nothing,
+sampled from that pool and judged under the same rubric. A high correct rate
+there is a recall gap in the deployed system; a low one means the baseline's
+extra yield is noise.
+
+We also compute automatic agreement between the two runs at corpus scale
+(document-level yield, hazard family, location-set $F_1$, date agreement,
+geometry IoU). These are reported as agreement, never as accuracy --- neither
+run is ground truth. Their role is to be validated against the human verdicts:
+if the baseline agrees with the LLM about as often on events humans rejected as
+on events humans confirmed, then agreement is not tracking quality and only the
+judged arms can rank the two pipelines.
+
+\subsection{Reporting and precision}
+\label{ssec:precision}
+
+Every rate is reported with a 95\% Wilson score interval. At $n=175$ the margin
+on the pooled event figure is approximately $\pm 6$\,pp; per-family cells range
+from roughly $\pm 10$\,pp in the largest family to $\pm 30$\,pp in the
+smallest. Family-level numbers are read as directional and the pooled figure is
+the one we quote. Sample sizes are pre-declared: the queues are fixed and
+ordered before judging begins, judging proceeds in rank order, and we report
+the declared $n$ rather than reporting attrition against a larger intended one.
+
+Judging was performed by a single annotator, so no inter-annotator agreement is
+available and the boundary between \textsc{partial} and its neighbours carries
+that annotator's reading of the rubric above. This is the most substantial
+limitation of the evaluation and we return to it in \S\ref{sec:limitations};
+the \textsc{useful rate}, which is invariant to exactly where that boundary
+falls, is reported alongside accuracy partly for this reason.

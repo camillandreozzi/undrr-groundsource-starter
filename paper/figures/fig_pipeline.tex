@@ -1,0 +1,54 @@
+% ---------------------------------------------------------------------------
+% Figure 1 — end-to-end flow, single column, compact snaking layout.
+% \input{figures/fig_pipeline} from sections/03_corpus_system.tex.
+% Requires: \usepackage{tikz} with \usetikzlibrary{arrows.meta,positioning}
+% Colours are defined here so the file is self-contained.
+% ---------------------------------------------------------------------------
+
+\definecolor{pipeInk}{HTML}{1F3A5F}
+\definecolor{pipeFill}{HTML}{EEF2F7}
+\definecolor{pipeOut}{HTML}{2A6F6B}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    every node/.style={font=\scriptsize},
+    stage/.style={
+        rectangle, rounded corners=2pt,
+        draw=pipeInk, line width=0.5pt, fill=pipeFill,
+        text width=17mm, minimum height=9mm, align=center, inner sep=1.5pt
+    },
+    output/.style={
+        rectangle, rounded corners=2pt,
+        draw=pipeOut, line width=0.7pt, fill=pipeOut!10,
+        text width=17mm, minimum height=9mm, align=center, inner sep=1.5pt
+    },
+    arr/.style={-{Stealth[length=1.6mm]}, line width=0.5pt, draw=pipeInk}
+]
+
+\node[stage] (doc) {Document\\{\tiny 12k chars}};
+\node[stage, right=4mm of doc] (extract)
+  {Schema-con\-strained extraction};
+\node[stage, right=4mm of extract] (rewrite)
+  {Location rewriting};
+\node[stage, below=6mm of extract] (geo)
+  {Geocoding\\{\tiny Nominatim/OSM}};
+\node[output, below=6mm of doc] (rec)
+  {Event record\\{\tiny + evidence}};
+
+\draw[arr] (doc)     -- (extract);
+\draw[arr] (extract) -- (rewrite);
+\draw[arr] (rewrite.south) |- ([yshift=0mm]geo.east);
+\draw[arr] (geo) -- (rec);
+
+\node[font=\tiny\itshape, text=pipeInk!75, above=0.5mm of extract]
+  {controlled hazard vocabulary};
+\node[font=\tiny\itshape, text=pipeInk!75, below=0.5mm of geo]
+  {polygon, EPSG:4326};
+
+\end{tikzpicture}
+\caption{The deployed pipeline. One document produces zero or more event
+records; each retains the evidence snippets, source identifiers and resolution
+trace that justify it.}
+\label{fig:pipeline}
+\end{figure}

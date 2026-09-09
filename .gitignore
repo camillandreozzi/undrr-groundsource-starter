@@ -14,3 +14,9 @@ map.html
 .ruff_cache/
 *.egg-info/
 extract/
+# Bulk benchmark artefacts (documents, extractions, geometries). The judged
+# queues and the reports live in benchmark_ner/ itself and ARE tracked.
+benchmark_ner/outputs/
+# Per-model runs. The reports, the roster and the 167-document snapshot
+# live in benchmark_openrouter/ itself and ARE tracked.
+benchmark_openrouter/outputs/

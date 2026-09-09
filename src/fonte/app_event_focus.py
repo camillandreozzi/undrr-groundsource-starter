@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 from pydantic import BaseModel, Field, model_validator
 
-from groundsource.prompts import (
+from fonte.prompts import (
     DEFAULT_PROMPT_ID,
     PROMPTS,
     PromptSpec,

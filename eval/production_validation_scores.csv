@@ -1,0 +1,34 @@
+segment_kind,segment,judged,correct,partial,wrong,unjudged,accuracy,accuracy_lo,accuracy_hi,accuracy_moe_pp,useful_rate,useful_rate_lo,useful_rate_hi
+ALL,ALL,175,119,44,12,0,0.68,0.608,0.745,6.8,0.931,0.884,0.96
+family,earthquake,60,34,21,5,0,0.567,0.441,0.684,12.2,0.917,0.819,0.964
+family,flood,41,27,12,2,0,0.659,0.505,0.784,13.9,0.951,0.839,0.987
+family,cyclone,19,17,1,1,0,0.895,0.686,0.971,14.2,0.947,0.754,0.991
+family,other,17,13,3,1,0,0.765,0.527,0.904,18.9,0.941,0.73,0.99
+family,drought,13,9,3,1,0,0.692,0.424,0.873,22.5,0.923,0.667,0.986
+family,volcano,8,5,2,1,0,0.625,0.306,0.863,27.9,0.875,0.529,0.978
+family,wildfire,8,7,1,0,0,0.875,0.529,0.978,22.4,1.0,0.676,1.0
+family,landslide,5,4,1,0,0,0.8,0.376,0.964,29.4,1.0,0.566,1.0
+family,heat,4,3,0,1,0,0.75,0.301,0.954,32.7,0.75,0.301,0.954
+hazard,Earthquake,46,23,19,4,0,0.5,0.361,0.639,13.9,0.913,0.797,0.966
+hazard,Flood,36,22,12,2,0,0.611,0.449,0.752,15.2,0.944,0.819,0.985
+hazard,"Cyclone, Hurricane and Typhoon",19,17,1,1,0,0.895,0.686,0.971,14.2,0.947,0.754,0.991
+hazard,Drought and Desertification,13,9,3,1,0,0.692,0.424,0.873,22.5,0.923,0.667,0.986
+hazard,Volcano,8,5,2,1,0,0.625,0.306,0.863,27.9,0.875,0.529,0.978
+hazard,Wildfire,8,7,1,0,0,0.875,0.529,0.978,22.4,1.0,0.676,1.0
+hazard,Earthquake | Tsunami,6,4,2,0,0,0.667,0.3,0.903,30.2,1.0,0.61,1.0
+hazard,Tsunami,6,6,0,0,0,1.0,0.61,1.0,19.5,1.0,0.61,1.0
+hazard,Landslide,5,4,1,0,0,0.8,0.376,0.964,29.4,1.0,0.566,1.0
+hazard,Heatwave and Extreme Heat,4,3,0,1,0,0.75,0.301,0.954,32.7,0.75,0.301,0.954
+hazard,Tornado,4,4,0,0,0,1.0,0.51,1.0,24.5,1.0,0.51,1.0
+hazard,Epidemic and pandemic,3,3,0,0,0,1.0,0.439,1.0,28.1,1.0,0.439,1.0
+hazard,"Nuclear, biological, chemical (NBC)",3,3,0,0,0,1.0,0.439,1.0,28.1,1.0,0.439,1.0
+hazard,"Cyclone, Hurricane and Typhoon | Flood",3,3,0,0,0,1.0,0.439,1.0,28.1,1.0,0.439,1.0
+hazard,Insect infestation,2,2,0,0,0,1.0,0.342,1.0,32.9,1.0,0.342,1.0
+hazard,Technological hazard,2,0,2,0,0,0.0,0.0,0.658,32.9,1.0,0.342,1.0
+hazard,Cold Wave,1,0,1,0,0,0.0,0.0,0.793,39.7,1.0,0.207,1.0
+hazard,Sea level rise,1,0,0,1,0,0.0,0.0,0.793,39.7,0.0,0.0,0.793
+hazard,"Cyclone, Hurricane and Typhoon | Flood | Landslide",1,1,0,0,0,1.0,0.207,1.0,39.7,1.0,0.207,1.0
+hazard,Volcano | Tsunami,1,0,0,1,0,0.0,0.0,0.793,39.7,0.0,0.0,0.793
+hazard,Flood | Landslide,1,1,0,0,0,1.0,0.207,1.0,39.7,1.0,0.207,1.0
+hazard,Avalanche,1,1,0,0,0,1.0,0.207,1.0,39.7,1.0,0.207,1.0
+hazard,"Earthquake | Tsunami | Nuclear, biological, chemical (NBC)",1,1,0,0,0,1.0,0.207,1.0,39.7,1.0,0.207,1.0

@@ -1,7 +1,7 @@
 # Reproducibility
 
 This repo is now organized around an installable Python package in
-`src/groundsource`. That means scripts import the same code whether you run them
+`src/fonte`. That means scripts import the same code whether you run them
 from the repo root, from Docker, or from a fresh virtual environment.
 
 ## Local Environment
@@ -74,12 +74,12 @@ Run these before scaling a batch:
 
 ```bash
 make test
-groundsource-extract --db-only --limit 3
-groundsource-extract --limit 3 --output-dir outputs/smoke
-groundsource-polygons \
+fonte-extract --db-only --limit 3
+fonte-extract --limit 3 --output-dir outputs/smoke
+fonte-polygons \
   --input outputs/smoke/event_extractions.jsonl \
   --output outputs/smoke/event_geometries.parquet \
   --coastline data/ne_50m_coastline.zip \
-  --user-agent "undrr-groundsource/0.1 (you@example.org)" \
+  --user-agent "undrr-fonte/0.1 (you@example.org)" \
   --limit 5
 ```

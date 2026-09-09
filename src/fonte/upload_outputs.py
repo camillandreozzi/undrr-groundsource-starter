@@ -1,5 +1,5 @@
 """
-groundsource.upload_outputs
+fonte.upload_outputs
 ----------------------------
 
 Standalone uploader: recursively pushes every file under a local output
@@ -13,14 +13,14 @@ is required.
 Usage
 -----
 
-    groundsource-upload
-    groundsource-upload --source outputs/gold
+    fonte-upload
+    fonte-upload --source outputs/gold
 
 Required environment variables (see .env):
 
     STORAGEACCOUNT_ENDPOINT           e.g. https://myaccount.blob.core.windows.net
     STORAGEACCOUNT_TOKEN              container-scoped SAS token (query string, no leading '?')
-    STORAGEACCOUNT_OUTPUT_CONTAINER   e.g. groundsource-output
+    STORAGEACCOUNT_OUTPUT_CONTAINER   e.g. fonte-output
     STORAGEACCOUNT_OUTPUT_PREFIX      e.g. demo
     EXTRACT_OUTPUT_DIR                local dir to upload; only required when --source is omitted
 """
