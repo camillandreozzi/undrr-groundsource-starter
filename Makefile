@@ -4,8 +4,12 @@
 	prod-polygon-sample prod-polygon-prefill prod-polygon-validate prod-polygon-score \
 	ner-setup ner-fetch ner-extract ner-preflight ner-polygons ner-compare \
 	ner-prefill-validation ner-validate ner-validate-only ner-score \
+	strict-rules \
 	annotate annotate-prefetch annotate-score \
-	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score
+	docsample docsample-annotate docsample-score \
+	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
+	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
+	or-docsample-agreement or-docsample-score or-citations
 
 PYTHON ?= python3
 VENV ?= .venv
@@ -250,6 +254,56 @@ annotate-prefetch:
 annotate:
 	$(VENV_PYTHON) -m streamlit run eval/human_annotation_app.py
 
+# --------------------------------------------------------------------------
+# Document sample (n=50) — the negative control the 167-document queue lacks.
+#
+# That queue samples events, so every document in it contains an event the run
+# found and the set has no true negatives: precision and specificity are not
+# estimable on it (docs/VALIDATION_METHODS.md §1, §5). This queue is drawn
+# uniformly from all 10,000 fetched documents, excluding the 167 already done,
+# so ~4 in 5 rows are documents the run declined.
+#
+# Recall stays quotable from the 167; specificity comes from here.
+# --------------------------------------------------------------------------
+DOCSAMPLE_QUEUE ?= eval/document_sample_queue.csv
+DOCSAMPLE_ANNOTATIONS ?= eval/human_annotations_document_sample.csv
+DOCSAMPLE_DOCUMENTS ?= eval/annotation_documents_document_sample.json
+DOCSAMPLE_N ?= 50
+DOCSAMPLE_SEED ?= 43
+
+# 1. Draw the sample. Refuses to clobber an existing queue; pass FORCE=1 to redraw.
+docsample:
+	$(VENV_PYTHON) eval/sample_documents_for_annotation.py \
+		--out $(DOCSAMPLE_QUEUE) \
+		--n $(DOCSAMPLE_N) \
+		--seed $(DOCSAMPLE_SEED) \
+		--exclude $(HUMAN_ANNOTATIONS) \
+		$(if $(FORCE),--force,)
+
+# 2. Annotate it in the same app, against its own files.
+docsample-annotate:
+	ANNOTATION_QUEUE_CSV=$(DOCSAMPLE_QUEUE) \
+	HUMAN_ANNOTATIONS_CSV=$(DOCSAMPLE_ANNOTATIONS) \
+	ANNOTATION_DOCUMENTS=$(DOCSAMPLE_DOCUMENTS) \
+		$(VENV_PYTHON) -m streamlit run eval/human_annotation_app.py
+
+# 3. Score the run against them — this is the pass that yields specificity.
+docsample-score:
+	$(VENV_PYTHON) eval/score_against_human.py \
+		--annotations $(DOCSAMPLE_ANNOTATIONS) \
+		--run "prompt 5=$(LLM_RUN)" \
+		--run "NER baseline=$(NER_RUN)" \
+		$(if $(EXTRA_RUN),--run "$(EXTRA_RUN)",)
+
+# Re-pool the same runs under the stricter matching rules the headline table
+# does not carry -> eval/STRICT_RULE_SCORES.md. Reads existing outputs only;
+# nothing is re-judged or re-run. Backs paper/par_strict_rules.tex and the
+# label-level hazard sentence in paper/par_hazard_matching.tex.
+strict-rules:
+	$(VENV_PYTHON) eval/score_strict_rules.py --out eval/STRICT_RULE_SCORES.md
+	$(VENV_PYTHON) eval/score_strict_rules.py --arm 167 \
+		--out eval/STRICT_RULE_SCORES_ARM167.md
+
 # Score runs against those annotations -> eval/HUMAN_ANNOTATION_SCORES.md.
 # Add another model with:  make annotate-score EXTRA_RUN="gpt-x=path/to/run.jsonl"
 annotate-score:
@@ -299,6 +353,71 @@ or-agreement:
 #    all 167 documents are annotated; add --allow-partial to preview.
 or-score:
 	$(VENV_PYTHON) -m benchmark_openrouter.score_all
+
+# --------------------------------------------------------------------------
+# The same roster over the n=50 document sample (see `make docsample`).
+#
+# Separate snapshot, separate output root, separate reports — nothing here
+# touches the tracked 167-document benchmark. The 50 carry ~39 documents the
+# production run declined, so this is the arm that can measure a false
+# positive; the 167 arm cannot.
+# --------------------------------------------------------------------------
+OR_DOCSAMPLE_SNAPSHOT ?= benchmark_openrouter/documents_docsample.json
+OR_DOCSAMPLE_OUT ?= benchmark_openrouter/outputs_docsample
+OR_DOCSAMPLE_REPORT ?= benchmark_openrouter/MODEL_SCORES_DOCSAMPLE.md
+OR_DOCSAMPLE_AGREEMENT ?= benchmark_openrouter/MODEL_AGREEMENT_DOCSAMPLE.md
+
+# 1. Freeze the 50 documents with full Databricks metadata.
+or-docsample-build:
+	$(VENV_PYTHON) -m benchmark_openrouter.build_documents \
+		--queue $(DOCSAMPLE_QUEUE) \
+		--out $(OR_DOCSAMPLE_SNAPSHOT)
+
+# 2. Cost estimate from live pricing. No spend.
+or-docsample-dry-run:
+	$(VENV_PYTHON) -m benchmark_openrouter.run_openrouter \
+		--all --dry-run --snapshot $(OR_DOCSAMPLE_SNAPSHOT)
+
+# 3. Smoke-test 3 documents on the three models that returned nothing last time
+#    before paying for 50 of them.
+or-docsample-smoke:
+	$(VENV_PYTHON) -m benchmark_openrouter.run_openrouter \
+		--model google/gemini-2.5-pro \
+		--model google/gemini-2.5-flash \
+		--model qwen/qwen3-235b-a22b \
+		--limit 3 --save-raw \
+		--snapshot $(OR_DOCSAMPLE_SNAPSHOT) \
+		--out-root $(OR_DOCSAMPLE_OUT)
+
+# 4. The run. Re-runnable: --resume skips finished documents, retries errors.
+or-docsample-run:
+	$(VENV_PYTHON) -m benchmark_openrouter.run_openrouter \
+		--all --workers $(OR_WORKERS) --resume \
+		--snapshot $(OR_DOCSAMPLE_SNAPSHOT) \
+		--out-root $(OR_DOCSAMPLE_OUT)
+
+# 5. Cross-model agreement. Needs no annotation.
+or-docsample-agreement:
+	$(VENV_PYTHON) -m benchmark_openrouter.agreement \
+		--out-dir $(OR_DOCSAMPLE_OUT) \
+		--snapshot $(OR_DOCSAMPLE_SNAPSHOT) \
+		--report $(OR_DOCSAMPLE_AGREEMENT) \
+		--queue-out $(OR_DOCSAMPLE_OUT)/disagreement_queue.csv
+
+# 6. Accuracy against the 50 annotations. --allow-partial previews before
+#    all 50 are done.
+or-docsample-score:
+	$(VENV_PYTHON) -m benchmark_openrouter.score_all \
+		--out-dir $(OR_DOCSAMPLE_OUT) \
+		--annotations $(DOCSAMPLE_ANNOTATIONS) \
+		--report $(OR_DOCSAMPLE_REPORT)
+
+# 8. Citation quality -> CITATION_QUALITY.md, plus a per-snippet CSV. Needs no
+#    annotation at all: it asks whether each evidence snippet is in the document
+#    the model was given. Runs over the pooled 217 by default; `--arm 167` or
+#    `--arm 50` splits it back apart.
+or-citations:
+	$(VENV_PYTHON) -m benchmark_openrouter.citation_quality
 
 docker-build:
 	docker build -t undrr-fonte .

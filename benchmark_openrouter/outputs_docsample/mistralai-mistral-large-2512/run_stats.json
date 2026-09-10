@@ -1,0 +1,28 @@
+{
+  "model": "mistralai/mistral-large-2512",
+  "label": "Mistral Large",
+  "tier": "open",
+  "reasoning_effort": null,
+  "structured_output_mode": [
+    "json_schema"
+  ],
+  "prompt_id": 5,
+  "prompt_name": "unified_verification_recall",
+  "prompt_sha256": "cfbf35634b527da4",
+  "max_chars": 12000,
+  "documents_snapshot": "2026-09-09T16:59:01+00:00",
+  "metadata_source": "databricks",
+  "documents_total": 50,
+  "documents_run_now": 50,
+  "documents_skipped": 0,
+  "error_rows": 0,
+  "output_rows": 68,
+  "events": 34,
+  "prompt_tokens": 233564,
+  "completion_tokens": 8695,
+  "cost_usd": 0.0979,
+  "wall_seconds": 48.1,
+  "docs_per_min": 62.37,
+  "interrupted": false,
+  "finished_at": "2026-09-09T18:08:42+00:00"
+}

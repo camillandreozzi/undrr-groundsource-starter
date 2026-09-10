@@ -232,6 +232,19 @@ def disagreement_queue(runs: list[Run], documents: list[str], out: Path) -> int:
 # Report
 # ---------------------------------------------------------------------------
 
+def _display(path: Path) -> str:
+    """Repo-relative when it can be, as given otherwise.
+
+    A relative `--report`/`--queue-out` resolves against the working directory,
+    not REPO_ROOT, so a bare `.relative_to(REPO_ROOT)` raises on one even though
+    the file was written perfectly well.
+    """
+    try:
+        return str(Path(path).resolve().relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def _pct(x) -> str:
     return "—" if x is None else f"{x:.1%}"
 
@@ -313,7 +326,7 @@ def render(profiles: list[dict], pairs: list[dict], documents: list[str],
                    f"{_pct(s['location'])} | {_pct(s['location_fuzzy'])} | "
                    f"{_pct(s['date'])} |")
 
-    rel = queue_path.relative_to(REPO_ROOT)
+    rel = _display(queue_path)
     out += ["", "## Where to annotate next", "",
             f"{contested} of {len(documents)} documents split the roster on whether they "
             "carry a verifiable event. Those are where a human judgement is worth the "
@@ -357,8 +370,8 @@ def main() -> int:
     report = render(profiles, pairs, documents, contested, args.queue_out)
     args.report.write_text(report, encoding="utf-8")
     print(report)
-    LOG.info("Wrote %s and %s", args.report.relative_to(REPO_ROOT),
-             args.queue_out.relative_to(REPO_ROOT))
+    LOG.info("Wrote %s and %s", _display(args.report),
+             _display(args.queue_out))
     return 0
 
 

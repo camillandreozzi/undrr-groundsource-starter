@@ -1,0 +1,28 @@
+{
+  "model": "deepseek/deepseek-chat-v3.1",
+  "label": "DeepSeek V3.1",
+  "tier": "open",
+  "reasoning_effort": "medium",
+  "structured_output_mode": [
+    "json_object"
+  ],
+  "prompt_id": 5,
+  "prompt_name": "unified_verification_recall",
+  "prompt_sha256": "cfbf35634b527da4",
+  "max_chars": 12000,
+  "documents_snapshot": "2026-09-09T16:59:01+00:00",
+  "metadata_source": "databricks",
+  "documents_total": 50,
+  "documents_run_now": 1,
+  "documents_skipped": 49,
+  "error_rows": 0,
+  "output_rows": 55,
+  "events": 17,
+  "prompt_tokens": 2901,
+  "completion_tokens": 542,
+  "cost_usd": 0.001,
+  "wall_seconds": 19.5,
+  "docs_per_min": 3.08,
+  "interrupted": false,
+  "finished_at": "2026-09-09T19:23:39+00:00"
+}

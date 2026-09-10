@@ -217,6 +217,19 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def _display(path: Path) -> str:
+    """Path relative to the repo when it is inside it, otherwise as given.
+
+    `--queue eval/foo.csv` is resolved against the working directory, not
+    REPO_ROOT, so a bare `.relative_to(REPO_ROOT)` raises on any relative
+    argument even though the file is perfectly readable.
+    """
+    try:
+        return str(Path(path).resolve().relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     load_dotenv(REPO_ROOT / ".env")
@@ -225,13 +238,13 @@ def main() -> int:
     try:
         keys = queue_asset_keys(args.queue)
         LOG.info("Queue %s covers %d distinct documents.",
-                 args.queue.relative_to(REPO_ROOT), len(keys))
+                 _display(args.queue), len(keys))
 
         if args.from_parquet:
             LOG.warning("Reading metadata from parquet — %s will be null.",
                         ", ".join(PARQUET_MISSING_FIELDS))
             raw = fetch_from_parquet(keys, args.parquet)
-            source, metadata_source = str(args.parquet.relative_to(REPO_ROOT)), "parquet"
+            source, metadata_source = _display(args.parquet), "parquet"
         else:
             raw = fetch_from_databricks(keys)
             source, metadata_source = "databricks", "databricks"
@@ -252,7 +265,7 @@ def main() -> int:
 
     write_snapshot(documents, args.out, source=source, metadata_source=metadata_source)
     LOG.info("Wrote %s — %d documents, %.1f MB, metadata_source=%s.",
-             args.out.relative_to(REPO_ROOT), len(documents),
+             _display(args.out), len(documents),
              args.out.stat().st_size / 1e6, metadata_source)
     return 0
 

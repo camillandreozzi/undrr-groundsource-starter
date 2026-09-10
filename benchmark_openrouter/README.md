@@ -124,6 +124,26 @@ here while the Azure arm has them. Nothing downstream reads those columns.
   splits on "does this document carry a verifiable event?". Those are where a
   human judgement is worth the most, so it doubles as an annotation order.
 
+## The one accuracy-adjacent number that needs no annotation
+
+`make or-citations` writes `CITATION_QUALITY.md`: for every model, how often its
+`evidence_snippets` can actually be found in the document it was given. The
+document is on disk and the snippet is on disk, so this is decidable without a
+judge, and it covers every document rather than a judged sample.
+
+Read it with three things in mind. Prompt 5 permits paraphrase, so the report
+grades rather than passing or failing — `quotable` is what an auditor can trace
+back to a line of source, `grounded` also counts paraphrases built from the
+document's own words. Snippets from sources not confirmed to be in English are
+held out, because the roster answers in English whatever the source language and
+a translation is indistinguishable from an invention by any lexical test. And
+lexical support is not entailment: a `paraphrase` verdict says the words were
+available on the page, not that the claim is true.
+
+The NER baseline is the control. It emits document sentences verbatim by
+construction, so anything below ~100% for it is a bug in the matcher, not a
+finding. It scores 100.0%.
+
 ## Notes on the roster
 
 `models.py` sets `reasoning_effort` and `structured_output` from each model's

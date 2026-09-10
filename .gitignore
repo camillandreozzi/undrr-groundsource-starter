@@ -1,5 +1,6 @@
 .env
 .venv/
+paper/
 .venv-clean/
 __pycache__/
 **/__pycache__/

@@ -1,0 +1,11 @@
+{
+  "label": "GPT-5 (OpenRouter)",
+  "pooled_from": [
+    "event_sample_167",
+    "document_sample_50"
+  ],
+  "documents": 217,
+  "rows": 622,
+  "error_rows": 0,
+  "note": "Pooled directory. Cost/token stats live in the per-arm runs."
+}

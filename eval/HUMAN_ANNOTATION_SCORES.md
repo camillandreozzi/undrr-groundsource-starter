@@ -14,7 +14,7 @@ The composite is a weighted mean of detection F1, hazard F1, location F1 and dat
 
 | Run | Processed | Coverage | Recall (all docs) | Composite × coverage | Recall (processed) | Composite (processed) | Errored | Absent |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | 167/167 | 100.0% | 100.0% | 97.0% | 100.0% | 97.0% | 0 | 0 |
+| prompt 5 | 167/167 | 100.0% | 100.0% | 97.0% | 100.0% | 97.0% | 0 | 0 |
 | NER baseline | 167/167 | 100.0% | 90.4% | 59.4% | 90.4% | 59.4% | 0 | 0 |
 
 _`Recall (processed)` is over the gold-positive documents the run returned; `Recall (all docs)` is over all 157 gold-positive documents in the set, so the gap between the two columns is exactly what the run's failed calls cost. A run at 100% coverage has identical pairs._
@@ -25,14 +25,14 @@ _`Recall (processed)` is over the gold-positive documents the run returned; `Rec
 
 | Run | n | Recall, all docs (95% CI) | Recall, processed (95% CI) | Specificity (95% CI) | Balanced acc. | MCC | Accuracy (95% CI) |
 |---|---:|---|---|---|---:|---:|---|
-| prompt 5 (gpt-5, Azure) | 167 | 100.0% (97.6%–100.0%, n=157) | 100.0% (97.6%–100.0%, n=157) | 0.0% (0.0%–27.8%, n=10) | 50.0% | – | 94.0% (89.3%–96.7%) |
+| prompt 5 | 167 | 100.0% (97.6%–100.0%, n=157) | 100.0% (97.6%–100.0%, n=157) | 0.0% (0.0%–27.8%, n=10) | 50.0% | – | 94.0% (89.3%–96.7%) |
 | NER baseline | 167 | 90.4% (84.8%–94.1%, n=157) | 90.4% (84.8%–94.1%, n=157) | 10.0% (1.8%–40.4%, n=10) | 50.2% | 0.004 | 85.6% (79.5%–90.1%) |
 
 ### Confusion matrices
 
 | Run | TP | FP | FN | TN | Precision | F1 |
 |---|---:|---:|---:|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | 157 | 10 | 0 | 0 | 94.0% | 96.9% |
+| prompt 5 | 157 | 10 | 0 | 0 | 94.0% | 96.9% |
 | NER baseline | 142 | 9 | 15 | 1 | 94.0% | 92.2% |
 
 _Precision is reported for continuity only. With 10 gold-negative documents in the set it is pinned near the prevalence for any run that flags most documents, and it separates nothing._
@@ -43,12 +43,12 @@ _Precision is reported for continuity only. With 10 gold-negative documents in t
 
 | Run | Field | Precision | Recall (all) | Recall (processed) | Micro F1 (95% CI) | Macro F1 | TP | FP | FN |
 |---|---|---:|---:|---:|---|---:|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | Hazard family | 95.3% | 98.8% | 98.8% | 97.0% (95.4%–98.4%) | 97.7% | 244 | 12 | 3 |
-| prompt 5 (gpt-5, Azure) | Locations (exact) | 94.4% | 96.0% | 96.0% | 95.2% (92.8%–97.0%) | 91.2% | 656 | 39 | 27 |
-| prompt 5 (gpt-5, Azure) | Locations (fuzzy ≥90, raw) | 94.5% | 96.2% | 96.2% | 95.4% (93.1%–97.1%) | 91.3% | 657 | 38 | 26 |
-| prompt 5 (gpt-5, Azure) | Locations (fuzzy ≥90, normalised) | 96.0% | 97.7% | 97.7% | 96.8% (95.1%–98.1%) | 94.9% | 667 | 28 | 16 |
-| prompt 5 (gpt-5, Azure) | Dates (exact) | 94.5% | 97.0% | 97.0% | 95.7% (93.6%–97.4%) | 92.2% | 478 | 28 | 15 |
-| prompt 5 (gpt-5, Azure) | Dates (year-set) | 97.5% | 98.8% | 98.8% | 98.1% (96.9%–99.1%) | 96.6% | 421 | 11 | 5 |
+| prompt 5 | Hazard family | 95.3% | 98.8% | 98.8% | 97.0% (95.4%–98.4%) | 97.7% | 244 | 12 | 3 |
+| prompt 5 | Locations (exact) | 94.4% | 96.0% | 96.0% | 95.2% (92.8%–97.0%) | 91.2% | 656 | 39 | 27 |
+| prompt 5 | Locations (fuzzy ≥90, raw) | 94.5% | 96.2% | 96.2% | 95.4% (93.1%–97.1%) | 91.3% | 657 | 38 | 26 |
+| prompt 5 | Locations (fuzzy ≥90, normalised) | 96.0% | 97.7% | 97.7% | 96.8% (95.1%–98.1%) | 94.9% | 667 | 28 | 16 |
+| prompt 5 | Dates (exact) | 94.5% | 97.0% | 97.0% | 95.7% (93.6%–97.4%) | 92.2% | 478 | 28 | 15 |
+| prompt 5 | Dates (year-set) | 97.5% | 98.8% | 98.8% | 98.1% (96.9%–99.1%) | 96.6% | 421 | 11 | 5 |
 | NER baseline | Hazard family | 58.0% | 81.0% | 81.0% | 67.6% (63.2%–71.9%) | 67.9% | 200 | 145 | 47 |
 | NER baseline | Locations (exact) | 15.6% | 28.0% | 28.0% | 20.0% (16.3%–23.5%) | 18.1% | 191 | 1037 | 492 |
 | NER baseline | Locations (fuzzy ≥90, raw) | 22.6% | 40.6% | 40.6% | 29.0% (25.1%–32.6%) | 27.6% | 277 | 951 | 406 |
@@ -64,7 +64,7 @@ Hazard, location and date treated as one content set per document, each field un
 
 | Run | Docs | Exact match (95% CI) | Precision | Recall | F1 (95% CI) | Macro F1 | Recall (all docs) | Exact match (all docs) |
 |---|---:|---|---:|---:|---|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | 157 | 73.2% (65.8%–79.6%) | 96.3% | 98.2% | 97.3% (96.1%–98.2%) | 96.2% | 98.2% | 73.2% |
+| prompt 5 | 157 | 73.2% (65.8%–79.6%) | 96.3% | 98.2% | 97.3% (96.1%–98.2%) | 96.2% | 98.2% | 73.2% |
 | NER baseline | 157 | 0.6% (0.1%–3.5%) | 36.0% | 56.6% | 44.0% (40.6%–47.2%) | 42.8% | 56.6% | 0.6% |
 
 _Sorted by F1. `Docs` is the gold-positive documents the run returned; the two right-hand columns divide by all 157 instead, so they read as pipeline yield. Precision, macro F1 and the intervals have no all-documents form — a document the run never returned supplies neither a numerator nor a denominator._
@@ -75,7 +75,7 @@ The same run under different matching rules. A gap here is a property of the met
 
 | Run | Loc exact | Loc fuzzy raw | Loc fuzzy normalised | Δ norm−exact | Date exact | Date year-set | Δ year−exact |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | 95.2% | 95.4% | 96.8% | +1.6 pp | 95.7% | 98.1% | +2.4 pp |
+| prompt 5 | 95.2% | 95.4% | 96.8% | +1.6 pp | 95.7% | 98.1% | +2.4 pp |
 | NER baseline | 20.0% | 29.0% | 30.0% | +10.0 pp | 39.8% | 57.0% | +17.2 pp |
 
 ## 6. Paired comparison — exact McNemar on event detection
@@ -84,6 +84,6 @@ Paired over the documents **both** runs returned, so a run is never charged for 
 
 | A | B | n | A only | B only | p |
 |---|---|---:|---:|---:|---:|
-| prompt 5 (gpt-5, Azure) | NER baseline | 167 | 15 | 1 | **0.0005** |
+| prompt 5 | NER baseline | 167 | 15 | 1 | **0.0005** |
 
 _'A only' counts documents A got right and B got wrong. p is two-sided; the concordant pairs carry no information. Bold marks p < 0.05, uncorrected for multiple comparisons — with 1 pairs, expect some by chance._

@@ -1,0 +1,37 @@
+{
+  "sampling": "uniform_random_over_documents",
+  "population": {
+    "corpus_documents": 10000,
+    "eligible_after_exclusions": 9833
+  },
+  "params": {
+    "n": 50,
+    "seed": 43
+  },
+  "composition": {
+    "run_found_events": 11,
+    "run_declined": 39,
+    "language": {
+      "English": 50
+    },
+    "publication_year": {
+      "": 21,
+      "2003": 1,
+      "2006": 2,
+      "2007": 2,
+      "2008": 2,
+      "2009": 2,
+      "2010": 3,
+      "2011": 1,
+      "2012": 2,
+      "2013": 3,
+      "2014": 2,
+      "2015": 2,
+      "2016": 1,
+      "2017": 1,
+      "2018": 3,
+      "2020": 1,
+      "2021": 1
+    }
+  }
+}

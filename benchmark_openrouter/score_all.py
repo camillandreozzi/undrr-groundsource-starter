@@ -136,7 +136,13 @@ def main() -> int:
                 "figures are provisional.",
                 1),
             encoding="utf-8")
-    LOG.info("Wrote %s", args.report.relative_to(REPO_ROOT))
+    try:
+        shown = args.report.resolve().relative_to(REPO_ROOT)
+    except ValueError:
+        # --report given as a relative path resolves against the working
+        # directory, not REPO_ROOT; the report is already written either way.
+        shown = args.report
+    LOG.info("Wrote %s", shown)
     return 0
 
 

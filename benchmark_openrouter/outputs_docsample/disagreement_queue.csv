@@ -1,0 +1,51 @@
+asset_key,runs_voting,says_event,says_no_event,split_score,agreed_by
+0867907adf72b861bff67e498cec3efe53b727f7972cb982c4528f10f6570f1e,12,4,8,0.667,Claude Sonnet 5; Llama 4 Maverick; Mistral Large; NER baseline
+1c38c421c5efe0fe0552d53ee78965f1e93cdd6c369f5b1b5e788a61f3fe3fae,12,8,4,0.667,Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; NER baseline
+45b516f7d1affc9f325977abc9207ae7c7317ae902dd0527f1e5ac24c656bc34,12,4,8,0.667,Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; Mistral Large
+7b4674fa394f57b070d484ed700031104265fb498d2258948f512cfac31b8f6a,12,8,4,0.667,"DeepSeek V3.1; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+c2773610c0a07b8be858f1eeb1122de17bbf489ed4278089f403c8ca13252ac7,12,8,4,0.667,"Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+ff4bd4c40a8489f00947383df60abcdec999d9e6cc6298a828a0b0624cd7334f,12,4,8,0.667,Llama 4 Maverick; Mistral Large; Grok 4.6; NER baseline
+299572bb96762d65807fbfdcb60081e4973a9b0f4c35d3005cbca54881103aba,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+755a95a57cd6b265448213e5bc8c3f64e614ee2b6e0506e03ad360509e2dc878,12,3,9,0.5,Llama 4 Maverick; Grok 4.6; NER baseline
+801c0ff147693568dfdacb5a04965246665a503e497c3dc66959b03216365ef6,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+a235d518c1a276bc6b8576e0a229fe5ef1c7335c844ef48ab6bdeeb2211ed745,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure)"
+a2b9296b53f0141a4dff999fdb50967fba4d2abfff08cb32ef7210c9f3fd1193,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+b9b43c0f9b2fa313802ee3bffd3812e797cf0379b5331f1cb8ca47e283c27513,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+de8c1be37d4d00cc65e874ef0fba4aa554c1042331694cffecf37536a364efbd,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+e90ba2073253a908ac6b24faca7180b80d74a1b4b9a122da63d71316427efc43,12,9,3,0.5,"Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure)"
+1608847a45702848cc2adeada4d27b2bcdb88d6192da7ce18e8a87b56a140632,12,10,2,0.333,"Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+1b1ffd7910b9803441ee4b17e09ad6208b74079866282d7ec4d20442441b7900,12,10,2,0.333,"Claude Opus 5; Claude Sonnet 5; DeepSeek V3.1; Llama 4 Maverick; Mistral Large; GPT-5 (OpenRouter); GPT-5.4; Grok 4.6; prompt 5 (gpt-5, Azure); NER baseline"
+4c3e8a971db418ba7f74806f1169f3bfc319d6b8c3967aaf98605fb8474fc5ff,12,2,10,0.333,Llama 4 Maverick; Mistral Large
+9f897253e62fbfab1d70e22b959bc4004ecef5e0ba33d5c8ae7c91f3090b42b6,12,2,10,0.333,Llama 4 Maverick; NER baseline
+a6bd7827e563df0b2dd03dfea18950deb0b8ea74f1494d2b71835e49f80405c4,12,2,10,0.333,Llama 4 Maverick; NER baseline
+c623983eaed7db462727579f165b3b493485ef1f7cc8a2f7a3b28d342fbb5692,12,2,10,0.333,Mistral Large; NER baseline
+fea3ce30c99c36af4896dfd3e67365a5354b4aea4067e138b3895aec03df3a85,12,2,10,0.333,Mistral Large; NER baseline
+1b26321aa129446d04ba13f09609d2ea76284192b20f91626578b9d8cd39420a,12,1,11,0.167,NER baseline
+2f4bba8c13de0f37eb7f9c9c4adfb91407a165d3bd860d52c305f966fc50c996,12,1,11,0.167,NER baseline
+ba854dd656726bb8b061e50d54f7908cd1dde472415fdfd93ed2aa33d5687e19,12,1,11,0.167,Mistral Large
+d4b640da13b00ac316e0fc41447d30f6abf99406896a1bbffbbcd435c3fbbb16,12,1,11,0.167,NER baseline
+f5c8f1bb077f8f604ccd37f22752cac17bf2126c14d5eeb3a49b8f783e880edc,12,1,11,0.167,NER baseline
+11b88173226f56372e44864a4b0f8d7a62414d07d69f282c7936f1c5c1bf8074,12,0,12,0.0,
+19c476fc859a26083499393815b8e5d419419fe4df351badcae31d986562661e,12,0,12,0.0,
+1b4cea6c0acc3cdf0d9d2b55641b5688dbb265841be4cba722f6abebec46cd7c,12,0,12,0.0,
+21b12e90661616bb56dbfa7d6282990d7c53f9720d6fd62a4d8730d214a14308,12,0,12,0.0,
+2a5a8e24a051c2d5e0fedca6c7fc8adadbfe747002540cb44dd30f62b10408f8,12,0,12,0.0,
+2a7e2459becb61c8170a28202ecafabfd4f3a6a187f5e45afcecbffc7908b9ab,12,0,12,0.0,
+2d66a87cf2005ef81e2463347ec2041dc2ac30b4ce015ca02ffaa1c1e1c81a9d,12,0,12,0.0,
+35e582278acca41b9018f0ed5452b476d5022ce733f8ee7b8a894346ca805288,12,0,12,0.0,
+37b0848c4715880eee6529db2cb78a237ff3d27d515bdd2997673b63d732d3a6,12,0,12,0.0,
+3e4c75ba73a4fffb13638cd39217639a6588eb0e811ce6a7f0845994f33dccb5,12,0,12,0.0,
+427d0375419194d1f7ad3af4c84d001e22c68bf39ac1f93f8b02e508c94ef1c5,12,0,12,0.0,
+47b767ea8c7bf0fea90be75ad9a8dc4a990b344b18fdccb384aa0b22c91741ac,12,0,12,0.0,
+4e7d41bd553fe4ae937968ff489fd0b51e6034e485887f0d887cbcdc07b4ec7d,12,0,12,0.0,
+50819d01d87c0c489ad8fd7b8bb737aa58b1642aae31a09b24dc552b22f6b103,12,0,12,0.0,
+76b76087df042f78dad128d71971caa7be90c65b26e2334061a99867795d6105,12,0,12,0.0,
+a0b1183cb3cbd8d1b9071c50242cca9624135508130ce188a072558de2fdcb82,12,0,12,0.0,
+aa012d4110a07c3abf7166e3a24636cbee117ba59e9a8432811de2a18e40fdcb,12,0,12,0.0,
+d39b12cb3c46e542ad5d57125bad37bcb76610ecdf9018b4242976dec7e32178,12,0,12,0.0,
+d817c1e94250ad3cb84145faefe39cc7130152a1e0cd761dc42350bf1f939544,12,0,12,0.0,
+da0163e1ffde1b13f23e5706a60b8a564d452a26227ad5387bdb1a78a9abb8dd,12,0,12,0.0,
+dacf72f80dafc9eecfbd0ab54f47867eecdc86a8c2bcd2c7ce69ac1dbb632561,12,0,12,0.0,
+f547ea9b19ebdd70a1a162ed75fd7db2914d0708dad2451ea948d5f81c32b783,12,0,12,0.0,
+f701bde2af9dba278c2d7530a0de4f13ff5539aa20aa89828ae8b57ab5215e5b,12,0,12,0.0,
+f93d22f1ce08e65b852c9131b2ad466ba35a16bc72069cf23983eb17dd714704,12,0,12,0.0,

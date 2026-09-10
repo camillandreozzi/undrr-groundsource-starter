@@ -5,18 +5,19 @@ Worked example figure: one document through the whole pipeline.
 Stage 1  the truncated source text, with the spans the model later returned as
          evidence snippets shaded;
 Stage 2  the extracted record as it lands in event_extractions.jsonl;
-Stage 3  the resolved footprint, fig_sandy_footprint.pdf, with each location
+Stage 3  the resolved location geometries, fig_sandy_footprint.pdf, with each location
          string labelled at the geometry it resolved to.
 
 Inputs (same directory): fig_sandy_extraction.json, fig_sandy_source_text.txt,
 fig_sandy_footprint.pdf. The map is rasterised at 300 dpi with pdftoppm into a
 temporary directory and cropped in memory, so no intermediate files are left
-behind. Requires poppler-utils on PATH.
+behind. Requires poppler-utils on PATH or pypdfium2 as a fallback.
 
 Output: fig_sandy_worked_example.pdf / .png  (single column, 3.15 x 6.25 in)
 """
 
 import json
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -30,6 +31,7 @@ import matplotlib.patheffects as pe
 from PIL import Image
 
 HERE = Path(__file__).resolve().parent
+meta = json.loads((HERE / "fig_sandy_extraction.json").read_text())
 W, H = 3.15, 6.60          # inches; one ACL column is ~3.17in
 M = 0.06                   # side margin
 
@@ -82,7 +84,7 @@ RECORD = [
                              "Port Reading, New Jersey   (neighbourhood)",
                              "Linden, New Jersey   (city)"], True),
     ("key_impacts",         ["5 statements"], False),
-    ("evidence_snippets",   ["5 quotations (shaded above)"], False),
+    ("evidence_snippets",   ["3 snippets"], False),
     ("missing_information", ["2 items"], False),
 ]
 
@@ -98,10 +100,16 @@ CALLOUTS = [
 
 # ---------------------------------------------------------------- map raster
 with tempfile.TemporaryDirectory() as td:
-    subprocess.run(["pdftoppm", "-png", "-r", "300", "-f", "1", "-l", "1",
-                    str(HERE / "fig_sandy_footprint.pdf"),
-                    str(Path(td) / "page")], check=True)
-    im = Image.open(next(Path(td).glob("page*.png")))
+    if shutil.which("pdftoppm"):
+        subprocess.run(["pdftoppm", "-png", "-r", "300", "-f", "1", "-l", "1",
+                        str(HERE / "fig_sandy_footprint.pdf"),
+                        str(Path(td) / "page")], check=True)
+        im = Image.open(next(Path(td).glob("page*.png")))
+    else:
+        import pypdfium2 as pdfium
+
+        with pdfium.PdfDocument(HERE / "fig_sandy_footprint.pdf") as document:
+            im = document[0].render(scale=300 / 72).to_pil().copy()
     w, h = im.size
     c = im.crop((int(0.12 * w), int(0.11 * h), int(0.87 * w), int(0.91 * h)))
     w2, h2 = c.size
@@ -230,10 +238,10 @@ for name, values, tinted in RECORD:
         ax.text(val_x, y + j * 0.098, v, fontsize=5.8, va="baseline", zorder=4)
     y += 0.098 * len(values)
 
-stage_arrow(3.46, 3.65)
+stage_arrow(3.58, 3.69)
 
 # ================================================================ 3. map
-stage_header(3.84, "3", "RESOLVED FOOTPRINT", "5 mentions → 5 geometries")
+stage_header(3.84, "3", "Resolved location geometries", "5 mentions → 5 geometries")
 
 map_w = 2.60
 map_h = map_w / MAP_ASPECT
@@ -273,6 +281,5 @@ plt.close(fig)
 print("wrote fig_sandy_worked_example.{pdf,png}  "
       f"({W} x {H} in; text block ends at y={end_y:.2f})")
 
-meta = json.loads((HERE / "fig_sandy_extraction.json").read_text())
 print("asset:", meta["_provenance"]["asset_key"][:12],
       "| verdict:", meta["_provenance"]["human_verdict"])

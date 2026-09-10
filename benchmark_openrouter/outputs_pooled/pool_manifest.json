@@ -1,0 +1,102 @@
+{
+  "annotations": {
+    "per_arm": {
+      "event_sample_167": {
+        "annotations": "eval/human_annotations.csv",
+        "rows": 167,
+        "done": 167,
+        "gold_positive": 157
+      },
+      "document_sample_50": {
+        "annotations": "eval/human_annotations_document_sample.csv",
+        "rows": 50,
+        "done": 50,
+        "gold_positive": 14
+      }
+    },
+    "pooled_rows": 217,
+    "pooled_documents": 217
+  },
+  "runs": {
+    "pooled": {
+      "anthropic-claude-haiku-4-5": {
+        "label": "Claude Haiku 4.5",
+        "documents": 217,
+        "rows": 508,
+        "error_rows": 0
+      },
+      "anthropic-claude-opus-5": {
+        "label": "Claude Opus 5",
+        "documents": 217,
+        "rows": 565,
+        "error_rows": 0
+      },
+      "anthropic-claude-sonnet-5": {
+        "label": "Claude Sonnet 5",
+        "documents": 217,
+        "rows": 586,
+        "error_rows": 0
+      },
+      "deepseek-deepseek-chat-v3-1": {
+        "label": "DeepSeek V3.1",
+        "documents": 217,
+        "rows": 626,
+        "error_rows": 0
+      },
+      "google-gemini-2-5-pro": {
+        "label": "Gemini 2.5 Pro",
+        "documents": 217,
+        "rows": 217,
+        "error_rows": 217
+      },
+      "meta-llama-llama-4-maverick": {
+        "label": "Llama 4 Maverick",
+        "documents": 217,
+        "rows": 825,
+        "error_rows": 0
+      },
+      "mistralai-mistral-large-2512": {
+        "label": "Mistral Large",
+        "documents": 217,
+        "rows": 622,
+        "error_rows": 0
+      },
+      "openai-gpt-5": {
+        "label": "GPT-5 (OpenRouter)",
+        "documents": 217,
+        "rows": 622,
+        "error_rows": 0
+      },
+      "openai-gpt-5-4": {
+        "label": "GPT-5.4",
+        "documents": 217,
+        "rows": 612,
+        "error_rows": 0
+      },
+      "openai-gpt-5-mini": {
+        "label": "GPT-5 mini",
+        "documents": 217,
+        "rows": 648,
+        "error_rows": 0
+      },
+      "qwen-qwen3-235b-a22b": {
+        "label": "Qwen3 235B",
+        "documents": 217,
+        "rows": 217,
+        "error_rows": 217
+      },
+      "x-ai-grok-4-6": {
+        "label": "Grok 4.6",
+        "documents": 217,
+        "rows": 692,
+        "error_rows": 0
+      }
+    },
+    "skipped": {
+      "event_sample_167": [
+        "google-gemini-2-5-flash"
+      ],
+      "document_sample_50": []
+    }
+  }
+}

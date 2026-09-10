@@ -1,0 +1,28 @@
+{
+  "model": "anthropic/claude-opus-5",
+  "label": "Claude Opus 5",
+  "tier": "frontier",
+  "reasoning_effort": "medium",
+  "structured_output_mode": [
+    "json_schema"
+  ],
+  "prompt_id": 5,
+  "prompt_name": "unified_verification_recall",
+  "prompt_sha256": "cfbf35634b527da4",
+  "max_chars": 12000,
+  "documents_snapshot": "2026-09-09T16:59:01+00:00",
+  "metadata_source": "databricks",
+  "documents_total": 50,
+  "documents_run_now": 50,
+  "documents_skipped": 0,
+  "error_rows": 0,
+  "output_rows": 58,
+  "events": 20,
+  "prompt_tokens": 459543,
+  "completion_tokens": 10967,
+  "cost_usd": 2.5462,
+  "wall_seconds": 77.3,
+  "docs_per_min": 38.8,
+  "interrupted": false,
+  "finished_at": "2026-09-09T17:30:42+00:00"
+}

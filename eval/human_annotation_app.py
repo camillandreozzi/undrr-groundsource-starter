@@ -242,7 +242,14 @@ def build_annotations(queue_path: Path, out_path: Path,
         first = queue_rows_for_doc[0]
         # Prefer the full run: the queue holds only the sampled events, and a
         # partial seed would quietly bias an "accept seed as gold" click.
-        events = seed_events.get(key) or queue_rows_for_doc
+        events = seed_events.get(key)
+        if events is None:
+            # A document-level queue (eval/sample_documents_for_annotation.py)
+            # can legitimately contain documents the run declined — that is the
+            # point of it. Those get a genuinely empty seed, so the screen reads
+            # "0 events" instead of showing the queue row as a phantom one.
+            declined = str(first.get("run_found_events", "")).strip() == "0"
+            events = [] if declined else queue_rows_for_doc
         row = {c: "" for c in COLUMNS}
         row.update({
             "asset_key": key,
@@ -686,7 +693,14 @@ def main() -> None:
         except (TypeError, ValueError):
             pass
 
+        seed_is_empty = str(row.get("seed_event_count") or "0").strip() in {"", "0"}
+        if seed_is_empty:
+            st.info("The reference run found **no event** in this document. "
+                    "Read it and decide independently — if it really reports "
+                    "none, *🚫 No event & next* records a true negative.")
+
         if st.button("⤵ Accept seed as gold", use_container_width=True,
+                     disabled=seed_is_empty,
                      help="Copy the seed extraction into the form below. Review, then save."):
             _fill_form_state(pos, {
                 "is_event": "yes",

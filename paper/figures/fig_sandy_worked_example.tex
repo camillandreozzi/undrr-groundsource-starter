@@ -10,15 +10,20 @@
   \centering
   \includegraphics[width=\columnwidth]{figures/fig_sandy_worked_example}
   \caption{One document end to end. (1) An excerpt of the 12{,}000-character
-  window passed to the model; shading marks the spans it returned in
+  window passed to the model; shading marks the source spans supporting
   \texttt{evidence\_snippets}. (2) The resulting record, abridged:
   \texttt{key\_impacts}, \texttt{evidence\_snippets} and
-  \texttt{missing\_information} are shown as counts. (3) The five location
+  \texttt{missing\_information} are shown as counts. The observed output
+  contains five evidence snippets, exceeding the contract's maximum of
+  three reported in Table~5; the saved record is reproduced without
+  truncating that field. (3) The five location
   strings after geocoding, as the union of their resolved geometries --- the
   city, borough and neighbourhood levels overlap, and the two New Jersey
-  refinery sites resolve to separate polygons. Every element is recoverable
+  refinery sites resolve to separate polygons. These resolved location
+  geometries do not establish the hazard footprint. Every element is recoverable
   from the emitted row: the snippet, the location string and admin level it
   came from, and the geometry it resolved to. This record was judged correct
-  (\S\ref{sec:validation}). Basemap \copyright{} OpenStreetMap contributors.}
+  (\S\ref{sec:validation}); that judgement does not imply compliance with
+  the snippet-count limit. Basemap \copyright{} OpenStreetMap contributors.}
   \label{fig:worked-example}
 \end{figure}
