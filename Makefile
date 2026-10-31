@@ -7,9 +7,10 @@
 	strict-rules \
 	annotate annotate-prefetch annotate-score \
 	docsample docsample-annotate docsample-score \
+	event-sample event-annotate event-score event-audit-sample \
 	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
 	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
-	or-docsample-agreement or-docsample-score or-citations
+	or-docsample-agreement or-docsample-score or-citations or-stratified
 
 PYTHON ?= python3
 VENV ?= .venv
@@ -314,6 +315,37 @@ annotate-score:
 		$(if $(EXTRA_RUN),--run "$(EXTRA_RUN)",)
 
 # --------------------------------------------------------------------------
+# Experiment A — event-level evaluation (eval/EVENT_LEVEL_PROTOCOL.md).
+#
+# The scores above pool hazards, dates and places per document, so a run that
+# swaps two events' years and places still scores 100%. This annotates each
+# occurrence as its own record, blind to every model, and scores complete
+# records. 45 windows, multi-event documents over-sampled: a stress test.
+# Commit the protocol before running event-sample — that commit is the
+# pre-registration.
+# --------------------------------------------------------------------------
+
+# 1. Draw the queue (seed 44). Refuses to clobber; pass FORCE=1 to redraw.
+event-sample:
+	$(VENV_PYTHON) eval/sample_event_level_windows.py $(if $(FORCE),--force,)
+
+# 2. Annotate it, blind: the app shows the window and nothing else.
+event-annotate:
+	$(VENV_PYTHON) -m streamlit run eval/event_annotation_app.py
+
+# 3. Score prompt 5, the NER baseline and every OpenRouter run ->
+#    eval/EVENT_LEVEL_SCORES.md. Refuses until every window is annotated;
+#    PARTIAL=1 previews.
+event-score:
+	$(VENV_PYTHON) eval/score_event_level.py $(if $(PARTIAL),--allow-partial,)
+
+# 4. Draw the link audit (all tier-C links, 25 tier-A/B, 15 false positives)
+#    into eval/event_link_audit.csv. Mark each verdict, then re-run event-score.
+event-audit-sample:
+	$(VENV_PYTHON) eval/score_event_level.py \
+		--audit-sample eval/event_link_audit.csv $(if $(FORCE),--force,)
+
+# --------------------------------------------------------------------------
 # Multi-model benchmark — prompt 5 held fixed, the model varied via OpenRouter,
 # over the same 167 documents the annotation queue covers.
 # Needs OPENROUTER_API_KEY in .env. Run the targets in this order.
@@ -418,6 +450,15 @@ or-docsample-score:
 #    `--arm 50` splits it back apart.
 or-citations:
 	$(VENV_PYTHON) -m benchmark_openrouter.citation_quality
+
+# 9. Per-stratum scores and corpus-weighted estimates ->
+#    STRATIFIED_AND_WEIGHTED_SCORES.md. Splits detection and field scores by
+#    sampling arm so a model that is strong only on the pre-filtered half shows
+#    it, then weights each document by the inverse of its sampling rate to
+#    estimate the full 10,000-document corpus. Needs the pooled arms
+#    (`make or-pool`) and the production run on disk.
+or-stratified:
+	$(VENV_PYTHON) -m benchmark_openrouter.stratified_scores
 
 docker-build:
 	docker build -t undrr-fonte .

@@ -40,9 +40,18 @@ actually did fixes that:
     production flagged     1,913 / 178  =  10.75 per document
     production declined    8,087 /  39  = 207.36 per document
 
-Both partition the corpus exactly (they sum to 10,000). Where the two schemes
-disagree, the *flag* number is the better estimate and the gap is the cost of
-treating the arm as the stratum. The report prints both.
+Both partition the corpus exactly (they sum to 10,000), and both are reported in
+full. **The *flag* scheme is the better estimator**, and the gap between them is
+not cosmetic: all 11 of the misplaced documents are gold-positive, so the *arm*
+scheme weights 11 true positives at 161.74 apiece and estimates 4,063
+event-bearing documents in the corpus — a 40.6% prevalence, against a corpus
+base rate independently put at 19-28%. The *flag* scheme estimates 2,428, or
+24.3%, which is inside that range. Detection precision moves by up to 19 points
+between the two.
+
+The *arm* scheme is kept as the headline because it is the commissioned design
+and because its per-stratum halves (§1, §2) are exactly the published per-arm
+reports. Quote §4 for any corpus-level claim.
 
 WHAT IS ESTIMATED, AND HOW
 --------------------------
@@ -361,6 +370,51 @@ def _n(x: float) -> str:
     return f"{x:,.0f}"
 
 
+def _weighted_tables(A, results, scheme: str, det_no: str, field_no: str) -> None:
+    """The detection and field tables for one weighting scheme.
+
+    Both schemes get the identical treatment so the two can be read against each
+    other line for line; only the weights behind them differ.
+    """
+    A(f"### {det_no}. Detection")
+    A("")
+    A("| Run | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 | "
+      "Est. events flagged in corpus | Est. event-bearing documents |")
+    A("|---|---|---|---:|---:|---:|")
+    for res in results:
+        w = res["weighted"][scheme]
+        if not w:
+            A(f"| {res['label']} | – | – | – | – | – |")
+            continue
+        d = w["detection"]
+        b = res["boot"][scheme]
+        A(f"| {res['label']} | {_pct(d['precision'])}{_ci(b.get('det_precision'))} | "
+          f"{_pct(d['recall'])}{_ci(b.get('det_recall'))} | {_pct(d['f1'])} | "
+          f"{_n(d['tp'] + d['fp'])} | {_n(d['tp'] + d['fn'])} |")
+    A("")
+    A("_`Est. events flagged in corpus` is how many of the 10,000 documents this "
+      "run would call event-bearing; `Est. event-bearing documents` is how many "
+      "gold says actually are, which is a property of the design rather than of "
+      "the run and varies between runs only through coverage._")
+    A("")
+
+    A(f"### {field_no}. Fields")
+    A("")
+    A("| Run | Field | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 |")
+    A("|---|---|---|---|---:|")
+    for res in results:
+        w = res["weighted"][scheme]
+        if not w:
+            continue
+        b = res["boot"][scheme]
+        for name, label in FIELDS:
+            f = w[name]
+            A(f"| {res['label']} | {label} | "
+              f"{_pct(f['precision'])}{_ci(b.get(f'{name}_precision'))} | "
+              f"{_pct(f['recall'])}{_ci(b.get(f'{name}_recall'))} | {_pct(f['f1'])} |")
+    A("")
+
+
 def render(results: list[dict], strata: dict, gold: Gold, ann_path: Path) -> str:
     arm = strata["arm"]
     counts = defaultdict(lambda: [0, 0])
@@ -482,83 +536,56 @@ def render(results: list[dict], strata: dict, gold: Gold, ann_path: Path) -> str
       "stratified bootstrap (2,000 replicates, seed 42, resampled within stratum "
       "with the weights recomputed each time).")
     A("")
-    A("### 3a. Detection")
+    A("> **These are the commissioned weights, and they are biased.** The arm is "
+      "not the stratum: 11 of the 50 are documents the production run flagged, "
+      "all 11 are gold-positive, and weighting them at 161.74 instead of 11.46 "
+      "pushes the implied corpus prevalence to 40.6% against a base rate "
+      "independently put at 19-28%. **§4 repeats every table below under the "
+      "corrected weights and is the one to quote.**")
     A("")
-    A("| Run | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 | "
-      "Est. events in corpus | Est. corpus recall base |")
-    A("|---|---|---|---:|---:|---:|")
-    for res in results:
-        w = res["weighted"]["arm"]
-        if not w:
-            A(f"| {res['label']} | – | – | – | – | – |")
-            continue
-        d = w["detection"]
-        b = res["boot"]["arm"]
-        A(f"| {res['label']} | {_pct(d['precision'])}{_ci(b.get('det_precision'))} | "
-          f"{_pct(d['recall'])}{_ci(b.get('det_recall'))} | {_pct(d['f1'])} | "
-          f"{_n(d['tp'] + d['fp'])} | {_n(d['tp'] + d['fn'])} |")
-    A("")
-    A("_`Est. events in corpus` is how many of the 10,000 documents this run would "
-      "flag; `Est. corpus recall base` is how many actually carry an event by gold, "
-      "which is the same for every run up to its coverage and is the corpus "
-      "prevalence estimate this design produces._")
-    A("")
-
-    A("### 3b. Fields")
-    A("")
-    A("| Run | Field | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 |")
-    A("|---|---|---|---|---:|")
-    for res in results:
-        w = res["weighted"]["arm"]
-        if not w:
-            continue
-        b = res["boot"]["arm"]
-        for name, label in FIELDS:
-            f = w[name]
-            A(f"| {res['label']} | {label} | "
-              f"{_pct(f['precision'])}{_ci(b.get(f'{name}_precision'))} | "
-              f"{_pct(f['recall'])}{_ci(b.get(f'{name}_recall'))} | {_pct(f['f1'])} |")
+    _weighted_tables(A, results, "arm", "3a", "3b")
     A("")
 
     # ---------------- Sensitivity ----------------
-    A("## 4. Sensitivity — the arm is not exactly the stratum")
+    A("## 4. The same estimates under the corrected weights")
     A("")
-    A("The 50 were drawn uniformly over the 9,833 documents not already annotated, "
-      "not over the 8,087 the production run declined. Eleven of them are documents "
-      "GPT-5 *did* flag, and §3 gives those a remaining-stratum weight of 161.74 "
-      "when they belong to a stratum whose weight is 11.46. Post-stratifying on "
-      "what the production run actually did puts each of the 217 in its true "
-      "stratum — 178 flagged at 10.75, 39 declined at 207.36 — and both schemes "
-      "still partition the corpus exactly.")
+    A("The 50 were drawn uniformly over the 9,833 documents not already "
+      "annotated, not over the 8,087 the production run declined. Eleven of them "
+      "are documents GPT-5 *did* flag — and all eleven carry an event by gold. "
+      "§3 gives those 11 true positives a remaining-stratum weight of 161.74 when "
+      "they belong to a stratum whose weight is 11.46, which inflates every "
+      "weighted true-positive count.")
     A("")
-    A("| Run | Detection P (arm) | Detection P (flag) | Δ | "
-      "Detection R (arm) | Detection R (flag) | Δ |")
-    A("|---|---:|---:|---:|---:|---:|---:|")
-    for res in results:
-        wa, wf = res["weighted"]["arm"], res["weighted"]["flag"]
-        if not wa or not wf:
-            continue
-        da, df = wa["detection"], wf["detection"]
-        A(f"| {res['label']} | {_pct(da['precision'])} | {_pct(df['precision'])} | "
-          f"{(df['precision'] - da['precision']) * 100:+.1f} pp | "
-          f"{_pct(da['recall'])} | {_pct(df['recall'])} | "
-          f"{(df['recall'] - da['recall']) * 100:+.1f} pp |")
+    A("Post-stratifying on what the production run actually did puts each of the "
+      "217 in its true stratum — 178 flagged at 10.75, 39 declined at 207.36. "
+      "This is the ratio-adjusted Horvitz-Thompson estimator for the design as "
+      "executed: a flagged document could enter either arm, giving it inclusion "
+      "probability 167/1913 + (1746/1913)(50/9833) = 0.0919 and a weight of "
+      "10.88, which the ratio adjustment normalises to 10.75 so the stratum sums "
+      "to exactly 1,913.")
     A("")
-    A("| Run | All-fields P (arm) | All-fields P (flag) | Δ | "
-      "All-fields R (arm) | All-fields R (flag) | Δ |")
-    A("|---|---:|---:|---:|---:|---:|---:|")
-    for res in results:
-        wa, wf = res["weighted"]["arm"], res["weighted"]["flag"]
-        if not wa or not wf:
-            continue
-        ca, cf = wa["combined"], wf["combined"]
-        A(f"| {res['label']} | {_pct(ca['precision'])} | {_pct(cf['precision'])} | "
-          f"{(cf['precision'] - ca['precision']) * 100:+.1f} pp | "
-          f"{_pct(ca['recall'])} | {_pct(cf['recall'])} | "
-          f"{(cf['recall'] - ca['recall']) * 100:+.1f} pp |")
+    A("| Estimator | Weights (flagged / declined) | Est. event-bearing documents "
+      "| Implied corpus prevalence |")
+    A("|---|---|---:|---:|")
+    A(f"| §3, by arm | {EVENT_STRATUM_N / 167:.2f} / {REMAINING_STRATUM_N / 50:.2f} "
+      "| 4,063 | 40.6% |")
+    A(f"| §4, by production flag | {EVENT_STRATUM_N / 178:.2f} / "
+      f"{REMAINING_STRATUM_N / 39:.2f} | 2,428 | 24.3% |")
     A("")
-    A("_Where the two columns agree, the approximation in §3 costs nothing. Where "
-      "they do not, the `flag` figure is the better estimate._")
+    A("_The corpus base rate is independently put at 19-28% "
+      "(`eval/sample_documents_for_annotation.py`), so 40.6% is outside the "
+      "plausible range and 24.3% is inside it. That is the check that settles "
+      "which estimator to quote._")
+    A("")
+    A("There is a second, sharper check available, because one of the runs "
+      "scored here **is** the run that defined the strata. `prompt 5 (gpt-5, "
+      "Azure)` flagged 1,913 of the 10,000 corpus documents by construction, so "
+      "a correct estimator applied to its 217 sampled documents must recover "
+      "1,913. Under §4's weights it estimates **1,913** exactly; under §3's it "
+      "estimates 3,692, a 93% overshoot. The weighting in §4 reproduces a "
+      "quantity that is known independently, and the weighting in §3 does not.")
+    A("")
+    _weighted_tables(A, results, "flag", "4a", "4b")
     A("")
 
     # ---------------- Coverage ----------------

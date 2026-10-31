@@ -23,6 +23,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "rapidfuzz>=3.6",
     "requests>=2.31",
+    "scipy>=1.10",
     "shapely>=2.0",
     "streamlit>=1.36.0",
 ]

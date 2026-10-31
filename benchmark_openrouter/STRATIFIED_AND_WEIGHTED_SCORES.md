@@ -138,9 +138,11 @@ _`Δ F1` is remaining minus event: negative means the model describes the docume
 
 Every document is weighted by the inverse of its sampling rate, so the 217-document sample estimates the corpus. Weights are ratio-adjusted for coverage: a run that lost documents in a stratum has its survivors there weighted up to cover the whole stratum. Intervals are a 95% percentile stratified bootstrap (2,000 replicates, seed 42, resampled within stratum with the weights recomputed each time).
 
+> **These are the commissioned weights, and they are biased.** The arm is not the stratum: 11 of the 50 are documents the production run flagged, all 11 are gold-positive, and weighting them at 161.74 instead of 11.46 pushes the implied corpus prevalence to 40.6% against a base rate independently put at 19-28%. **§4 repeats every table below under the corrected weights and is the one to quote.**
+
 ### 3a. Detection
 
-| Run | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 | Est. events in corpus | Est. corpus recall base |
+| Run | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 | Est. events flagged in corpus | Est. event-bearing documents |
 |---|---|---|---:|---:|---:|
 | Claude Haiku 4.5 | 92.4% (81.4%–98.7%) | 75.3% (61.0%–89.1%) | 83.0% | 3,313 | 4,063 |
 | Claude Opus 5 | 88.6% (75.4%–98.1%) | 81.8% (67.9%–94.4%) | 85.1% | 3,751 | 4,063 |
@@ -155,7 +157,7 @@ Every document is weighted by the inverse of its sampling rate, so the 217-docum
 | prompt 5 (gpt-5, Azure) | 96.9% (94.4%–98.6%) | 88.1% (75.0%–100.0%) | 92.3% | 3,692 | 4,063 |
 | NER baseline | 66.4% (51.7%–81.1%) | 83.8% (71.0%–95.1%) | 74.1% | 5,126 | 4,063 |
 
-_`Est. events in corpus` is how many of the 10,000 documents this run would flag; `Est. corpus recall base` is how many actually carry an event by gold, which is the same for every run up to its coverage and is the corpus prevalence estimate this design produces._
+_`Est. events flagged in corpus` is how many of the 10,000 documents this run would call event-bearing; `Est. event-bearing documents` is how many gold says actually are, which is a property of the design rather than of the run and varies between runs only through coverage._
 
 ### 3b. Fields
 
@@ -210,39 +212,92 @@ _`Est. events in corpus` is how many of the 10,000 documents this run would flag
 | NER baseline | Dates | 52.4% (47.4%–57.7%) | 72.9% (64.7%–80.5%) | 61.0% |
 | NER baseline | All fields | 35.3% (29.8%–41.5%) | 65.6% (56.3%–74.2%) | 45.9% |
 
-## 4. Sensitivity — the arm is not exactly the stratum
 
-The 50 were drawn uniformly over the 9,833 documents not already annotated, not over the 8,087 the production run declined. Eleven of them are documents GPT-5 *did* flag, and §3 gives those a remaining-stratum weight of 161.74 when they belong to a stratum whose weight is 11.46. Post-stratifying on what the production run actually did puts each of the 217 in its true stratum — 178 flagged at 10.75, 39 declined at 207.36 — and both schemes still partition the corpus exactly.
+## 4. The same estimates under the corrected weights
 
-| Run | Detection P (arm) | Detection P (flag) | Δ | Detection R (arm) | Detection R (flag) | Δ |
-|---|---:|---:|---:|---:|---:|---:|
-| Claude Haiku 4.5 | 92.4% | 84.5% | -7.8 pp | 75.3% | 66.0% | -9.3 pp |
-| Claude Opus 5 | 88.6% | 77.0% | -11.7 pp | 81.8% | 70.4% | -11.4 pp |
-| Claude Sonnet 5 | 89.1% | 78.9% | -10.2 pp | 85.8% | 78.9% | -6.9 pp |
-| DeepSeek V3.1 | 88.7% | 77.3% | -11.4 pp | 82.7% | 71.7% | -10.9 pp |
-| Llama 4 Maverick | 78.1% | 61.8% | -16.3 pp | 95.2% | 90.1% | -5.0 pp |
-| Mistral Large | 74.2% | 55.3% | -18.8 pp | 75.1% | 67.9% | -7.2 pp |
-| GPT-5 (OpenRouter) | 92.8% | 84.9% | -7.8 pp | 87.2% | 73.0% | -14.2 pp |
-| GPT-5.4 | 92.7% | 84.8% | -7.9 pp | 86.9% | 72.6% | -14.3 pp |
-| GPT-5 mini | 83.0% | 68.1% | -14.9 pp | 91.8% | 82.5% | -9.3 pp |
-| Grok 4.6 | 85.3% | 70.2% | -15.1 pp | 85.8% | 70.8% | -15.0 pp |
-| prompt 5 (gpt-5, Azure) | 96.9% | 94.4% | -2.5 pp | 88.1% | 74.4% | -13.7 pp |
-| NER baseline | 66.4% | 48.4% | -18.0 pp | 83.8% | 83.9% | +0.1 pp |
+The 50 were drawn uniformly over the 9,833 documents not already annotated, not over the 8,087 the production run declined. Eleven of them are documents GPT-5 *did* flag — and all eleven carry an event by gold. §3 gives those 11 true positives a remaining-stratum weight of 161.74 when they belong to a stratum whose weight is 11.46, which inflates every weighted true-positive count.
 
-| Run | All-fields P (arm) | All-fields P (flag) | Δ | All-fields R (arm) | All-fields R (flag) | Δ |
-|---|---:|---:|---:|---:|---:|---:|
-| Claude Haiku 4.5 | 82.3% | 83.5% | +1.2 pp | 65.9% | 68.5% | +2.6 pp |
-| Claude Opus 5 | 75.2% | 78.9% | +3.6 pp | 79.9% | 77.6% | -2.3 pp |
-| Claude Sonnet 5 | 74.5% | 78.8% | +4.3 pp | 81.3% | 80.6% | -0.7 pp |
-| DeepSeek V3.1 | 80.4% | 78.4% | -2.0 pp | 75.9% | 75.2% | -0.7 pp |
-| Llama 4 Maverick | 57.2% | 60.2% | +3.1 pp | 80.5% | 83.0% | +2.5 pp |
-| Mistral Large | 47.3% | 54.6% | +7.3 pp | 58.5% | 59.8% | +1.2 pp |
-| GPT-5 (OpenRouter) | 82.5% | 84.2% | +1.7 pp | 83.9% | 81.5% | -2.3 pp |
-| GPT-5.4 | 86.1% | 86.5% | +0.4 pp | 87.3% | 80.5% | -6.8 pp |
-| GPT-5 mini | 70.3% | 75.6% | +5.4 pp | 81.9% | 80.6% | -1.3 pp |
-| Grok 4.6 | 74.0% | 75.0% | +1.0 pp | 86.1% | 82.3% | -3.9 pp |
-| prompt 5 (gpt-5, Azure) | 97.6% | 96.5% | -1.2 pp | 95.1% | 90.8% | -4.2 pp |
-| NER baseline | 35.3% | 34.9% | -0.4 pp | 65.6% | 59.4% | -6.2 pp |
+Post-stratifying on what the production run actually did puts each of the 217 in its true stratum — 178 flagged at 10.75, 39 declined at 207.36. This is the ratio-adjusted Horvitz-Thompson estimator for the design as executed: a flagged document could enter either arm, giving it inclusion probability 167/1913 + (1746/1913)(50/9833) = 0.0919 and a weight of 10.88, which the ratio adjustment normalises to 10.75 so the stratum sums to exactly 1,913.
 
-_Where the two columns agree, the approximation in §3 costs nothing. Where they do not, the `flag` figure is the better estimate._
+| Estimator | Weights (flagged / declined) | Est. event-bearing documents | Implied corpus prevalence |
+|---|---|---:|---:|
+| §3, by arm | 11.46 / 161.74 | 4,063 | 40.6% |
+| §4, by production flag | 10.75 / 207.36 | 2,428 | 24.3% |
+
+_The corpus base rate is independently put at 19-28% (`eval/sample_documents_for_annotation.py`), so 40.6% is outside the plausible range and 24.3% is inside it. That is the check that settles which estimator to quote._
+
+There is a second, sharper check available, because one of the runs scored here **is** the run that defined the strata. `prompt 5 (gpt-5, Azure)` flagged 1,913 of the 10,000 corpus documents by construction, so a correct estimator applied to its 217 sampled documents must recover 1,913. Under §4's weights it estimates **1,913** exactly; under §3's it estimates 3,692, a 93% overshoot. The weighting in §4 reproduces a quantity that is known independently, and the weighting in §3 does not.
+
+### 4a. Detection
+
+| Run | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 | Est. events flagged in corpus | Est. event-bearing documents |
+|---|---|---|---:|---:|---:|
+| Claude Haiku 4.5 | 84.5% (68.4%–97.4%) | 66.0% (50.4%–88.3%) | 74.1% | 1,895 | 2,428 |
+| Claude Opus 5 | 77.0% (59.6%–95.9%) | 70.4% (53.5%–94.6%) | 73.5% | 2,220 | 2,428 |
+| Claude Sonnet 5 | 78.9% (61.6%–96.5%) | 78.9% (61.1%–96.5%) | 78.9% | 2,428 | 2,428 |
+| DeepSeek V3.1 | 77.3% (60.6%–96.5%) | 71.7% (54.4%–96.5%) | 74.4% | 2,252 | 2,428 |
+| Llama 4 Maverick | 61.8% (45.4%–81.6%) | 90.1% (74.5%–99.6%) | 73.3% | 3,540 | 2,428 |
+| Mistral Large | 55.3% (39.9%–77.4%) | 67.9% (51.8%–84.8%) | 61.0% | 2,978 | 2,428 |
+| GPT-5 (OpenRouter) | 84.9% (69.9%–96.6%) | 73.0% (55.2%–98.2%) | 78.5% | 2,088 | 2,428 |
+| GPT-5.4 | 84.8% (69.7%–96.6%) | 72.6% (54.9%–97.6%) | 78.2% | 2,077 | 2,428 |
+| GPT-5 mini | 68.1% (52.0%–89.2%) | 82.5% (63.8%–100.0%) | 74.6% | 2,939 | 2,428 |
+| Grok 4.6 | 70.2% (54.3%–94.6%) | 70.8% (53.5%–94.7%) | 70.5% | 2,449 | 2,428 |
+| prompt 5 (gpt-5, Azure) | 94.4% (91.0%–97.8%) | 74.4% (55.9%–100.0%) | 83.2% | 1,913 | 2,428 |
+| NER baseline | 48.4% (34.9%–66.3%) | 83.9% (68.6%–94.7%) | 61.4% | 4,208 | 2,428 |
+
+_`Est. events flagged in corpus` is how many of the 10,000 documents this run would call event-bearing; `Est. event-bearing documents` is how many gold says actually are, which is a property of the design rather than of the run and varies between runs only through coverage._
+
+### 4b. Fields
+
+| Run | Field | Weighted precision (95% CI) | Weighted recall (95% CI) | F1 |
+|---|---|---|---|---:|
+| Claude Haiku 4.5 | Hazard family | 90.9% (86.9%–94.5%) | 70.1% (57.8%–83.0%) | 79.2% |
+| Claude Haiku 4.5 | Locations | 77.2% (72.5%–81.8%) | 68.4% (58.8%–76.5%) | 72.5% |
+| Claude Haiku 4.5 | Dates | 90.1% (85.9%–93.5%) | 67.7% (57.2%–77.9%) | 77.3% |
+| Claude Haiku 4.5 | All fields | 83.5% (79.8%–87.0%) | 68.5% (58.7%–77.4%) | 75.2% |
+| Claude Opus 5 | Hazard family | 87.4% (83.8%–91.0%) | 81.1% (67.2%–94.4%) | 84.1% |
+| Claude Opus 5 | Locations | 71.9% (66.3%–76.9%) | 77.6% (69.2%–85.2%) | 74.6% |
+| Claude Opus 5 | Dates | 86.6% (82.6%–90.6%) | 75.4% (65.2%–85.7%) | 80.6% |
+| Claude Opus 5 | All fields | 78.9% (75.2%–82.3%) | 77.6% (68.3%–86.4%) | 78.2% |
+| Claude Sonnet 5 | Hazard family | 89.2% (85.5%–92.7%) | 85.9% (74.2%–94.1%) | 87.5% |
+| Claude Sonnet 5 | Locations | 72.8% (67.8%–77.3%) | 78.3% (69.3%–86.5%) | 75.5% |
+| Claude Sonnet 5 | Dates | 82.5% (76.1%–88.8%) | 80.8% (71.0%–90.6%) | 81.7% |
+| Claude Sonnet 5 | All fields | 78.8% (75.6%–82.1%) | 80.6% (71.9%–88.4%) | 79.7% |
+| DeepSeek V3.1 | Hazard family | 83.0% (78.5%–87.4%) | 79.8% (66.3%–92.9%) | 81.3% |
+| DeepSeek V3.1 | Locations | 72.1% (66.3%–77.2%) | 71.7% (62.0%–80.6%) | 71.9% |
+| DeepSeek V3.1 | Dates | 86.2% (81.9%–89.9%) | 77.7% (67.1%–87.8%) | 81.7% |
+| DeepSeek V3.1 | All fields | 78.4% (74.1%–82.4%) | 75.2% (65.4%–84.2%) | 76.8% |
+| Llama 4 Maverick | Hazard family | 71.1% (65.3%–76.9%) | 95.3% (92.2%–97.8%) | 81.5% |
+| Llama 4 Maverick | Locations | 49.1% (42.3%–55.1%) | 73.0% (61.5%–82.9%) | 58.7% |
+| Llama 4 Maverick | Dates | 73.7% (68.4%–78.7%) | 90.9% (84.9%–95.7%) | 81.4% |
+| Llama 4 Maverick | All fields | 60.2% (55.5%–64.6%) | 83.0% (75.4%–89.1%) | 69.8% |
+| Mistral Large | Hazard family | 73.1% (67.2%–79.2%) | 72.5% (61.5%–82.5%) | 72.8% |
+| Mistral Large | Locations | 42.2% (36.4%–48.7%) | 54.6% (41.7%–69.9%) | 47.6% |
+| Mistral Large | Dates | 70.2% (64.2%–77.1%) | 59.9% (50.1%–70.9%) | 64.6% |
+| Mistral Large | All fields | 54.6% (49.6%–59.7%) | 59.8% (49.2%–71.8%) | 57.1% |
+| GPT-5 (OpenRouter) | Hazard family | 89.9% (86.5%–93.0%) | 83.1% (68.9%–96.7%) | 86.4% |
+| GPT-5 (OpenRouter) | Locations | 78.4% (71.8%–83.8%) | 78.2% (65.9%–88.2%) | 78.3% |
+| GPT-5 (OpenRouter) | Dates | 90.0% (86.6%–93.3%) | 85.8% (75.4%–94.8%) | 87.8% |
+| GPT-5 (OpenRouter) | All fields | 84.2% (80.5%–87.7%) | 81.5% (71.0%–91.3%) | 82.8% |
+| GPT-5.4 | Hazard family | 90.7% (87.2%–94.0%) | 81.8% (67.9%–95.0%) | 86.0% |
+| GPT-5.4 | Locations | 81.4% (77.2%–84.9%) | 80.2% (73.0%–86.2%) | 80.8% |
+| GPT-5.4 | Dates | 92.6% (89.8%–95.2%) | 80.2% (69.6%–89.4%) | 85.9% |
+| GPT-5.4 | All fields | 86.5% (83.8%–88.9%) | 80.5% (71.1%–88.4%) | 83.4% |
+| GPT-5 mini | Hazard family | 86.2% (82.3%–89.8%) | 87.9% (75.4%–96.4%) | 87.1% |
+| GPT-5 mini | Locations | 66.0% (60.0%–71.7%) | 73.8% (62.9%–84.8%) | 69.7% |
+| GPT-5 mini | Dates | 85.5% (81.7%–88.9%) | 86.6% (77.1%–94.2%) | 86.1% |
+| GPT-5 mini | All fields | 75.6% (71.5%–79.7%) | 80.6% (71.2%–89.3%) | 78.0% |
+| Grok 4.6 | Hazard family | 84.6% (80.7%–88.2%) | 82.4% (68.3%–95.8%) | 83.5% |
+| Grok 4.6 | Locations | 66.3% (57.2%–74.2%) | 81.1% (68.5%–91.2%) | 73.0% |
+| Grok 4.6 | Dates | 85.8% (81.7%–89.7%) | 83.9% (73.7%–93.3%) | 84.8% |
+| Grok 4.6 | All fields | 75.0% (69.4%–80.0%) | 82.3% (72.0%–91.7%) | 78.4% |
+| prompt 5 (gpt-5, Azure) | Hazard family | 95.6% (92.9%–97.9%) | 86.1% (71.4%–99.6%) | 90.6% |
+| prompt 5 (gpt-5, Azure) | Locations | 96.1% (93.5%–98.0%) | 92.7% (84.8%–98.2%) | 94.4% |
+| prompt 5 (gpt-5, Azure) | Dates | 97.6% (95.7%–99.1%) | 90.9% (80.1%–99.3%) | 94.1% |
+| prompt 5 (gpt-5, Azure) | All fields | 96.5% (94.8%–97.8%) | 90.8% (80.6%–98.6%) | 93.6% |
+| NER baseline | Hazard family | 58.9% (53.5%–64.8%) | 83.3% (76.8%–89.0%) | 69.0% |
+| NER baseline | Locations | 21.4% (16.0%–27.4%) | 43.6% (36.0%–52.8%) | 28.7% |
+| NER baseline | Dates | 50.5% (45.9%–55.2%) | 69.1% (61.1%–76.6%) | 58.4% |
+| NER baseline | All fields | 34.9% (30.7%–39.4%) | 59.4% (52.1%–67.3%) | 44.0% |
+
 
