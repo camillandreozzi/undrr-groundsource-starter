@@ -1,0 +1,76 @@
+{
+  "sampling": "stratified_by_prior_human_annotation",
+  "framing": "targeted stress test; not weighted to the corpus",
+  "params": {
+    "seed": 44,
+    "max_years": 8,
+    "allocation_planned": {
+      "single": 15,
+      "same_hazard_multi_year": 10,
+      "multi_hazard_same_year": 10,
+      "multi_hazard_multi_year": 10
+    },
+    "allocation_actual": {
+      "single": 15,
+      "same_hazard_multi_year": 10,
+      "multi_hazard_same_year": 10,
+      "multi_hazard_multi_year": 10
+    },
+    "shortfall_to": "multi_hazard_multi_year"
+  },
+  "frame": {
+    "rows": 217,
+    "dropped": {
+      "not_english": 22,
+      "no_event_in_prior_annotation": 46,
+      "over_year_cap": 3
+    },
+    "eligible": 146
+  },
+  "shortfall_notes": [],
+  "strata": {
+    "single": {
+      "eligible": 60,
+      "drawn": 15,
+      "sampling_fraction": 0.25,
+      "arms": {
+        "event_sample_167": 12,
+        "document_sample_50": 3
+      },
+      "seed_event_count_mean": 1.2,
+      "seed_event_count_ge2": 2
+    },
+    "same_hazard_multi_year": {
+      "eligible": 32,
+      "drawn": 10,
+      "sampling_fraction": 0.3125,
+      "arms": {
+        "event_sample_167": 9,
+        "document_sample_50": 1
+      },
+      "seed_event_count_mean": 2.6,
+      "seed_event_count_ge2": 10
+    },
+    "multi_hazard_same_year": {
+      "eligible": 11,
+      "drawn": 10,
+      "sampling_fraction": 0.9091,
+      "arms": {
+        "event_sample_167": 10
+      },
+      "seed_event_count_mean": 2.2,
+      "seed_event_count_ge2": 7
+    },
+    "multi_hazard_multi_year": {
+      "eligible": 43,
+      "drawn": 10,
+      "sampling_fraction": 0.2326,
+      "arms": {
+        "event_sample_167": 9,
+        "document_sample_50": 1
+      },
+      "seed_event_count_mean": 4.7,
+      "seed_event_count_ge2": 10
+    }
+  }
+}
