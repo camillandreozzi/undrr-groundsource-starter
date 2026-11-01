@@ -7,7 +7,7 @@
 	strict-rules \
 	annotate annotate-prefetch annotate-score \
 	docsample docsample-annotate docsample-score \
-	event-sample event-annotate event-score event-audit-sample \
+	event-sample event-annotate event-score event-audit-sample event-audit \
 	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
 	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
 	or-docsample-agreement or-docsample-score or-citations or-stratified
@@ -340,10 +340,16 @@ event-score:
 	$(VENV_PYTHON) eval/score_event_level.py $(if $(PARTIAL),--allow-partial,)
 
 # 4. Draw the link audit (all tier-C links, 25 tier-A/B, 15 false positives)
-#    into eval/event_link_audit.csv. Mark each verdict, then re-run event-score.
+#    into eval/event_link_audit.csv. Judge them (step 5), then re-run event-score.
 event-audit-sample:
 	$(VENV_PYTHON) eval/score_event_level.py \
 		--audit-sample eval/event_link_audit.csv $(if $(FORCE),--force,)
+
+# 5. Judge the link audit in a viewer: the window with the record's evidence and
+#    the gold quotes marked, the model hidden. Writes the verdicts back into
+#    eval/event_link_audit.csv.
+event-audit:
+	$(VENV_PYTHON) -m streamlit run eval/link_audit_app.py
 
 # --------------------------------------------------------------------------
 # Multi-model benchmark — prompt 5 held fixed, the model varied via OpenRouter,

@@ -318,3 +318,45 @@ make event-audit-sample    # draw the link audit; mark verdicts; re-run make eve
 ## 10. Deviations log
 
 _None yet. Append dated entries below; do not edit entries above._
+
+### 2026-11-01 — Gold correction in one window (`823c2dca5fb0…`, review rank 29)
+
+**What changed.** Two annotation errors in the gold for the Terranova di
+Pollino local progress report:
+1. Gold event 1 (Earthquake, 1980): the location was misspelt "Tarranova di
+   Pollino". It now reads "Terranova di Pollino", as the window spells it.
+   Nothing else in the row changed.
+2. The window reports a second earthquake, in 1998 ("coped with the emergency
+   caused by the earthquake occurred in 1998"). It was omitted at annotation.
+   It is added as gold event 2: Earthquake, 1998, the same locations as event 1,
+   verifiable, with that sentence as its support quote.
+
+**How it was found.** Through the link audit (§6), decision #80: a system's
+1998 record had been linked to the 1980 event. The omission was therefore
+found through a model's output, not by re-reading the window blind. A check of
+the whole gold that uses no model output was run the same day: locations
+written as in the window, years stated in the window, support quotes located.
+It flagged further entries. This entry changes none of them.
+
+**Files.**
+- `eval/event_level_gold.csv`: sha256
+  `0b519b58df4d78493fa27578110e7626723aa8867f7656e94618cd2d25003440` →
+  `5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c`.
+  The original, with the scores it produced, is in commit `153bdf8`.
+- `eval/event_level_windows.csv`: `n_events` 1 → 2 for this window.
+
+**Consequences.**
+- The window moves from single-event to multi-event. Windows: 11 single /
+  33 multi → 10 / 34. Verifiable gold events: 169 → 170.
+- The link audit (§11) was judged on links made against the original gold.
+
+**Effect, original gold → corrected gold** (§7: both are reported).
+
+| Prompt 5 (primary outcome) | Original | Corrected |
+|---|---:|---:|
+| Complete-record correctness, all windows | 58.4% (48.2–68.9) | 60.2% (50.0–70.8) |
+| Single-event windows | 36.8% (15.8–64.3) | 41.2% (20.0–71.4) |
+| Multi-event windows | 63.4% (52.3–75.9) | 64.2% (54.1–76.6) |
+
+Other systems: complete-record correctness changes by 0.0 to +1.8 pp. The NER
+baseline is unchanged at 1.9%.
