@@ -1,0 +1,35 @@
+{
+  "config": "reduced_rules",
+  "replicate": 1,
+  "model": "openai/gpt-5",
+  "label": "GPT-5 (OpenRouter)",
+  "reasoning_effort": "medium",
+  "structured_output": "json_schema",
+  "prompt_name": "unified_verification_recall__reduced_rules",
+  "system_sha16": "ff6bbb1ffa7dcfbb",
+  "system_sha256": "ff6bbb1ffa7dcfbbaefc7034e61aa2b8a766bbf29266811be9f2c8210921487b",
+  "user_instruction_sha256": "c76286be19f4d669006fe6966181389607e692cfa21de0cd48cd90478028be57",
+  "schema_sha256": "8a80079b516e62bb01fb3be2080b97a2f773981176eceb3589404abd39e78ab3",
+  "max_chars": 12000,
+  "documents_total": 3,
+  "documents_finished": 3,
+  "documents_errored": 0,
+  "error_rows": 0,
+  "events": 15,
+  "attempts": 3,
+  "failed_attempts": 0,
+  "prompt_tokens": 12976,
+  "completion_tokens": 12536,
+  "reasoning_tokens": 9856,
+  "cost_usd": 0.1402,
+  "served_models": {
+    "openai/gpt-5": 3
+  },
+  "providers": {
+    "OpenAI": 3
+  },
+  "finish_reasons": {
+    "stop": 3
+  },
+  "finished_at": "2026-11-01T15:42:09+00:00"
+}

@@ -8,6 +8,8 @@
 	annotate annotate-prefetch annotate-score \
 	docsample docsample-annotate docsample-score \
 	event-sample event-annotate event-score event-audit-sample event-audit \
+	ablation-prompts ablation-windows ablation-dry-run ablation-smoke ablation-freeze \
+	ablation-run ablation-score \
 	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
 	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
 	or-docsample-agreement or-docsample-score or-citations or-stratified
@@ -350,6 +352,49 @@ event-audit-sample:
 #    eval/event_link_audit.csv.
 event-audit:
 	$(VENV_PYTHON) -m streamlit run eval/link_audit_app.py
+
+# --------------------------------------------------------------------------
+# Experiment B — controlled ablation of prompt 5 (ablation/ABLATION_PROTOCOL.md).
+#
+# Prompt 5 with one constraint removed at a time — evidence, the PreventionWeb
+# vocabulary, the domain disambiguation rules — plus all three, on OpenRouter
+# GPT-5, two replicates each, over 80 frozen windows (Experiment A's 45 plus
+# 35 Validation 2 "no event" documents). No new annotation. Commit the protocol
+# and FROZEN.json before ablation-run: that commit is the pre-registration, and
+# the runner refuses to spend without it.
+# --------------------------------------------------------------------------
+ABL_WORKERS ?= 4
+
+# 1. Render the five configurations -> ablation/prompts/. Refuses to clobber.
+ablation-prompts:
+	$(VENV_PYTHON) -m ablation.configs --write $(if $(FORCE),--force,)
+
+# 2. Freeze the windows -> ablation/windows.csv. Refuses to clobber.
+ablation-windows:
+	$(VENV_PYTHON) -m ablation.build_windows $(if $(FORCE),--force,)
+
+# 3. Hashes, catalogue check, cost estimate, preflight status. No spend.
+ablation-dry-run:
+	$(VENV_PYTHON) -m ablation.runner --dry-run
+
+# 4. 3 non-evaluation documents x 5 configurations -> ablation/runs_smoke/ (~$0.75).
+ablation-smoke:
+	$(VENV_PYTHON) -m ablation.runner --smoke 3 --workers 5
+
+# 5. Pin prompts, schemas, windows, lexicon and packages -> ablation/FROZEN.json.
+#    Then commit the protocol and FROZEN.json.
+ablation-freeze:
+	$(VENV_PYTHON) -m ablation.runner --freeze $(if $(FORCE),--force,)
+
+# 6. 5 configurations x 2 replicates x 80 windows, interleaved; always resumes,
+#    so re-run it to retry errored windows.
+ablation-run:
+	$(VENV_PYTHON) -m ablation.runner --workers $(ABL_WORKERS)
+
+# 7. -> ablation/ABLATION_SCORES.md, ablation_scores.json, ablation_pairs.csv.
+#    Refuses until all 10 runs exist; PARTIAL=1 previews.
+ablation-score:
+	$(VENV_PYTHON) -m ablation.score_ablation $(if $(PARTIAL),--allow-partial,)
 
 # --------------------------------------------------------------------------
 # Multi-model benchmark — prompt 5 held fixed, the model varied via OpenRouter,

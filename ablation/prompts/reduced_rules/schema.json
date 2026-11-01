@@ -1,0 +1,122 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "schema": {
+      "$defs": {
+        "EventExtraction": {
+          "properties": {
+            "is_single_actual_event": {
+              "title": "Is Single Actual Event",
+              "type": "boolean"
+            },
+            "is_verifiable_event": {
+              "title": "Is Verifiable Event",
+              "type": "boolean"
+            },
+            "event_hazard": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Event Hazard"
+            },
+            "event_dates": {
+              "description": "Prefer YYYY-MM-DD; allow YYYY-MM, YYYY, or a short source phrase.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Event Dates",
+              "type": "array"
+            },
+            "affected_locations": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Affected Locations",
+              "type": "array"
+            },
+            "location_admin_levels": {
+              "description": "One tag per entry of affected_locations, in the same order. Allowed values: point, neighbourhood, city, admin2, admin1, country, coastal_zone, basin, feature, unknown.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Location Admin Levels",
+              "type": "array"
+            },
+            "key_impacts": {
+              "description": "Up to 5 concise impact statements.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Key Impacts",
+              "type": "array"
+            },
+            "event_confidence": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Allowed values: high, medium, low.",
+              "title": "Event Confidence"
+            },
+            "evidence_snippets": {
+              "description": "Up to 3 short snippets or paraphrases (<= 25 words each) from the source that justify the extraction. Paraphrase if needed; no long quotes.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Evidence Snippets",
+              "type": "array"
+            },
+            "missing_information": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Missing Information",
+              "type": "array"
+            }
+          },
+          "required": [
+            "is_single_actual_event",
+            "is_verifiable_event",
+            "event_hazard",
+            "event_dates",
+            "affected_locations",
+            "location_admin_levels",
+            "key_impacts",
+            "event_confidence",
+            "evidence_snippets",
+            "missing_information"
+          ],
+          "title": "EventExtraction",
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "properties": {
+        "events": {
+          "items": {
+            "$ref": "#/$defs/EventExtraction"
+          },
+          "title": "Events",
+          "type": "array"
+        }
+      },
+      "title": "DocumentEventExtractions",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events"
+      ]
+    },
+    "name": "DocumentEventExtractions",
+    "strict": true
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "windows": 80,
+  "groups": {
+    "event_present": 44,
+    "event_absent": 36
+  },
+  "subgroups": {
+    "single": 10,
+    "multi": 34,
+    "expA_none": 1,
+    "random_negative": 30,
+    "hard_negative": 5
+  },
+  "dev_pool_400": [
+    "823c2dca5fb04247228f4f4360b3451935c867f99e765f6bf726c5ad94a7fdc2",
+    "36e764048b3f7270964a98c185ed91e4be61525990219d96582693fb8089a071"
+  ],
+  "gold_validation": [
+    "cdb86e09706addaf20ab5528ef7dcf10543c50b6cb9917697f901b4188eb7146",
+    "583badf1f312c511c5c12172c863e3718cb69488d6cf2ef568e28dd010f9db6b",
+    "823c2dca5fb04247228f4f4360b3451935c867f99e765f6bf726c5ad94a7fdc2",
+    "36e764048b3f7270964a98c185ed91e4be61525990219d96582693fb8089a071",
+    "3cf0887f92c2a67c68dac775c8d5a254f8abffbd3563234e07832307ca0d515b"
+  ],
+  "excluded_counts": {
+    "v2_verdict_yes": 126,
+    "not_english": 7,
+    "v2_verdict_unclear": 4
+  },
+  "excluded": [
+    {
+      "asset_key": "015a1a67e6b79115cb41d846b52da7c1249d64dd638b2abcdaaa033ffe8d3999",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "020e28cab405705b2258c94e655f5dd90586aa4e16a646811187a98ba758b863",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "07d604e649a68b50f5f716067846494547193aa60949d7daa1d2cad45c8b939d",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "0867907adf72b861bff67e498cec3efe53b727f7972cb982c4528f10f6570f1e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "091b5c224503487f8cfd6ff9bf6960d592a512a73b24d9e949ed441cbb85d2f7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "0ca85d6908da1f41828021845f945c8ae653b66e82f538be3f9eb8c53a174b65",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "0fce11ecebb55851ba1033e7a13f2587f6d7e5d06388218c67e93a97696bdb72",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "0ff8d79479c49b8476ea11b3bb5daa908830a931d3a82ab90b6c5cc96480967d",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "1168b8d805caec75981265da349fc562568e3dfacc612230f4e2922dd287800c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "11b88173226f56372e44864a4b0f8d7a62414d07d69f282c7936f1c5c1bf8074",
+      "reason": "not_english:",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "12deae240df6cf776d43193efcff7e04ccc37ef2b9eef00b5e9136d3e510668a",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "144d22dbd67b64eabf4c85a385a88924d95bc3ff268b7db373e3efc2ec34128e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "15d214469346edd4506aa234c0099c2a61d83e6baefc0f6b0aab92261a8fa6da",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "15e2e7487cf06d3bbf473239bbbeb7699617baf72c39bc1f544358c12d5e94ac",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "1608847a45702848cc2adeada4d27b2bcdb88d6192da7ce18e8a87b56a140632",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "18d651c067c33e27cf715886d136a5a43b9d355c9017b280f2130c77cb5d184c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "197f7322c3589c81008f9127234e76d8cbbe91db874472f8807eb62e4c872c10",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "1a81236750b7da9654717f419a969b527624d7e90820fb1c75b6bfc0859646a8",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "1b1ffd7910b9803441ee4b17e09ad6208b74079866282d7ec4d20442441b7900",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "1b4cea6c0acc3cdf0d9d2b55641b5688dbb265841be4cba722f6abebec46cd7c",
+      "reason": "not_english:es",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "1bb18c4c4f045e92e58df01215644a4eed38b82ad9467c423c172cbad1089e2c",
+      "reason": "not_english:",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "1e2cecf595e795848cdd1184d01eecc253f5525e7c8b10b8f8ddad88e835051a",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "26e900fa0346faca4b96930411afa227931779c16eaf82f426b4673772bf4b52",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "28d116a32a4fa99758991b92b47a149d5af036fc622ee636ee0ebbbef1ac95b0",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "2982f781886427fde06142248ffb3d1d45d61893ac81d52d9fd15a5451602de2",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "299572bb96762d65807fbfdcb60081e4973a9b0f4c35d3005cbca54881103aba",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "2afe9b949a70d53624135db682640ee98f47d3615b899d9b1564fb5261ebf975",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "2cc7b65b1bcbc66780a10859ae4d6186fb0c468f5d4da5c9c265c4149910baf7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "2ddffadf325c8c3c07677b860c6448985479bf97f54804b607d3f4cd5823189d",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "2e4c5ac43be2de2145b8b2b594cab73ce2217732a3c6c72d4648506f02b57bca",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3090f7dd140e14b7f1a2be2a163bef9fc2e944e2cd2add3991befdbe977b74d1",
+      "reason": "v2_verdict_unclear",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "32f175fb505f3b356f175d3e22342af839acb13fb2abfba3c52951f9ab41c88b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "34137acfdac132eb4b5bfee2c39154b3b709918fb56d013142eecef6a01474ad",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "36616746eca9aeb979b5303662f12c996911900c969e8fa25c74da2bf4e0b7de",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3b227ff7caeb9e79bcc1784426621237e21ccc8f0031ee3200e864d41e2925af",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3bcc1e0d732959c8eca483e20c94dd5e5e73c5d0088890a2a4561e85d38c5c2b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3d46c98a726cb91b1f84a693d6f206121ea81a409a27d65c9cb79c0ab27692e2",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3eb9b6eba828fb16c7e854f84826697f10ca16211e0be127f82c1078cb309b8d",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "3fafceebee26cf348870ad131e52ad6f893d28a5dc83105c7abf26f4fbf1af12",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "428c29bc180d020387af96580a07d98312ba6968d967406bf63a3b5630634a89",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "460cde1e7535a8ea16cc0a05c216277c2ab5d17a325507a6d8d035cc2d828084",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "473025c32d59849b3209a1398e0dca0e0f6e25bdcfb48a34d9b77881b8f702a8",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "47a97d7f1152d7308d1380c8f68e95ff3b9ceeb9969e99c10dedc23f5a64b971",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "47b767ea8c7bf0fea90be75ad9a8dc4a990b344b18fdccb384aa0b22c91741ac",
+      "reason": "not_english:ARABIC",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "47d27ce5ac813b66a0d0639236fad5ae6964b4f8c4843549862325125a37b5fe",
+      "reason": "v2_verdict_unclear",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "4b18a8536afaa6ba3b0fee2d7b2f6cdcc73aa2c4505fc2c4647657409163a905",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "51af4b214a1ac4d9164a633afe7de47e0962fb299c3bac471009b23788051848",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "55bafb9367806f9fc438723dc13c849d7d33016fb48963957233993c4a5e4884",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "58fe3da1811d1fe480c6f17b54a447a5afacfb5d3de809f375ce95d7d8894238",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "5b65fba1f73ae0bffa9021bf630c232955714d2af62757aa3dd38b38c89bac0e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "5cec52aac6c942032bce868fe23abed738caa9d6323d9f27dec0576c05d993fa",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "5efd2eabbd13bf11e5f9e39e8fed8763e10f5ac39841b62873ff00c492b8e0b6",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "607525cdd3a06423bef55767eac315598e4cfe13eac47a0a11e354005a9c7648",
+      "reason": "v2_verdict_unclear",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6579816914d9d2182f12d079f31ee7cf8e40d46812d9340cbc9b9e6b8a8614c0",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6949e79462e5cc0418171f0042fa7dd6751623bc4f429a68a06ea18adc3640e9",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6ae97aac349b9143a124b8b6a9a69bd4176ed46fd0bb4a26505c9417f06856be",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6bb8827a217decbf546ec42509852209e2081bd6d3d00fa7327f9b09a3454383",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6c3b4eb8b5735cb02f57099a57a8dba77b116d4f8eb77a80979fcfaf95dfe00b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6db5c60bf827039b7512a7fa38925aa0477f027bc7683353428d9775aeaae040",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6e760dc740660b4210f200b816f959092fb7b66afaf18cae63ad8cbf92cb06bc",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "6fe97a5b6c8b778989927fbdd4dff0347b7c10b43ed9cdfd85a04ac7e50c3d0e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "71a170bff0360da173b0711cfbdef5993ac8a5470475863ad4fca7a1f97016dc",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "71a4371b97c7e9c3997c18410e16f8c004fe1e29db27c62918ffd67977be0fd3",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "724d624b38d0baa0d0f977e2bf95915a4e910ae316f7d0566ae044abf9763a09",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "752026375e4e7a0bc87b173e10fbaee3aca0d364537663fc7b1bcbfdb31634c7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "75798f8af1dbda1bb633f8b4d30f5d393757dcbbb79993795c6c0e459fc9f5c5",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "7612f56e2399c6740820f45696c0ef2d1a35b5510872039a82131bc0555d825f",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "7c2f9cc9c69511ebd83dc98b3febc64f4012b55b2bf134706b44f9f5ae0a6daa",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "80d28a2163122619dc318ace8d105d8b152232484da12dcd758a6e4acb48f652",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "87bcedb1837b8553e3c47f72ed00558d19f4304add0b4f3e82f2320698b39aac",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "8ad46736ff1a5e904fed900a7ddcbb3d10c60e7cd38a3f654dfb1b54947bbdb2",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "8ad942e55dbaabc1c19df58c0ba725ff599efb8581d4870590e35b4b7da6b681",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "8b09ac233a8baac06282ba351b3c9d6451cda3c97511b3fc895417549e7f4c8e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "8b41892a88c5de010243d97e17dc4c3c173943ec7527ca17003dd39af2afa0da",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "8e2f9e61c8e2b0f69f4f2c11aae1e4603d3947aa3a2708037d4e8527248a34df",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "9025cf08e06bf6d7c9084a347f4603b1fea91839b45b55404acc0098c2f0a2fe",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "936e3816f1f6b4c058ad512e8d22a93123c3500177f8e7e28a782cc237dd0072",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "960260c260b263cc16220983bfac1bf177b1f48aa08536f368d312a48aeb38e6",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "96044dd1282ff21ff202d656a4bdb0fac11a814a724f2cfd8807abf2652f1c1c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "9692ac17edae0c2c22ad8029e0a3eead788020035fdf07ae69b1b57a21c4bd93",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "9f897253e62fbfab1d70e22b959bc4004ecef5e0ba33d5c8ae7c91f3090b42b6",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "9f91bbeb509340c774f3d7374232c071eeeeb6ce5f1bd13df08b2bc2e2522940",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a0b1183cb3cbd8d1b9071c50242cca9624135508130ce188a072558de2fdcb82",
+      "reason": "not_english:es",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "a14373e5d3439bdd4256fef5679c74a3ef42bb5eea284411ae824633d98a300b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a235d518c1a276bc6b8576e0a229fe5ef1c7335c844ef48ab6bdeeb2211ed745",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "a3990fbd9cabb2269d87a658ebebbc673539240695e22a5a18182e5c30ad35ec",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a39a618980d9fa35266d61be49a5cd0c13e1ef8122cbd629063df3bf3b61b449",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a48141429d8874115be6734e4bbc6456ea4e26bf356c42a77325dba054c53f14",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a4a138e9b5c6521cfc6ec91766d6051b4efab51c86b3a4fae3738fd39ee0b823",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "a75cfb62b2052132d204ee60ddffd9f744feb7e3ff4dcb89ec724fa3d744eef5",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "aa40382ba140481e630597cbe3ada343123029e19be3fd07777ce0178e19149e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b144f3cf9083ea3218b8ef1487fd9c57738ed1ddcc98d6b4ee2cccf4d3c97f0e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b376d82d68bb206da16686274df1d9f89cf2b3054ae9c4ef166760c14fa63c18",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b5c1be6cca0d54f7f4dd9cd8aab966f2aebdea27cb7ff128cb0992eccc8b6678",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b660d12ded4a470af437f8b46ef81def5127edc6dda26e543535aaa278541628",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b7db146f659c4a866de6b1b34b2cf819295d7408c19b7d0cfbb8607f414a2478",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b7eb9bfe3b0fd586a5991bfaf8d3611da3600323629d94b8aeb5139d59b34a4b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "b9b43c0f9b2fa313802ee3bffd3812e797cf0379b5331f1cb8ca47e283c27513",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "b9fe9bc9da833e4c2ebde9b328fb4ba0361554db72ddfd5cc926846410594455",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ba854dd656726bb8b061e50d54f7908cd1dde472415fdfd93ed2aa33d5687e19",
+      "reason": "not_english:es",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "bc73bbc78b1a433de371608b9bee90c1a71c6ad92103155e481af5f3d47778a0",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "bc8195b1466fb56d076bb871f7a23451c0cb723514a18e09cdbad6e60d40ef65",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "bcb888e10741a546e7044ed0e18fa3e46165075ca99f5322635b5f7b154c14ea",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "bd3065fd4c716817f322d3950dbc59281bc00a7f269907def1cd490d139c1625",
+      "reason": "v2_verdict_unclear",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "c0812e073ebe0d974c93f98d69d249a88729cf67fbb1d66c65b8054b01789f70",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "c6823b7633dfe72782142a027b09f0058139f11b68388ea6f418f8366d95fd30",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "c719eb07c4c36b38800bfb3b2bfa91cd911dd4dc52ff5e5d02fb3db02f3bb83c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "caab883a63db40d670b0376015c9deaa24d4b5f0ed82431aefb7cb9538ee2143",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "caafcd6b617e87c98f034154f9376955e1cb739e04f764231041ec42b6861cce",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "cabd52dc9f8ff4af8e0d47c3a2457a3da2b0535f2ac9db6a05dbdbcfa67c061e",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "cb6c33b9140c3d4286ac67ef8ccc1f11b5c71bce80d5f1137e61eb6ae39d08d2",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "cc4d64d96e0aa54d661a6a1046ee81898bd5222c78bcaf500869f6dd39a729f7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ce0d97f0c404943177262beb8d3110bfe56f147b2a698d1413699b19a0df7405",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "cf098bce7f66b834d6178c6c0e90052297124ba82f20475e8f6d0cb4b749444c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "d15ba43f98977a9ba17ee52f5fcc061c442f1ed4fbb62c67de30d0d809256c4a",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "d29956edc3aed0866305f79b7b2609963c6a811cca863e0cfe167531a0071907",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "d39b12cb3c46e542ad5d57125bad37bcb76610ecdf9018b4242976dec7e32178",
+      "reason": "not_english:es",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "d3dc2c9f25745c3ce3a7662dbc762f940e46e6d37350212f314df7625aef8de7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "d5e9bda89b8f853e78f54f53a725a6c84b05238d180671f9dd7ddb56127c550a",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ddbb835b5778687c43585851e9ee9a7b28fc3e9be40443f14a7e62af7b3d73ba",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ddc0e0ab26de5fba008c3bc1f9a4c36081c24bdb9a5223eceac0b52e36b7b68d",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "de8c1be37d4d00cc65e874ef0fba4aa554c1042331694cffecf37536a364efbd",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "dfdee4529d08d925ebc8d9b9ed8d8af7335bbcb34fdf89becd5f5e2d13a99cc4",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "e0800a3fb7da0ebae151134176cf3df7f254ac3beafe7b9eb5cafe93902e46b4",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "e0bdec686cad5725602155e20593dc1f2c86c636b34cbc855df18f39bd0ee74c",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "e3e03f1daf6740bf8ba36406766ec8df46c775d92e4ce100ec25d158ab0164f2",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "e9176c96fcfb288d9f88bde3c84e43a055b07df9ea80cce46fbcc52e9551d9d3",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "eaef21227fa37b535a73ec9e23468b3e1eabcc5037eb4568800cce279342cda3",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ed47d715cdc52ecc93d5ebaeb2b6c6f8a56144aaa0aba4e49710876f0a743396",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "ee68c1e271b82cc9420ed179f38534e4cf4123ec10fb6d76f43ba64feca33f28",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "f261c91b61ac4a4b1aa4351fcaeae5cc68e70dc35e29af7b3125b6ebbfcd45a4",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "f2eaa0c248828d8c55eba3986cf821b9e810f0dcb1757e1b69064d8d0ae93b1f",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "f701bde2af9dba278c2d7530a0de4f13ff5539aa20aa89828ae8b57ab5215e5b",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "document_sample_50"
+    },
+    {
+      "asset_key": "f9465db88384b0599e55f6a7b69737c12884be9b3cd83c568aaf3d5df01c3d24",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "fddd3d0aa041407155e7cfc792d357a1da7a6bea2d9ddc255080a5fc36a21364",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "fe5639583eca5fb2ee4626666de0c06e7956b631d8430402e41ac36f07e2aa96",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    },
+    {
+      "asset_key": "fec623a3538f174460f57f8c050a0447345988fcb8f0c96fa933c32f37fbb3c7",
+      "reason": "v2_verdict_yes",
+      "sample_arm": "event_sample_167"
+    }
+  ],
+  "sources": {
+    "event_level_windows.csv": "de021a186e1f41650cfde3dbbb611b7afeba4c1cc6c744b3c601f5b7784588f5",
+    "event_level_queue.csv": "16c6f5c307594b20b3e9415bae196691096bbfe2d9830326c70376016beb9e8c",
+    "event_level_gold.csv": "5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c",
+    "human_annotations_pooled.csv": "2cadd656b477f86ef3d866a9ae928b2968e763794514232e9c6d50ad23f34832",
+    "gold_validation.csv": "541d4db4c71455a19f65fbe088e1adef9a1351621f58a4b5c67c5c9012027157"
+  }
+}

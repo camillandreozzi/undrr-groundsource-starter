@@ -1,0 +1,15 @@
+{
+  "config": "no_vocab",
+  "transforms": [
+    "no_vocab"
+  ],
+  "log": [
+    "no_vocab.hazard: applied"
+  ],
+  "prompt_name": "unified_verification_recall__no_vocab",
+  "system_sha16": "77eabfd79ad4ce56",
+  "system_sha256": "77eabfd79ad4ce5668d1310c56b73334d9d8f37069c1f0d5afe7a19200fe151a",
+  "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "system_chars": 5382
+}

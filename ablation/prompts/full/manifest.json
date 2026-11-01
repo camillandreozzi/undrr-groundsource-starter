@@ -1,0 +1,11 @@
+{
+  "config": "full",
+  "transforms": [],
+  "log": [],
+  "prompt_name": "unified_verification_recall",
+  "system_sha16": "cfbf35634b527da4",
+  "system_sha256": "cfbf35634b527da461c1efde92d36dd9bc449d63070bdfc5d29262afbc399541",
+  "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "system_chars": 7358
+}

@@ -1,0 +1,16 @@
+{
+  "config": "no_evidence",
+  "transforms": [
+    "no_evidence"
+  ],
+  "log": [
+    "no_evidence.grounding: applied",
+    "no_evidence.confidence: applied"
+  ],
+  "prompt_name": "unified_verification_recall__no_evidence",
+  "system_sha16": "479cbf9c89fa9dd8",
+  "system_sha256": "479cbf9c89fa9dd84c7bceae8774086a11a0ff414855e63ce8faea07d8a57800",
+  "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+  "schema_sha256": "7eb266f3d3974f054ec3339b319e8c39fdb80a87af13ae1ee69efce9454e7dad",
+  "system_chars": 7319
+}

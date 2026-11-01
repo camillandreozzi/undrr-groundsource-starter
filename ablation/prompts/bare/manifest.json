@@ -1,0 +1,20 @@
+{
+  "config": "bare",
+  "transforms": [
+    "no_evidence",
+    "no_vocab",
+    "reduced_rules"
+  ],
+  "log": [
+    "no_evidence.grounding: applied",
+    "no_evidence.confidence: applied",
+    "no_vocab.hazard: applied",
+    "reduced_rules: applied"
+  ],
+  "prompt_name": "unified_verification_recall__bare",
+  "system_sha16": "5f45ef2702bc5918",
+  "system_sha256": "5f45ef2702bc5918e172d6fe66cbe1156c720db9fcd7ab5dd348b1b6ee8f0a53",
+  "user_instruction_sha256": "c76286be19f4d669006fe6966181389607e692cfa21de0cd48cd90478028be57",
+  "schema_sha256": "c2e4e187551ec6a2999a76d9c461f33b087f4b6b553200be08907ff228b7a815",
+  "system_chars": 817
+}

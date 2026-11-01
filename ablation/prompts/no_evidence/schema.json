@@ -1,0 +1,119 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "schema": {
+      "$defs": {
+        "EventExtraction": {
+          "properties": {
+            "is_single_actual_event": {
+              "description": "True only when the document's primary subject is one specific disaster event, OR a clearly delineated section devotes substantive coverage (multi-sentence narrative, named places, named impacts, named dates) to this specific event. False is allowed for broader, policy-oriented, or multi-event documents.",
+              "title": "Is Single Actual Event",
+              "type": "boolean"
+            },
+            "is_verifiable_event": {
+              "description": "True only when this event has a hazard, at least one event date, at least one location that satisfies the Phase 2 location rules (sub-national hazard scope, country justification, technological/Chernobyl rule), and confidence is high or medium. Returned events should normally all be verifiable.",
+              "title": "Is Verifiable Event",
+              "type": "boolean"
+            },
+            "event_hazard": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Hazard type explicitly stated in the text, such as Flood or Earthquake.",
+              "title": "Event Hazard"
+            },
+            "event_dates": {
+              "description": "Event timing only (NOT publication / workshop / report dates). Prefer YYYY-MM-DD; allow YYYY-MM, YYYY, or a short source phrase such as 'monsoon season 2017' when that is the most precise form the text supports.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Event Dates",
+              "type": "array"
+            },
+            "affected_locations": {
+              "description": "Specific locations explicitly said to be affected by THIS event. Prefer granular places (city, district, neighbourhood, facility). Apply the strict Phase 2 location rules: bare country only when justified; technological / nuclear / industrial events restricted to facility + exclusion zone + directly-impacted settlements (no downwind/fall-out countries); no country+sub-region duplication. If the most granular location is a sub-building / vehicle / room / pier / hangar that is too specific to find on a map, ALSO include its parent city or district as a SEPARATE item, so downstream geocoding has a polygon fallback.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Affected Locations",
+              "type": "array"
+            },
+            "location_admin_levels": {
+              "description": "PARALLEL to affected_locations (same length, same order). For each entry, self-tag the most specific admin level the location refers to, picked from: 'point' (building/facility), 'neighbourhood', 'city', 'admin2' (county/district), 'admin1' (state/province/region), 'country', 'coastal_zone' (e.g. 'Andaman coast'), 'basin' (river/lake basin), 'feature' (geological/oceanic feature), or 'unknown' as a last resort. You MUST emit one tag per location, in the same order.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Location Admin Levels",
+              "type": "array"
+            },
+            "key_impacts": {
+              "description": "Up to 5 concise impact statements explicitly stated in the text. Include qualitative impacts when numbers are missing (e.g. 'homes damaged', 'communities displaced', 'agricultural losses reported'). Do not invent numbers.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Key Impacts",
+              "type": "array"
+            },
+            "event_confidence": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Extraction confidence: 'high' (hazard + valid location + date + at least one impact, all explicit), 'medium' (hazard + valid location explicit; date or impacts partial), or 'low' (event real but evidence thin, only passing mention, or any Phase 2 rule forced fields to be left empty). Multi-event extraction should return only high/medium events.",
+              "title": "Event Confidence"
+            },
+            "missing_information": {
+              "description": "Missing or weak elements, e.g. 'exact date missing', 'impact numbers missing', 'only country-level location but country rule failed', 'only passing mention', 'downwind countries dropped per Chernobyl rule', 'hazard type broad'.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Missing Information",
+              "type": "array"
+            }
+          },
+          "required": [
+            "is_single_actual_event",
+            "is_verifiable_event",
+            "event_hazard",
+            "event_dates",
+            "affected_locations",
+            "location_admin_levels",
+            "key_impacts",
+            "event_confidence",
+            "missing_information"
+          ],
+          "title": "EventExtraction",
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "properties": {
+        "events": {
+          "description": "All distinct, source-supported, verifiable disaster/hazard events found in the document. Include only high- or medium-confidence events with explicit hazard, event timing, and valid directly affected locations. Return an empty list when no event satisfies those reliability requirements.",
+          "items": {
+            "$ref": "#/$defs/EventExtraction"
+          },
+          "title": "Events",
+          "type": "array"
+        }
+      },
+      "title": "DocumentEventExtractions",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events"
+      ]
+    },
+    "name": "DocumentEventExtractions",
+    "strict": true
+  }
+}

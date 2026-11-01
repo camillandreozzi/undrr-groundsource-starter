@@ -1,0 +1,15 @@
+{
+  "config": "reduced_rules",
+  "transforms": [
+    "reduced_rules"
+  ],
+  "log": [
+    "reduced_rules: applied"
+  ],
+  "prompt_name": "unified_verification_recall__reduced_rules",
+  "system_sha16": "ff6bbb1ffa7dcfbb",
+  "system_sha256": "ff6bbb1ffa7dcfbbaefc7034e61aa2b8a766bbf29266811be9f2c8210921487b",
+  "user_instruction_sha256": "c76286be19f4d669006fe6966181389607e692cfa21de0cd48cd90478028be57",
+  "schema_sha256": "8a80079b516e62bb01fb3be2080b97a2f773981176eceb3589404abd39e78ab3",
+  "system_chars": 2815
+}

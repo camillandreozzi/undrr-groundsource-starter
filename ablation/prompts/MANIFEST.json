@@ -1,0 +1,79 @@
+{
+  "full": {
+    "config": "full",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "unified_verification_recall",
+    "system_sha16": "cfbf35634b527da4",
+    "system_sha256": "cfbf35634b527da461c1efde92d36dd9bc449d63070bdfc5d29262afbc399541",
+    "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 7358
+  },
+  "no_evidence": {
+    "config": "no_evidence",
+    "transforms": [
+      "no_evidence"
+    ],
+    "log": [
+      "no_evidence.grounding: applied",
+      "no_evidence.confidence: applied"
+    ],
+    "prompt_name": "unified_verification_recall__no_evidence",
+    "system_sha16": "479cbf9c89fa9dd8",
+    "system_sha256": "479cbf9c89fa9dd84c7bceae8774086a11a0ff414855e63ce8faea07d8a57800",
+    "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+    "schema_sha256": "7eb266f3d3974f054ec3339b319e8c39fdb80a87af13ae1ee69efce9454e7dad",
+    "system_chars": 7319
+  },
+  "no_vocab": {
+    "config": "no_vocab",
+    "transforms": [
+      "no_vocab"
+    ],
+    "log": [
+      "no_vocab.hazard: applied"
+    ],
+    "prompt_name": "unified_verification_recall__no_vocab",
+    "system_sha16": "77eabfd79ad4ce56",
+    "system_sha256": "77eabfd79ad4ce5668d1310c56b73334d9d8f37069c1f0d5afe7a19200fe151a",
+    "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 5382
+  },
+  "reduced_rules": {
+    "config": "reduced_rules",
+    "transforms": [
+      "reduced_rules"
+    ],
+    "log": [
+      "reduced_rules: applied"
+    ],
+    "prompt_name": "unified_verification_recall__reduced_rules",
+    "system_sha16": "ff6bbb1ffa7dcfbb",
+    "system_sha256": "ff6bbb1ffa7dcfbbaefc7034e61aa2b8a766bbf29266811be9f2c8210921487b",
+    "user_instruction_sha256": "c76286be19f4d669006fe6966181389607e692cfa21de0cd48cd90478028be57",
+    "schema_sha256": "8a80079b516e62bb01fb3be2080b97a2f773981176eceb3589404abd39e78ab3",
+    "system_chars": 2815
+  },
+  "bare": {
+    "config": "bare",
+    "transforms": [
+      "no_evidence",
+      "no_vocab",
+      "reduced_rules"
+    ],
+    "log": [
+      "no_evidence.grounding: applied",
+      "no_evidence.confidence: applied",
+      "no_vocab.hazard: applied",
+      "reduced_rules: applied"
+    ],
+    "prompt_name": "unified_verification_recall__bare",
+    "system_sha16": "5f45ef2702bc5918",
+    "system_sha256": "5f45ef2702bc5918e172d6fe66cbe1156c720db9fcd7ab5dd348b1b6ee8f0a53",
+    "user_instruction_sha256": "c76286be19f4d669006fe6966181389607e692cfa21de0cd48cd90478028be57",
+    "schema_sha256": "c2e4e187551ec6a2999a76d9c461f33b087f4b6b553200be08907ff228b7a815",
+    "system_chars": 817
+  }
+}

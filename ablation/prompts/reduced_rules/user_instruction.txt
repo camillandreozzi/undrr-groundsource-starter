@@ -1,0 +1,1 @@
+Extract every disaster or hazard event reported in this metadata and document text. Return JSON matching the schema exactly.
