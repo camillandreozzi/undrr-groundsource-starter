@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "is_single_actual_event": true,
+      "is_verifiable_event": true,
+      "event_hazard": "Tropical cyclone (Cyclone Aila), storm surge, and flooding",
+      "event_dates": [
+        "2009-05-25"
+      ],
+      "affected_locations": [
+        "Koyra Upazila, Khulna District, Bangladesh",
+        "Dakshin Bedkashi Union, Koyra Upazila, Khulna District, Bangladesh"
+      ],
+      "location_admin_levels": [
+        "admin2",
+        "unknown"
+      ],
+      "key_impacts": [
+        "Killed 33 people in Dakshin Bedkashi Union",
+        "Washed away 3,520 houses and partially damaged 1,800 in Dakshin Bedkashi Union",
+        "Coastal embankment in Dakshin Bedkashi breached in six places; 20.55 km damaged",
+        "Villages in Dakshin Bedkashi were inundated twice daily by tidal water until polder rehabilitation in 2013",
+        "Across Bangladesh, 243,191 houses were washed away and 370,587 were partially damaged"
+      ],
+      "event_confidence": "high",
+      "evidence_snippets": [
+        "Cyclone Aila hit the Bangladesh coast on 25 May 2009 with 65 knots and a 2–6 m storm surge.",
+        "In Dakshin Bedkashi, cyclone Aila killed 33 people, washed away 3520 houses, partially damaged 1800, and inundated almost the entire union.",
+        "The storm surge overtopped the coastal embankment, breached it in six places and damaged 20.55 km of embankment."
+      ],
+      "missing_information": [
+        "National casualty totals not provided in the source excerpt",
+        "Administrative level for 'Union' is below available tags; tagged as unknown"
+      ]
+    }
+  ]
+}

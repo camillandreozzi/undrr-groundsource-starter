@@ -321,3 +321,25 @@ make ablation-score        # -> ablation/ABLATION_SCORES.md (refuses until all 1
 ## 10. Deviations log
 
 _None yet. Append dated entries below; do not edit entries above._
+
+### 2026-11-01 — Evaluation run completed; no deviation from the rules above
+
+**Run.** `make ablation-run ABL_WORKERS=6` from commit `8b9e736`, preflight ok.
+800/800 calls returned on the first attempt (0 errors, 0 retries), every one
+served as `openai/gpt-5` by the OpenAI provider with finish reason `stop`.
+Wall time 1 h 51 min; cost $29.74. The worker count is not part of the design
+(the job order is seeded and independent of it), so 6 rather than the Makefile
+default of 4 is recorded here only for completeness.
+
+**Scoring.** `make ablation-score` on all 10 runs, with no `--allow-partial`.
+The Experiment A reproduction check passed. All 80 windows are in every
+contrast.
+
+**Post-hoc diagnostic, not pre-registered.** §8 of the report shows a
+replicate difference for `no_evidence` whose interval excludes 0 (detection F1
++9.6 pp, r2 − r1). Per-replicate counts from `ablation_pairs.csv` show that the
+model returned an empty `events` list (confirmed in `raw/`) on 4 event-present
+windows in `no_evidence` r1, against 1 in r2. The other runs had 0–2 such
+windows: `full` r1 1, `full` r2 2, `no_vocab` r2 1, all other runs 0. This
+analysis is exploratory and changes no pre-registered result. It is the reason
+the `no_evidence` primary contrast should not be read as an effect.
