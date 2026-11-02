@@ -1,0 +1,11 @@
+{
+  "config": "p4",
+  "transforms": [],
+  "log": [],
+  "prompt_name": "compact_schema_focused",
+  "system_sha16": "7dc36a745e810ca0",
+  "system_sha256": "7dc36a745e810ca004a1113a5f1c8cae7789edd956fc14ba340355778cdb9bae",
+  "user_instruction_sha256": "7c333a5c58d834747fc3fd5c61aacc19a38e1ec7781326c3dd2eeaf5b5d8b5f6",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "system_chars": 4651
+}

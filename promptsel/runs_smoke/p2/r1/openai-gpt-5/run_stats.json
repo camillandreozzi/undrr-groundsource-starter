@@ -1,0 +1,35 @@
+{
+  "config": "p2",
+  "replicate": 1,
+  "model": "openai/gpt-5",
+  "label": "GPT-5 (OpenRouter)",
+  "reasoning_effort": "medium",
+  "structured_output": "json_schema",
+  "prompt_name": "case_study_high_recall",
+  "system_sha16": "817d7ac69ce27db3",
+  "system_sha256": "817d7ac69ce27db326336cf7b9d6d14c237745ca7f76210d83b35bc53944fb53",
+  "user_instruction_sha256": "b8ed8a2fd9852adf5396ce07cd5f8f547cb53a8258239a2487d15022229e0b34",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "max_chars": 12000,
+  "documents_total": 3,
+  "documents_finished": 3,
+  "documents_errored": 0,
+  "error_rows": 0,
+  "events": 13,
+  "attempts": 3,
+  "failed_attempts": 0,
+  "prompt_tokens": 16825,
+  "completion_tokens": 11997,
+  "reasoning_tokens": 9920,
+  "cost_usd": 0.1347,
+  "served_models": {
+    "openai/gpt-5": 3
+  },
+  "providers": {
+    "OpenAI": 3
+  },
+  "finish_reasons": {
+    "stop": 3
+  },
+  "finished_at": "2026-11-02T10:02:15+00:00"
+}

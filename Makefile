@@ -10,6 +10,8 @@
 	event-sample event-annotate event-score event-audit-sample event-audit \
 	ablation-prompts ablation-windows ablation-dry-run ablation-smoke ablation-freeze \
 	ablation-run ablation-score \
+	promptsel-prompts promptsel-dry-run promptsel-smoke promptsel-freeze promptsel-run \
+	promptsel-geocode-preflight promptsel-geocode promptsel-score \
 	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
 	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
 	or-docsample-agreement or-docsample-score or-citations or-stratified
@@ -395,6 +397,55 @@ ablation-run:
 #    Refuses until all 10 runs exist; PARTIAL=1 previews.
 ablation-score:
 	$(VENV_PYTHON) -m ablation.score_ablation $(if $(PARTIAL),--allow-partial,)
+
+# --------------------------------------------------------------------------
+# Experiment D — the prompt-5 selection, assessed after the fact
+# (promptsel/PROMPTSEL_PROTOCOL.md).
+#
+# Prompts 1-4 as they stand in src/fonte/prompts.py, and prompt 5, on
+# Experiment B's 80 frozen windows and harness (OpenRouter GPT-5, two
+# replicates each), scored against Experiment A's blind gold, with yield,
+# evidence support and geocoding success. Commit the protocol, FROZEN.json and
+# the scorer before promptsel-run: that commit is the pre-registration.
+# --------------------------------------------------------------------------
+PSEL_WORKERS ?= 4
+
+# 1. Render the five prompts -> promptsel/prompts/. Refuses to clobber.
+promptsel-prompts:
+	$(VENV_PYTHON) -m promptsel.configs --write $(if $(FORCE),--force,)
+
+# 2. Hashes, catalogue check, cost estimate, preflight status. No spend.
+promptsel-dry-run:
+	$(VENV_PYTHON) -m promptsel.runner --dry-run
+
+# 3. 3 non-evaluation documents x 5 prompts -> promptsel/runs_smoke/ (~$0.75).
+promptsel-smoke:
+	$(VENV_PYTHON) -m promptsel.runner --smoke 3 --workers 5
+
+# 4. Pin prompts, windows, gold, lexicon, geocoding rule, sources, packages
+#    -> promptsel/FROZEN.json. Then commit.
+promptsel-freeze:
+	$(VENV_PYTHON) -m promptsel.runner --freeze $(if $(FORCE),--force,)
+
+# 5. 5 prompts x 2 replicates x 80 windows, interleaved; always resumes,
+#    so re-run it to retry errored windows.
+promptsel-run:
+	$(VENV_PYTHON) -m promptsel.runner --workers $(PSEL_WORKERS)
+
+# 6. How many place lookups the root Nominatim cache already answers. No writes.
+promptsel-geocode-preflight:
+	$(VENV_PYTHON) -m promptsel.geocode --preflight
+
+# 7. Copy the needed cache keys locally (the root cache is only read), resolve
+#    every distinct place once -> promptsel/geocode/resolutions.csv. Misses go
+#    to the public Nominatim endpoint at 1.1 s per request.
+promptsel-geocode:
+	$(VENV_PYTHON) -m promptsel.geocode --resolve --user-agent "$(NOMINATIM_USER_AGENT)"
+
+# 8. -> promptsel/PROMPTSEL_SCORES.md, promptsel_scores.json, promptsel_pairs.csv,
+#    promptsel_geocode_pairs.csv. Refuses until all 10 runs exist; PARTIAL=1 previews.
+promptsel-score:
+	$(VENV_PYTHON) -m promptsel.score_promptsel $(if $(PARTIAL),--allow-partial,)
 
 # --------------------------------------------------------------------------
 # Multi-model benchmark — prompt 5 held fixed, the model varied via OpenRouter,

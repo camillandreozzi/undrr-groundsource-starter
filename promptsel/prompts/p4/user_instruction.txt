@@ -1,0 +1,1 @@
+Extract every distinct verified disaster event from this metadata and document text. Keep dates and locations strict, omit under-specified mentions, and return JSON matching the schema exactly.

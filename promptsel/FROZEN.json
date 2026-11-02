@@ -1,0 +1,105 @@
+{
+  "prompts": {
+    "p1": {
+      "config": "p1",
+      "transforms": [],
+      "log": [],
+      "prompt_name": "baseline_strict_location",
+      "system_sha16": "fc32dc937842cbbe",
+      "system_sha256": "fc32dc937842cbbe14ae84de9575fd2349d437ed512561ddc1ffee7438f562e8",
+      "user_instruction_sha256": "cc6fec5fac87f8ecb13580c74d5409bc0446e57a27b54b2713cf5d988616cf41",
+      "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+      "system_chars": 14493
+    },
+    "p2": {
+      "config": "p2",
+      "transforms": [],
+      "log": [],
+      "prompt_name": "case_study_high_recall",
+      "system_sha16": "817d7ac69ce27db3",
+      "system_sha256": "817d7ac69ce27db326336cf7b9d6d14c237745ca7f76210d83b35bc53944fb53",
+      "user_instruction_sha256": "b8ed8a2fd9852adf5396ce07cd5f8f547cb53a8258239a2487d15022229e0b34",
+      "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+      "system_chars": 5942
+    },
+    "p3": {
+      "config": "p3",
+      "transforms": [],
+      "log": [],
+      "prompt_name": "verification_first",
+      "system_sha16": "e04eead4d4dfa804",
+      "system_sha256": "e04eead4d4dfa80419d19604568bd714ed29b6e49c7ac0539a08667cd2c55c89",
+      "user_instruction_sha256": "c2c57952e0dce715eb5a4652b2552ae4ca34a4fc83e79d5c5b9fa9d297a5e2d2",
+      "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+      "system_chars": 5858
+    },
+    "p4": {
+      "config": "p4",
+      "transforms": [],
+      "log": [],
+      "prompt_name": "compact_schema_focused",
+      "system_sha16": "7dc36a745e810ca0",
+      "system_sha256": "7dc36a745e810ca004a1113a5f1c8cae7789edd956fc14ba340355778cdb9bae",
+      "user_instruction_sha256": "7c333a5c58d834747fc3fd5c61aacc19a38e1ec7781326c3dd2eeaf5b5d8b5f6",
+      "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+      "system_chars": 4651
+    },
+    "p5": {
+      "config": "p5",
+      "transforms": [],
+      "log": [],
+      "prompt_name": "unified_verification_recall",
+      "system_sha16": "cfbf35634b527da4",
+      "system_sha256": "cfbf35634b527da461c1efde92d36dd9bc449d63070bdfc5d29262afbc399541",
+      "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+      "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+      "system_chars": 7358
+    }
+  },
+  "p5_equals_ablation_full": true,
+  "ablation_frozen_sha256": "60599d5d81c495861de3c7b8fc6abf125807a9a10a0ebdad734cc7220ec4e229",
+  "windows_sha256": "384e684ce93ccbe05f52dafea3c93fa445d04b37fab038b96d1a90bd0bd98a95",
+  "expA_gold_sha256": "5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c",
+  "lexicon_sha256": "aec7441915b955d233b556eae71e6fe23eb74ede9430d57d585a15dc945dee84",
+  "model": "openai/gpt-5",
+  "reasoning_effort": "medium",
+  "structured_output": "json_schema",
+  "replicates": 2,
+  "job_seed": 47,
+  "geocode": {
+    "band": [
+      0.7,
+      0.98
+    ],
+    "band_inclusive": "both",
+    "cache_version": 2,
+    "allow_non_polygon": false,
+    "min_interval_s": 1.1,
+    "endpoint": "https://nominatim.openstreetmap.org/search"
+  },
+  "sources": {
+    "ablation/configs.py": "e492bfb5d444b95a4f9742401b743f2ec8220043460954ef822e0d92a1e1a2c4",
+    "ablation/runner.py": "0b8aff23114c48215e4ccaa06c0d54e8eaf0d7246955293f3bae97c1d2f849bb",
+    "ablation/schemas.py": "0df47ad42bd2ad05b6c222de1a5b31cdd37076d1edcc2af8b8b1750079642ed9",
+    "ablation/normalise_hazards.py": "70a64a4d65d99ccc9186fbf649d5fb2c4c31dbbad84334f4feabe10c9facd4ef",
+    "ablation/score_ablation.py": "b14d10d9ae1f4616e2d3e4c726fdc2f57e37f43bb96a21e8566b1c948cec9098",
+    "eval/event_matching.py": "c60f7e5135f61fe8df441efe0775813415577d76c719ab4dfd5c4200fb3675e3",
+    "eval/score_event_level.py": "a7bd5718b21b592fc8b2bd5a5859a5269d863427a1e8f2f8f96e10dd55fd2658",
+    "eval/score_against_human.py": "1397a59f5a95ff3dbe88c73a758bc6e7f172b8dce8789164a4544f85a58981a6",
+    "benchmark_openrouter/run_openrouter.py": "7fa306340f8c383ca52596ce5215fe68325a656a3c6dfb72995b89df68be9306",
+    "benchmark_openrouter/citation_quality.py": "2052e13c317366aca8cddd2f37982b0250337d64e84f214a64fade5ceff3c10c",
+    "src/fonte/prompts.py": "3881b5fba0012746c46b09605c8acee8dfb280c0a2da6218c1130c540117a0d4",
+    "src/fonte/app_event_focus.py": "d68506815881f968546adc50af86dae151dbddd5602c62e0b2374ccfbb68d93c",
+    "src/fonte/polygon_resolver.py": "4fc9911909bdc33548f59ee88fc070021c92677051459d449d80c78d290d0c26",
+    "src/fonte/run_polygon_resolution.py": "8fdba70dc51b4c0fe78ce8534195cb9619602975e625c1d7b9e83c646428e89f",
+    "src/fonte/geometry_postprocess.py": "1d67378df219b154aeb132469a6edf84f5f085f8297386c5b064e9469a09e454",
+    "scripts/compare_resolution_filtered_runs.py": "454cba31969d2a45f207a00d900e43ce5a6d5debb1b88c1230e86decfb4c4973"
+  },
+  "packages": {
+    "openai": "2.32.0",
+    "pydantic": "2.13.1",
+    "numpy": "2.4.4",
+    "pycountry": "26.2.16",
+    "shapely": "2.1.2"
+  }
+}

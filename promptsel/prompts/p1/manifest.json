@@ -1,0 +1,11 @@
+{
+  "config": "p1",
+  "transforms": [],
+  "log": [],
+  "prompt_name": "baseline_strict_location",
+  "system_sha16": "fc32dc937842cbbe",
+  "system_sha256": "fc32dc937842cbbe14ae84de9575fd2349d437ed512561ddc1ffee7438f562e8",
+  "user_instruction_sha256": "cc6fec5fac87f8ecb13580c74d5409bc0446e57a27b54b2713cf5d988616cf41",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "system_chars": 14493
+}

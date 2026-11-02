@@ -1,0 +1,11 @@
+{
+  "config": "p3",
+  "transforms": [],
+  "log": [],
+  "prompt_name": "verification_first",
+  "system_sha16": "e04eead4d4dfa804",
+  "system_sha256": "e04eead4d4dfa80419d19604568bd714ed29b6e49c7ac0539a08667cd2c55c89",
+  "user_instruction_sha256": "c2c57952e0dce715eb5a4652b2552ae4ca34a4fc83e79d5c5b9fa9d297a5e2d2",
+  "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+  "system_chars": 5858
+}

@@ -1,0 +1,1 @@
+Verify this document conservatively. Extract every distinct event only when the source supports hazard, event timing, directly affected location, and high/medium confidence. Apply the strict location/date exclusions and omit weak or unsupported event mentions. Return JSON matching the schema exactly.

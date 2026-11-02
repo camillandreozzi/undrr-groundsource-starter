@@ -1,0 +1,57 @@
+{
+  "p1": {
+    "config": "p1",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "baseline_strict_location",
+    "system_sha16": "fc32dc937842cbbe",
+    "system_sha256": "fc32dc937842cbbe14ae84de9575fd2349d437ed512561ddc1ffee7438f562e8",
+    "user_instruction_sha256": "cc6fec5fac87f8ecb13580c74d5409bc0446e57a27b54b2713cf5d988616cf41",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 14493
+  },
+  "p2": {
+    "config": "p2",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "case_study_high_recall",
+    "system_sha16": "817d7ac69ce27db3",
+    "system_sha256": "817d7ac69ce27db326336cf7b9d6d14c237745ca7f76210d83b35bc53944fb53",
+    "user_instruction_sha256": "b8ed8a2fd9852adf5396ce07cd5f8f547cb53a8258239a2487d15022229e0b34",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 5942
+  },
+  "p3": {
+    "config": "p3",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "verification_first",
+    "system_sha16": "e04eead4d4dfa804",
+    "system_sha256": "e04eead4d4dfa80419d19604568bd714ed29b6e49c7ac0539a08667cd2c55c89",
+    "user_instruction_sha256": "c2c57952e0dce715eb5a4652b2552ae4ca34a4fc83e79d5c5b9fa9d297a5e2d2",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 5858
+  },
+  "p4": {
+    "config": "p4",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "compact_schema_focused",
+    "system_sha16": "7dc36a745e810ca0",
+    "system_sha256": "7dc36a745e810ca004a1113a5f1c8cae7789edd956fc14ba340355778cdb9bae",
+    "user_instruction_sha256": "7c333a5c58d834747fc3fd5c61aacc19a38e1ec7781326c3dd2eeaf5b5d8b5f6",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 4651
+  },
+  "p5": {
+    "config": "p5",
+    "transforms": [],
+    "log": [],
+    "prompt_name": "unified_verification_recall",
+    "system_sha16": "cfbf35634b527da4",
+    "system_sha256": "cfbf35634b527da461c1efde92d36dd9bc449d63070bdfc5d29262afbc399541",
+    "user_instruction_sha256": "afb6d1ed8cc3e2952fc0426380c2016c75561f27fb1d84f1d99f85e3a0ce63da",
+    "schema_sha256": "12d454a0bfc2ad40f6300582e6aca99df8089af27b8bfe0a01bfbb48bc0d05a4",
+    "system_chars": 7358
+  }
+}
