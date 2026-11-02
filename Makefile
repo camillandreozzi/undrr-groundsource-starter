@@ -7,7 +7,7 @@
 	strict-rules \
 	annotate annotate-prefetch annotate-score \
 	docsample docsample-annotate docsample-score \
-	event-sample event-annotate event-score event-audit-sample event-audit \
+	event-sample event-annotate event-score event-audit-sample event-audit event-pack \
 	ablation-prompts ablation-windows ablation-dry-run ablation-smoke ablation-freeze \
 	ablation-run ablation-score \
 	promptsel-prompts promptsel-dry-run promptsel-smoke promptsel-freeze promptsel-run \
@@ -354,6 +354,12 @@ event-audit-sample:
 #    eval/event_link_audit.csv.
 event-audit:
 	$(VENV_PYTHON) -m streamlit run eval/link_audit_app.py
+
+# 6. Zip the blind annotation for a second annotator: the app, the 45 windows
+#    and protocol §1 — no gold, no model output, no strata. Writes
+#    outputs/event_annotation_<name>.zip; FORCE=1 rebuilds it.
+event-pack:
+	$(VENV_PYTHON) eval/pack_event_annotation.py --annotator "$(ANNOTATOR)" $(if $(FORCE),--force,)
 
 # --------------------------------------------------------------------------
 # Experiment B — controlled ablation of prompt 5 (ablation/ABLATION_PROTOCOL.md).
