@@ -1,0 +1,41 @@
+{
+  "resolved_at": "2026-11-02T14:01:39+00:00",
+  "runs": [
+    "p1 r1",
+    "p1 r2",
+    "p2 r1",
+    "p2 r2",
+    "p3 r1",
+    "p3 r2",
+    "p4 r1",
+    "p4 r2",
+    "p5 r1",
+    "p5 r2",
+    "Exp B full r1",
+    "Exp B full r2",
+    "GPT-5 Sept (OpenRouter)",
+    "prompt 5 (gpt-5, Azure) \u2014 production"
+  ],
+  "pairs": 430,
+  "resolved": 352,
+  "fetched_from_network": 224,
+  "seed": {
+    "root_bytes": 622911095,
+    "root_mtime_ns": 1788371382485793461,
+    "root_keys": 5163,
+    "keys_touched": 572,
+    "keys_copied": 262,
+    "keys_missing_from_root": 310,
+    "local_keys": 262
+  },
+  "local_cache_sha256": "59f17a2740280b5f03141e74a5015e472a019795df3090179eb12505803e4d15",
+  "resolutions_sha256": "63106292cc1cb04176dae7ebfeb9768aad94b17af10bf30ac6e680e18f8b3013",
+  "band": [
+    0.7,
+    0.98
+  ],
+  "cache_version": 2,
+  "allow_non_polygon": false,
+  "min_interval_s": 1.1,
+  "endpoint": "https://nominatim.openstreetmap.org/search"
+}

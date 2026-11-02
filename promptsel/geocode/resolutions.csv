@@ -1,0 +1,431 @@
+location_text,country_hint,resolved,query,used_fallback,osm_type,admin_level,geometry_source,is_polygon,is_country_fallback,importance,display_name,error,fetched_from
+Ab Kamari District,,1,Ab Kamari District,0,relation,admin2,polygon,1,0,0.4276151273745538,"Ab Kamari, Badghis Province, Afghanistan",,network
+Ab Kamari District (Badghis Province),,1,Ab Kamari District (Badghis Province),0,relation,admin2,polygon,1,0,0.4276151273745538,"Ab Kamari, Badghis Province, Afghanistan",,network
+Aceh,,1,Aceh,0,relation,admin1,polygon,1,0,0.6827398466265611,"Aceh, Sumatra, Indonesia",,cache
+Aceh,ad,1,Aceh,0,relation,admin1,polygon,1,0,0.6827398466265611,"Aceh, Sumatra, Indonesia",,cache
+"Aceh Province, Indonesia",ad,1,Indonesia,1,relation,country,polygon,1,0,0.865911372798923,Indonesia,,network
+Aceh's west coast,ad,1,west coast,1,relation,admin1,polygon,1,0,0.5113180030075909,"West Coast, New Zealand",,network
+Acelhuate River,sv,0,Acelhuate River,0,,,,0,0,,,no match,network
+Adriatic,,0,Adriatic,0,,,,0,0,,,no match,network
+Adriatic Sea,,0,Adriatic Sea,0,,,,0,0,,,no match,network
+Afghanistan,,1,Afghanistan,0,relation,country,polygon,1,0,0.7765206237644999,Afghanistan,,cache
+Algiers,,1,Algiers,0,node,city,bbox,1,0,0.7039782435616084,"Algiers, Sidi M'Hamed District, Algiers, 16000, Algeria",,network
+Almaty,,1,Almaty,0,relation,city,polygon,1,0,0.7102229689593114,"Almaty, Kazakhstan",,cache
+Amatrice,dz,1,Amatrice,0,relation,city,polygon,1,0,0.5276196923055696,"Amatrice, Rieti, Lazio, 02012, Italy",,cache
+"Amatrice, Italy",dz,1,Italy,1,way,other,polygon,1,0,0.2702882353650111,"Embassy of Italy, 18, Chevalley, El Biar, Bouzareah District, Algiers, 16030, Algeria",,network
+Amu,,0,Amu,0,,,,0,0,,,no match,network
+"Amu (Lamu Island), Lamu County, Kenya",,1,Kenya,1,relation,country,polygon,1,0,0.783477911008153,Kenya,,network
+Amu Island,,0,Amu Island,0,,,,0,0,,,no match,cache
+Anak Krakatau,,0,Anak Krakatau,0,,,,0,0,,,no match,cache
+Andhra Pradesh,,1,Andhra Pradesh,0,relation,admin1,polygon,1,0,0.6777178961126312,"Andhra Pradesh, India",,cache
+Anguilla,,1,Anguilla,0,relation,country,polygon,1,0,0.6367124283366318,Anguilla,,cache
+Aragon,sv,1,Aragon,0,relation,admin1,polygon,1,0,0.7005522630506825,"Aragon, Spain",,cache
+Arid and semi-arid areas of the north and the northeast in Kenya,ke,0,Arid and semi-arid areas of the north and the northeast in Kenya,0,,,,0,0,,,no match,network
+Armero,za,1,Armero,0,relation,city,polygon,1,0,0.4171682178165082,"Armero, Norte, Tolima, RAP (Especial) Central, Colombia",,network
+"Armero, Colombia",za,1,"Armero, Colombia",0,relation,city,polygon,1,0,0.4171682178165082,"Armero, Norte, Tolima, RAP (Especial) Central, Colombia",,network
+Arsi,,1,Arsi,0,relation,other,polygon,1,0,0.42012812644844244,"Arsi, Oromia Region, Ethiopia",,cache
+"Arsi, Ethiopia",,1,"Arsi, Ethiopia",0,relation,other,polygon,1,0,0.42012812644844244,"Arsi, Oromia Region, Ethiopia",,network
+Arusha,,1,Arusha,0,node,city,bbox,1,0,0.5170519255991147,"Arusha, Arusha Municipal, Arusha, Northern Zone, 23103, Tanzania",,cache
+Arusha Region,,1,Arusha Region,0,relation,admin1,polygon,1,0,0.5012003947230182,"Arusha, Northern Zone, Tanzania",,network
+"Arusha Region, United Republic of Tanzania",,1,"Arusha Region, United Republic of Tanzania",0,relation,admin1,polygon,1,0,0.5012003947230182,"Arusha, Northern Zone, Tanzania",,network
+"Arusha, Tanzania",,1,"Arusha, Tanzania",0,node,city,bbox,1,0,0.5170519255991147,"Arusha, Arusha Municipal, Arusha, Northern Zone, 23103, Tanzania",,network
+"Arusha, United Republic of Tanzania",,1,"Arusha, United Republic of Tanzania",0,node,city,bbox,1,0,0.5170519255991147,"Arusha, Arusha Municipal, Arusha, Northern Zone, 23103, Tanzania",,network
+Attica,,1,Attica,0,relation,admin1,polygon,1,0,0.5567125821035981,"Attica, Greece",,cache
+"Attica, Greece",,1,"Attica, Greece",0,relation,admin1,polygon,1,0,0.5567125821035981,"Attica, Greece",,network
+Bab El Oued,,1,Bab El Oued,0,relation,neighbourhood,polygon,1,0,0.4424389152612867,"Bab Al Wadi, Beau Fraisier, Bab El Oued District, Algiers, 16000, Algeria",,cache
+Badakhshan Province,,1,Badakhshan Province,0,relation,admin1,polygon,1,0,0.5482067992474675,"Badakhshan Province, Afghanistan",,cache
+Badakshan Province,,0,Badakshan Province,0,,,,0,0,,,no match,network
+Badghis Province,,1,Badghis Province,0,relation,admin1,polygon,1,0,0.5138773686990251,"Badghis Province, Afghanistan",,cache
+Baghlan Province,,1,Baghlan Province,0,relation,admin1,polygon,1,0,0.5225935908006523,"Baghlan Province, Afghanistan",,cache
+Baghraan District (Helmand Province),,0,Baghraan District (Helmand Province),0,,,,0,0,,,no match,network
+Balkh Province,,1,Balkh Province,0,relation,admin1,polygon,1,0,0.5324611966093848,"Balkh Province, Afghanistan",,cache
+Banda Aceh,ad,1,Banda Aceh,0,relation,city,polygon,1,0,0.5280336667190371,"Banda Aceh, Aceh, Sumatra, Indonesia",,cache
+"Banda Aceh, Aceh, Indonesia",ad,1,"Banda Aceh, Aceh, Indonesia",0,relation,city,polygon,1,0,0.5280336667190371,"Banda Aceh, Aceh, Indonesia",,network
+"Banda Aceh, Indonesia",ad,1,"Banda Aceh, Indonesia",0,relation,city,polygon,1,0,0.5280336667190371,"Banda Aceh, Aceh, Sumatra, Indonesia",,network
+Bandar Dayyer,,1,Bandar Dayyer,0,relation,city,polygon,1,0,0.40110878673898587,"Dayyer, Dayyer Central District, Dayyer County, Bushehr Province, Iran",,network
+"Bandar Dayyer, Iran",,1,"Bandar Dayyer, Iran",0,relation,city,polygon,1,0,0.40110878673898587,"Dayyer, Dayyer Central District, Dayyer County, Bushehr Province, Iran",,network
+Barbuda,,1,Barbuda,0,relation,admin1,polygon,1,0,0.508737697987384,"Barbuda, Antigua and Barbuda",,cache
+"Barbuda, Antigua and Barbuda",,1,"Barbuda, Antigua and Barbuda",0,relation,admin1,polygon,1,0,0.508737697987384,"Barbuda, Antigua and Barbuda",,network
+"Bayway Refinery (Phillips 66), Linden, New Jersey",us,1,New Jersey,1,relation,admin1,polygon,1,0,0.7945428500899242,"New Jersey, United States",,network
+"Bayway Refinery Phillips 66, Linden, New Jersey",us,1,New Jersey,1,relation,admin1,polygon,1,0,0.7945428500899242,"New Jersey, United States",,network
+Behsoud District,,0,Behsoud District,0,,,,0,0,,,no match,network
+Behsoud District (Nangarhar Province),,0,Behsoud District (Nangarhar Province),0,,,,0,0,,,no match,cache
+Behsoud District (Nangarhar),,0,Behsoud District (Nangarhar),0,,,,0,0,,,no match,network
+Behsoud district of Nangarhar,,0,Behsoud district of Nangarhar,0,,,,0,0,,,no match,network
+Behsud District (Nangarhar Province),,1,Behsud District (Nangarhar Province),0,node,city,bbox,1,0,0.14672576562142362,"Behsud, Bihsud, Nangarhar Province, 0039, Afghanistan",,network
+"Behsud District, Nangarhar Province",,1,"Behsud District, Nangarhar Province",0,relation,admin2,polygon,1,0,0.4177265377721238,"Bihsud, Nangarhar Province, 0039, Afghanistan",,network
+Bener Meriah,,1,Bener Meriah,0,relation,admin2,polygon,1,0,0.45508699080836246,"Bener Meriah, Aceh, Sumatra, Indonesia",,cache
+Bhuj,,1,Bhuj,0,node,city,bbox,1,0,0.43995261775923533,"Bhuj, Bhuj Taluka, Kachchh, Gujarat, 370001, India",,cache
+"Bhuj, Gujarat, India",,1,"Bhuj, Gujarat, India",0,node,city,bbox,1,0,0.43995261775923533,"Bhuj, Bhuj Taluka, Kachchh, Gujarat, 370001, India",,network
+Bihar,,1,Bihar,0,relation,admin1,polygon,1,0,0.6774550293627322,"Bihar, India",,cache
+"Bihar, India",,1,"Bihar, India",0,relation,admin1,polygon,1,0,0.6774550293627322,"Bihar, India",,cache
+Bilchiragh,,1,Bilchiragh,0,relation,admin2,polygon,1,0,0.4397146143447338,"Bilchiragh, Faryab Province, Afghanistan",,network
+Bilchiragh city,,0,Bilchiragh city,0,,,,0,0,,,no match,network
+Blayais Nuclear Power Plant,jp,0,Blayais Nuclear Power Plant,0,,,,0,0,,,no match,cache
+Boulder,,1,Boulder,0,relation,city,polygon,1,0,0.6184399895111568,"Boulder, Boulder County, Colorado, United States",,cache
+"Boulder, Colorado, USA",,1,"Boulder, Colorado, USA",0,relation,city,polygon,1,0,0.6184399895111568,"Boulder, Boulder County, Colorado, United States",,network
+Boumerdes,,1,Boumerdes,0,relation,admin1,polygon,1,0,0.52366103230568,"Boumerdes, Algeria",,cache
+Boumerdès,,1,Boumerdès,0,relation,admin1,polygon,1,0,0.52366103230568,"Boumerdes, Algeria",,cache
+Boundary region of the Gonave microplate,,0,Boundary region of the Gonave microplate,0,,,,0,0,,,no match,network
+Brahmapur,,1,Brahmapur,0,node,city,bbox,1,0,0.4743347046684315,"Brahmapur, Rangeilunda, Ganjam, Odisha, 760001, India",,network
+"Brahmapur, Odisha",,1,"Brahmapur, Odisha",0,node,city,bbox,1,0,0.4743347046684315,"Brahmapur, Rangeilunda, Ganjam, Odisha, 760001, India",,cache
+British Columbia,,1,British Columbia,0,relation,admin1,polygon,1,0,0.7448936325656426,"British Columbia, Canada",,network
+British Columbia coast,,1,British Columbia coast,0,way,other,polygon,1,0,5.659189745932735e-05,"Coast Hotel, 10103, 98 Avenue, Fort St. John, Peace River Regional District, British Columbia, V1J 1P8, Canada",,network
+"British Columbia, Canada",,1,"British Columbia, Canada",0,relation,admin1,polygon,1,0,0.7448936325656426,"British Columbia, Canada",,network
+Brooklyn,us,1,Brooklyn,0,relation,neighbourhood,polygon,1,0,0.7384986389272082,"Brooklyn, Kings County, New York, United States",,cache
+"Brooklyn, New York",us,1,"Brooklyn, New York",0,relation,neighbourhood,polygon,1,0,0.7384986389272082,"Brooklyn, Kings County, New York, United States",,network
+"Brooklyn, New York City",us,1,"Brooklyn, New York City",0,relation,neighbourhood,polygon,1,0,0.7384986389272082,"Brooklyn, Kings County, New York, United States",,network
+Bucharest,dz,1,Bucharest,0,relation,city,polygon,1,0,0.761229833694605,"Bucharest, Romania",,cache
+"Bucharest, Romania",dz,1,"Bucharest, Romania",0,relation,city,polygon,1,0,0.761229833694605,"Bucharest, Romania",,network
+Calabria,za,1,Calabria,0,relation,admin1,polygon,1,0,0.746538013092615,"Calabria, Italy",,cache
+"Calabria, Italy",za,1,"Calabria, Italy",0,relation,admin1,polygon,1,0,0.746538013092615,"Calabria, Italy",,network
+California,,1,California,0,relation,admin1,polygon,1,0,0.8641679537633348,"California, United States",,cache
+"California, USA",,1,"California, USA",0,relation,admin1,polygon,1,0,0.8641679537633348,"California, United States",,network
+"California, United States",,1,"California, United States",0,relation,admin1,polygon,1,0,0.8641679537633348,"California, United States",,network
+"Camp Fire (California), United States",,1,"Camp Fire (California), United States",0,way,other,polygon,1,0,5.85343709467768e-05,"Camp Fire, Carson Street, Long Beach, Los Angeles County, California, 90716, United States",,network
+Caribbean coast of Venezuela,,0,Caribbean coast of Venezuela,0,,,,0,0,,,no match,cache
+Cedar Heights,us,1,Cedar Heights,0,relation,other,polygon,1,0,0.36107739355702545,"Cedar Heights, Prince George's County, Maryland, United States",,network
+Central Aceh,,1,Aceh,1,relation,admin1,polygon,1,0,0.6827398466265611,"Aceh, Sumatra, Indonesia",,cache
+Chamoli District,in,1,Chamoli District,0,relation,other,polygon,1,0,0.6153211827952665,"Chamoli, Uttarakhand, India",,cache
+Chamoli district,in,1,Chamoli district,0,relation,other,polygon,1,0,0.6153211827952665,"Chamoli, Uttarakhand, India",,cache
+"Chamoli district, Uttarakhand",in,1,"Chamoli district, Uttarakhand",0,relation,other,polygon,1,0,0.6153211827952665,"Chamoli, Uttarakhand, India",,network
+Charleston,,1,Charleston,0,relation,city,polygon,1,0,0.6598943815490479,"Charleston, Charleston County, South Carolina, United States",,cache
+"Charleston, South Carolina, USA",,1,"Charleston, South Carolina, USA",0,relation,city,polygon,1,0,0.6598943815490479,"Charleston, Charleston County, South Carolina, United States",,network
+Chemtal District,,1,Chemtal District,0,node,city,bbox,1,0,0.16004000076295108,"Chemtal, Chimtal, Balkh Province, Afghanistan",,network
+Chemtal District (Balkh Province),,1,Chemtal District (Balkh Province),0,node,city,bbox,1,0,0.16004000076295108,"Chemtal, Chimtal, Balkh Province, Afghanistan",,cache
+"Chemtal District, Balkh Province",,1,"Chemtal District, Balkh Province",0,relation,admin2,polygon,1,0,0.43249580853699826,"Chimtal, Balkh Province, Afghanistan",,network
+Chernobyl,jp,1,Chernobyl,0,relation,city,polygon,1,0,0.5537711406671614,"Chornobyl, Vyshhorod Raion, Kyiv Oblast, 07270, Ukraine",,cache
+Chhattisgarh,,1,Chhattisgarh,0,relation,admin1,polygon,1,0,0.6144226120519485,"Chhattisgarh, India",,cache
+Christchurch,,1,Christchurch,0,relation,city,polygon,1,0,0.65369460759656,"Christchurch, Christchurch City, Canterbury, New Zealand",,cache
+"Christchurch, New Zealand",,1,"Christchurch, New Zealand",0,relation,city,polygon,1,0,0.65369460759656,"Christchurch, Christchurch City, Canterbury, New Zealand",,cache
+Colorado Springs,us,1,Colorado Springs,0,relation,city,polygon,1,0,0.6388631434938513,"Colorado Springs, El Paso County, Colorado, United States",,network
+Columbia,,1,Columbia,0,relation,city,polygon,1,0,0.621965039906015,"Columbia, Richland County, South Carolina, United States",,cache
+"Columbia, South Carolina, USA",,1,"Columbia, South Carolina, USA",0,relation,city,polygon,1,0,0.621965039906015,"Columbia, Richland County, South Carolina, United States",,network
+Cumbria,gb,1,Cumbria,0,relation,other,polygon,1,0,0.660459502553793,"Cumbria, England, United Kingdom",,cache
+Daikundi Province,,0,Daikundi Province,0,,,,0,0,,,no match,cache
+Dakshin Bedkashi Union,bd,0,Dakshin Bedkashi Union,0,,,,0,0,,,no match,cache
+"Dakshin Bedkashi Union, Koyra",bd,1,Koyra,1,relation,admin2,polygon,1,0,0.38288639822487014,"Koyra, Khulna District, Khulna Division, Bangladesh",,network
+"Dakshin Bedkashi Union, Koyra Upazila",bd,0,"Dakshin Bedkashi Union, Koyra Upazila",0,,,,0,0,,,no match,network
+"Dakshin Bedkashi Union, Koyra Upazila, Khulna District, Bangladesh",bd,1,Bangladesh,1,relation,country,polygon,1,0,0.7632783925934236,Bangladesh,,network
+"Dakshin Bedkashi union, Koyra upazila",bd,0,"Dakshin Bedkashi union, Koyra upazila",0,,,,0,0,,,no match,cache
+Dayyer,,1,Dayyer,0,node,city,bbox,1,0,0.40110878673898587,"Bandar Dayyer, دهستان اولی, Dayyer Central District, Deyr County, Bushehr Province, 75541-45741, Iran",,cache
+Dellys,,1,Dellys,0,relation,city,polygon,1,0,0.472046593022794,"Dellys, Dellys District, Boumerdes, Algeria",,cache
+Dellys Lajenna beach,,0,Dellys Lajenna beach,0,,,,0,0,,,no match,network
+"Denver, CO",,1,"Denver, CO",0,relation,city,polygon,1,0,0.7010332708032859,"Denver, Colorado, United States",,cache
+"Denver, Colorado",,1,"Denver, Colorado",0,relation,city,polygon,1,0,0.7010332708032859,"Denver, Colorado, United States",,network
+Dominica,,1,Dominica,0,relation,country,polygon,1,0,0.6806984692315406,Dominica,,cache
+Doshi District,,1,Doshi District,0,relation,city,polygon,1,0,0.4162648857824267,"Doshi, Minamitsuru County, Yamanashi Prefecture, Japan",,network
+"Doshi District, Baghlan Province",,1,"Doshi District, Baghlan Province",0,relation,admin2,polygon,1,0,0.4322290442816154,"Dushi, Baghlan Province, Afghanistan",,network
+"Dubuque County, IA",,1,"Dubuque County, IA",0,relation,admin2,polygon,1,0,0.5462521722390039,"Dubuque County, Iowa, United States",,cache
+"Dubuque County, Iowa",,1,"Dubuque County, Iowa",0,relation,admin2,polygon,1,0,0.5462521722390039,"Dubuque County, Iowa, United States",,network
+Dushanbe,,1,Dushanbe,0,relation,city,polygon,1,0,0.6144832693101554,"Dushanbe, 734000, Tajikistan",,cache
+East Hararghe,,0,East Hararghe,0,,,,0,0,,,no match,network
+East Harerghe,,1,East Harerghe,0,relation,other,polygon,1,0,0.3977269304249201,"East Harerghe, Oromia Region, Ethiopia",,cache
+East Harerghe district,,0,East Harerghe district,0,,,,0,0,,,no match,network
+"East Harerghe, Ethiopia",,1,"East Harerghe, Ethiopia",0,relation,other,polygon,1,0,0.3977269304249201,"East Harerghe, Oromia Region, Ethiopia",,network
+Eastern Samar,ph,1,Eastern Samar,0,relation,admin1,polygon,1,0,0.52366103230568,"Eastern Samar, Eastern Visayas, Philippines",,cache
+Eastern Samar Province,ph,1,Eastern Samar Province,0,relation,other,polygon,1,0,0.0800550019073777,"DepED Samar, Barangay 7, Poblacion, San Andres, Catbalogan, Samar, Eastern Visayas, 6700, Philippines",,network
+El Asnam,,1,El Asnam,0,relation,city,polygon,1,0,0.3704139248106284,"El Asnam, Bechloul District, Bouira, 10000, Algeria",,cache
+Emilia Romagna,ch,1,Emilia Romagna,0,relation,admin1,polygon,1,0,0.7461464612287649,"Emilia-Romagna, Italy",,cache
+Emilia Romagna,dz,1,Emilia Romagna,0,relation,admin1,polygon,1,0,0.7461464612287649,"Emilia-Romagna, Italy",,network
+"Emilia Romagna, Italy",ch,1,Italy,1,way,other,polygon,1,0,0.29396319343666205,"Embassy Italy, 14, Elfenstrasse, Brunnadern, Stadtteil IV, Bern, Bern-Mittelland administrative district, Bernese Mittelland administrative region, Bern, 3005, Switzerland",,network
+Emilia-Romagna,ch,1,Emilia-Romagna,0,relation,admin1,polygon,1,0,0.7461464612287649,"Emilia-Romagna, Italy",,network
+Emilia-Romagna,dz,1,Emilia-Romagna,0,relation,admin1,polygon,1,0,0.7461464612287649,"Emilia-Romagna, Italy",,cache
+"Emilia-Romagna, Italy",dz,1,Italy,1,way,other,polygon,1,0,0.2702882353650111,"Embassy of Italy, 18, Chevalley, El Biar, Bouzareah District, Algiers, 16030, Algeria",,network
+Emmental,,1,Emmental,0,relation,admin2,polygon,1,0,0.4668490071334186,"Emmental administrative district, Emmental-Oberaargau administrative region, Bern, Switzerland",,cache
+"Emmental, Bern, Switzerland",,1,"Emmental, Bern, Switzerland",0,relation,admin2,polygon,1,0,0.4668490071334186,"Emmental administrative district, Emmental-Oberaargau administrative region, Bern, Switzerland",,network
+England,,1,England,0,relation,admin1,polygon,1,0,0.8954187298341272,"England, United Kingdom",,cache
+Eritrea's Red Sea coast,,1,Eritrea,2,relation,country,polygon,1,1,0.7081105858050415,Eritrea,,network
+Farah Province,,1,Farah Province,0,relation,admin1,polygon,1,0,0.5134662851420186,"Farah Province, Afghanistan",,cache
+Farkia,in,1,Farkia,0,node,city,bbox,1,0,0.4948059991981721,"Farkiya, Ihsem Subdistrict, Ariha District, Idleb Governorate, Syria",,cache
+"Farkia, Chamoli district",in,1,Chamoli district,1,relation,other,polygon,1,0,0.6153211827952665,"Chamoli, Uttarakhand, India",,network
+"Farkia, Chamoli district, Uttarakhand",in,1,Uttarakhand,1,relation,admin1,polygon,1,0,0.6610712250486577,"Uttarakhand, India",,network
+Faryab Province,,1,Faryab Province,0,relation,admin1,polygon,1,0,0.5145652740402702,"Faryab Province, Afghanistan",,cache
+Fenadesal Sur,sv,0,Fenadesal Sur,0,,,,0,0,,,no match,cache
+"Fenadesal Sur, El Salvador",sv,1,El Salvador,1,relation,country,polygon,1,0,0.7402124648600784,El Salvador,,network
+Florida,,1,Florida,0,relation,admin1,polygon,1,0,0.8085777143682812,"Florida, United States",,cache
+Fort McMurray,,1,Fort McMurray,0,relation,city,polygon,1,0,0.5268258579297417,"Fort McMurray, Wood Buffalo, Alberta, Canada",,cache
+"Fort McMurray, Alberta, Canada",,1,"Fort McMurray, Alberta, Canada",0,relation,city,polygon,1,0,0.5268258579297417,"Fort McMurray, Wood Buffalo, Alberta, Canada",,network
+Fukushima,,1,Fukushima,0,relation,city,polygon,1,0,0.5789363916449071,"Fukushima, Fukushima Prefecture, Japan",,cache
+Fukushima Daiichi (Number One) Nuclear Power Plant,jp,0,Fukushima Daiichi (Number One) Nuclear Power Plant,0,,,,0,0,,,no match,network
+Fukushima Daiichi Nuclear Power Plant,jp,0,Fukushima Daiichi Nuclear Power Plant,0,,,,0,0,,,no match,cache
+Fukushima Daiichi Nuclear Power Station,jp,1,Fukushima Daiichi Nuclear Power Station,0,way,other,polygon,1,0,5.79865720606854e-05,"Fukushima-Daiichi Nuclear Power Station 2 containment building, 広野小高線, Hosoya, Okuma, Futaba County, Fukushima Prefecture, 979-1472, Japan",,cache
+Fukushima Daiichi Nuclear Power Station (NPS),jp,0,Fukushima Daiichi Nuclear Power Station (NPS),0,,,,0,0,,,no match,network
+"Fukushima Daiichi Nuclear Power Station (NPS), Japan",jp,1,Japan,1,relation,country,polygon,1,0,0.9383765725984483,Japan,,network
+Fukushima Prefecture,,1,Fukushima Prefecture,0,relation,admin1,polygon,1,0,0.6830152862959278,"Fukushima Prefecture, Japan",,cache
+Fukushima Prefecture,jp,1,Fukushima Prefecture,0,relation,admin1,polygon,1,0,0.6830152862959278,"Fukushima Prefecture, Japan",,cache
+Gaurikund,in,1,Gaurikund,0,node,city,bbox,1,0,0.13336833524071104,"Gaurikund, Ukhimath, Rudraprayag, Uttarakhand, 246477, India",,network
+"Gaurikund, Uttarakhand",in,1,"Gaurikund, Uttarakhand",0,node,city,bbox,1,0,0.13336833524071104,"Gaurikund, Ukhimath, Rudraprayag, Uttarakhand, 246477, India",,network
+Ghazni Province,,1,Ghazni Province,0,relation,admin1,polygon,1,0,0.5262134963861106,"Ghazni Province, Afghanistan",,cache
+Ghor Province,,1,Ghor Province,0,relation,admin1,polygon,1,0,0.5189517291632535,"Ghor Province, Afghanistan",,cache
+Gloucestershire,gb,1,Gloucestershire,0,relation,other,polygon,1,0,0.6699551462486708,"Gloucestershire, England, United Kingdom",,cache
+Gonave microplate,,0,Gonave microplate,0,,,,0,0,,,no match,cache
+Gonave microplate boundary region,,0,Gonave microplate boundary region,0,,,,0,0,,,no match,network
+Gopalpur,,1,Gopalpur,0,relation,admin2,polygon,1,0,0.24003750133516438,"Gopalpur, Bhagalpur, Bihar, India",,network
+"Gopalpur, Odisha",,1,"Gopalpur, Odisha",0,node,city,bbox,1,0,0.16005347905699244,"Gopalpur, Rangeilunda, Ganjam, Odisha, 761002, India",,cache
+Great Barrier Reef,au,0,Great Barrier Reef,0,,,,0,0,,,no match,cache
+Guelmim,,1,Guelmim,0,relation,city,polygon,1,0,0.43720322864280375,"Guelmim, Pachalik de Guelmim باشوية كلميم, Guelmim Province, Guelmim-Oued Noun, Morocco",,cache
+"Guelmim, Morocco",,1,"Guelmim, Morocco",0,relation,city,polygon,1,0,0.43720322864280375,"Guelmim, Pachalik de Guelmim باشوية كلميم, Guelmim Province, Guelmim-Oued Noun, Morocco",,network
+Guiuan,ph,1,Guiuan,0,node,city,bbox,1,0,0.38584692642506985,"Guiuan, Eastern Samar, Eastern Visayas, 6808, Philippines",,cache
+"Guiuan, Eastern Samar",ph,1,"Guiuan, Eastern Samar",0,node,city,bbox,1,0,0.38584692642506985,"Guiuan, Eastern Samar, Eastern Visayas, 6808, Philippines",,network
+Gujarat,,1,Gujarat,0,relation,admin1,polygon,1,0,0.6741844665996941,"Gujarat, India",,cache
+"Gujarat state, India",,1,India,1,relation,country,polygon,1,0,0.8910953652546315,India,,network
+"Gujarat, India",,1,"Gujarat, India",0,relation,admin1,polygon,1,0,0.6741844665996941,"Gujarat, India",,cache
+Hazrat Sultan District,,1,Hazrat Sultan District,0,node,city,bbox,1,0,0.16004000076295108,"Hazrat-e Sultan, Hazrati Sultan, Samangan Province, Afghanistan",,network
+Hazrat Sultan District (Samangan Province),,1,Hazrat Sultan District (Samangan Province),0,node,admin2,bbox,1,0,0.24000999999999997,"Hazrat-e Sultan, Hazrati Sultan, Samangan Province, Afghanistan",,network
+"Hazrat Sultan District, Samangan Province",,1,"Hazrat Sultan District, Samangan Province",0,node,admin2,bbox,1,0,0.24000999999999997,"Hazrat-e Sultan, Hazrati Sultan, Samangan Province, Afghanistan",,network
+Helmand Province,,1,Helmand Province,0,relation,admin1,polygon,1,0,0.5443179127470759,"Helmand Province, Afghanistan",,cache
+Herat Province,,1,Herat Province,0,relation,admin1,polygon,1,0,0.5292803645572135,"Herat Province, Afghanistan",,cache
+"Hess Port Reading Refinery, Port Reading, New Jersey",us,1,New Jersey,1,relation,admin1,polygon,1,0,0.7945428500899242,"New Jersey, United States",,network
+Houston,,1,Houston,0,relation,city,polygon,1,0,0.7370168476604813,"Houston, Harris County, Texas, United States",,cache
+"Houston, Texas, USA",,1,"Houston, Texas, USA",0,relation,city,polygon,1,0,0.7370168476604813,"Houston, Harris County, Texas, United States",,network
+Hyogo Prefecture,,1,Hyogo Prefecture,0,relation,admin1,polygon,1,0,0.71139799111587,"Hyogo Prefecture, Japan",,cache
+Iowa,,1,Iowa,0,relation,admin1,polygon,1,0,0.7613030857280315,"Iowa, United States",,cache
+Itajaí Valley,br,1,Itajaí Valley,0,way,other,polygon,1,0,5.909437705038556e-05,"Valley International School, Avenida Osvaldo Reis, Nova Divineia, Praia Brava, Itajaí, Santa Catarina, South Region, 88306-600, Brazil",,cache
+Itapocu Valley,br,0,Itapocu Valley,0,,,,0,0,,,no match,network
+Jakarta,,1,Jakarta,0,relation,city,polygon,1,0,0.7480095115175435,"Special Capital Region of Jakarta, Indonesia",,cache
+Jalalabad,,1,Jalalabad,0,relation,city,polygon,1,0,0.5327306261630756,"Jalalabad, Nangarhar Province, Afghanistan",,cache
+Japan's coastline,,1,Japan,2,relation,country,polygon,1,1,0.9383765725984483,Japan,,network
+Java,,1,Java,0,relation,other,polygon,1,0,0.7131720117366189,"Java, Indonesia",,cache
+"Java, Indonesia",,1,"Java, Indonesia",0,relation,other,polygon,1,0,0.7131720117366189,"Java, Indonesia",,network
+Jharkhand,,1,Jharkhand,0,relation,admin1,polygon,1,0,0.6203170479135773,"Jharkhand, India",,cache
+"Jo Davies County, IL",,1,IL,1,relation,country,polygon,1,0,0.8513271287749382,Israel,,cache
+"Jo Davies County, Illinois",,1,Illinois,1,relation,admin1,polygon,1,0,0.79917034057826,"Illinois, United States",,network
+"Jo Daviess County, Illinois",,1,"Jo Daviess County, Illinois",0,relation,admin2,polygon,1,0,0.5699755604528415,"Jo Daviess County, Illinois, United States",,network
+Joplin,,1,Joplin,0,relation,city,polygon,1,0,0.5591694185621222,"Joplin, Jasper County, Missouri, United States",,cache
+"Joplin, Missouri",,1,"Joplin, Missouri",0,relation,city,polygon,1,0,0.5591694185621222,"Joplin, Jasper County, Missouri, United States",,cache
+Kajaki District (Helmand Province),,1,Kajaki District (Helmand Province),0,relation,admin2,polygon,1,0,0.43433333885256975,"Kajaki, Helmand Province, Afghanistan",,network
+Kajiado County,,1,Kajiado County,0,relation,admin1,polygon,1,0,0.4534965645646641,"Kajiado County, Kenya",,cache
+"Kajiado County, Kenya",,1,"Kajiado County, Kenya",0,relation,admin1,polygon,1,0,0.4534965645646641,"Kajiado County, Kenya",,network
+Kandahar Province,,1,Kandahar Province,0,relation,admin1,polygon,1,0,0.5385873012009311,"Kandahar Province, Afghanistan",,cache
+Karnali River,,0,Karnali River,0,,,,0,0,,,no match,network
+Karnali River basin,,0,Karnali River basin,0,,,,0,0,,,no match,cache
+"Karnali River basin, Nepal",,1,Nepal,1,relation,country,polygon,1,0,0.7641040022523001,Nepal,,network
+Karthali,np,1,Karthali,0,node,neighbourhood,bbox,1,0,0.14671666819256882,"Karthali, Barhabise-02, Barhabise, Sindhupalchowk, Bagamati Province, Nepal",,network
+"Karthali, Sindhupalchowk",np,1,"Karthali, Sindhupalchowk",0,node,neighbourhood,bbox,1,0,0.14671666819256882,"Karthali, Barhabise-02, Barhabise, Sindhupalchowk, Bagamati Province, Nepal",,network
+"Karthali, Sindhupalchowk District",np,0,"Karthali, Sindhupalchowk District",0,,,,0,0,,,no match,network
+Kashmir,,1,Kashmir,0,node,city,bbox,1,0,0.14670416800183103,"Kashmir, Sheo Tehsil, Barmer, Rajasthan, India",,cache
+Kashmir region,,0,Kashmir region,0,,,,0,0,,,no match,cache
+Kedarnath,in,1,Kedarnath,0,node,city,bbox,1,0,0.16004883421072708,"Kedarnath, Ukhimath, Rudraprayag, Uttarakhand, India",,cache
+"Kedarnath, Uttarakhand",in,1,"Kedarnath, Uttarakhand",0,node,city,bbox,1,0,0.16004883421072708,"Kedarnath, Ukhimath, Rudraprayag, Uttarakhand, India",,network
+Kenya,,1,Kenya,0,relation,country,polygon,1,0,0.783477911008153,Kenya,,cache
+Kenya,ke,1,Kenya,0,relation,country,polygon,1,0,0.783477911008153,Kenya,,cache
+Kerala,,1,Kerala,0,relation,admin1,polygon,1,0,0.6885488094967197,"Kerala, India",,cache
+"Kerala, India",,1,"Kerala, India",0,relation,admin1,polygon,1,0,0.6885488094967197,"Kerala, India",,network
+Khan Abad District,,1,Khan Abad District,0,relation,admin2,polygon,1,0,0.42894012557242434,"Khan Abad, Kunduz Province, Afghanistan",,network
+Khanabad District,,0,Khanabad District,0,,,,0,0,,,no match,network
+"Khanabad District, Kunduz Province",,1,"Khanabad District, Kunduz Province",0,relation,admin2,polygon,1,0,0.42894012557242434,"Khan Abad, Kunduz Province, Afghanistan",,network
+Khost Province,,1,Khost Province,0,relation,admin1,polygon,1,0,0.5135950261587966,"Khost Province, Afghanistan",,cache
+Khost Wa Fereng District,,1,Khost Wa Fereng District,0,relation,admin2,polygon,1,0,0.36664364446418835,"Khost wa Fereng, Baghlan Province, Afghanistan",,network
+Khost-o-Fereng District,,0,Khost-o-Fereng District,0,,,,0,0,,,no match,network
+"Khost-o-Fereng District, Baghlan Province",,1,Baghlan Province,1,relation,admin1,polygon,1,0,0.5225935908006523,"Baghlan Province, Afghanistan",,network
+Kobe,,1,Kobe,0,relation,city,polygon,1,0,0.6811122654761794,"Kobe, Hyogo Prefecture, Japan",,cache
+Koyra Upazila,bd,0,Koyra Upazila,0,,,,0,0,,,no match,cache
+"Koyra Upazila, Khulna",bd,1,Khulna,1,relation,admin1,polygon,1,0,0.5336081704816258,"Khulna Division, Bangladesh",,network
+"Koyra Upazila, Khulna District",bd,1,Khulna District,1,relation,other,polygon,1,0,0.49484026052992136,"Khulna District, Khulna Division, Bangladesh",,network
+"Koyra Upazila, Khulna District, Bangladesh",bd,1,Bangladesh,1,relation,country,polygon,1,0,0.7632783925934236,Bangladesh,,network
+Kunduz,,1,Kunduz,0,relation,admin1,polygon,1,0,0.5131044580661488,"Kunduz Province, Afghanistan",,network
+Kunduz Province,,1,Kunduz Province,0,relation,admin1,polygon,1,0,0.5131044580661488,"Kunduz Province, Afghanistan",,cache
+L'Aquila,dz,1,L'Aquila,0,relation,admin2,polygon,1,0,0.7205879480356276,"L'Aquila, Abruzzo, Italy",,network
+"L'Aquila, Italy",dz,1,Italy,1,way,other,polygon,1,0,0.2702882353650111,"Embassy of Italy, 18, Chevalley, El Biar, Bouzareah District, Algiers, 16030, Algeria",,network
+Leyte,ph,1,Leyte,0,relation,other,polygon,1,0,0.5654509657445314,"Leyte, Eastern Visayas, Philippines",,cache
+Leyte Province,ph,1,Leyte Province,0,node,neighbourhood,bbox,1,0,0.08003500190737771,"Leyte, Santa Marta, Batán, Matina, Limón Province, 70502, Costa Rica",,cache
+"Linden, New Jersey",us,1,"Linden, New Jersey",0,relation,city,polygon,1,0,0.4577956320282617,"Linden, Union County, New Jersey, United States",,cache
+Ludington Harbor,,1,Port of Ludington,1,way,other,polygon,1,0,5.295719844353426e-05,"Port of Ludington Maritime Museum, 217, South Lakeshore Drive, Ludington, Mason County, Michigan, 49431, United States",,network
+"Ludington Harbor, Ludington, Michigan",,1,"Ludington Harbor, Ludington, Michigan",0,way,other,polygon,1,0,5.295719844353426e-05,"Ludington Harbor Cafe, 316, South James Street, Ludington, Mason County, Michigan, 49431, United States",,network
+"Ludington Harbor, Michigan",,1,"Ludington Harbor, Michigan",0,way,other,polygon,1,0,5.295719844353426e-05,"Ludington Harbor Cafe, 316, South James Street, Ludington, Mason County, Michigan, 49431, United States",,network
+Ludington harbor,,1,Port of Ludington,1,way,other,polygon,1,0,5.295719844353426e-05,"Port of Ludington Maritime Museum, 217, South Lakeshore Drive, Ludington, Mason County, Michigan, 49431, United States",,cache
+"Ludington, Michigan",,1,"Ludington, Michigan",0,relation,city,polygon,1,0,0.4678393325290842,"Ludington, Mason County, Michigan, United States",,cache
+L’Aquila,dz,1,L’Aquila,0,relation,admin2,polygon,1,0,0.7205879480356276,"L'Aquila, Abruzzo, Italy",,cache
+Madagascar,,1,Madagascar,0,relation,country,polygon,1,0,0.764596534403013,Madagascar,,cache
+Manado,,1,Manado,0,relation,city,polygon,1,0,0.5364995634583155,"Manado, North Sulawesi, Indonesia",,network
+Manhattan,us,1,Manhattan,0,relation,neighbourhood,polygon,1,0,0.7407549492815332,"Manhattan, New York County, New York, United States",,cache
+"Manhattan, New York",us,1,"Manhattan, New York",0,relation,neighbourhood,polygon,1,0,0.7407549492815332,"Manhattan, New York County, New York, United States",,network
+"Manhattan, New York City",us,1,"Manhattan, New York City",0,relation,neighbourhood,polygon,1,0,0.7407549492815332,"Manhattan, New York County, New York, United States",,network
+Mazar city,,1,Mazar city,0,way,other,polygon,1,0,0.4099433336060744,"Afaq Khoja Mausoleum. Bus 20, Hazrat Road, Sherqiy Kol Subdistrict, Nezerbagh Town, Kashgar City, Kachgar, Xinjiang, 844000, China",,cache
+"Mazar city, Balkh Province",,1,Balkh Province,1,relation,admin1,polygon,1,0,0.5324611966093848,"Balkh Province, Afghanistan",,network
+Mazar-e-Sharif,,1,Mazar-e-Sharif,0,relation,city,polygon,1,0,0.5310183578036716,"Mazar-i-Sharif, Balkh Province, Afghanistan",,network
+Mazar-i-Sharif,,1,Mazar-i-Sharif,0,relation,city,polygon,1,0,0.5310183578036716,"Mazar-i-Sharif, Balkh Province, Afghanistan",,network
+Mediterranean,,0,Mediterranean,0,,,,0,0,,,no match,network
+Mediterranean Sea,,0,Mediterranean Sea,0,,,,0,0,,,no match,network
+Menado,,0,Menado,0,,,,0,0,,,no match,cache
+Mentawai,,1,Mentawai,0,way,other,polygon,1,0,4.321431296249359e-05,"Mentawai, Camino de la Iglesia, Antromero, Bocines, Gozón, Asturias, 33430, Spain",,cache
+Merriespruit,za,1,Merriespruit,0,node,city,bbox,1,0,0.16004500114442663,"Merriespruit, Matjhabeng Local Municipality, Lejweleputswa District Municipality, Free State, 9431, South Africa",,cache
+"Merriespruit, Virginia",za,1,"Merriespruit, Virginia",0,way,other,polygon,1,0,0.05337833447775994,"Virginia Way, Matjhabeng Ward 9, Virginia, Matjhabeng Local Municipality, Lejweleputswa District Municipality, Free State, 9431, South Africa",,network
+"Merriespruit, Virginia, Free State, South Africa",za,1,South Africa,1,relation,country,polygon,1,0,0.841784323429412,South Africa,,network
+"Minneapolis, Minnesota",,1,"Minneapolis, Minnesota",0,relation,city,polygon,1,0,0.6954156537035846,"Minneapolis, Hennepin County, Minnesota, United States",,network
+Missouri River,,0,Missouri River,0,,,,0,0,,,no match,cache
+Mount Kelud,,0,Mount Kelud,0,,,,0,0,,,no match,cache
+Mount Sinabung,,0,Mount Sinabung,0,,,,0,0,,,no match,cache
+Mountain Shadows,us,1,Mountain Shadows,0,node,city,bbox,1,0,0.13336833524071104,"Mountain Shadows, Berea, Greenville County, South Carolina, 29617, United States",,cache
+Nahrin District,,1,Nahrin District,0,relation,admin2,polygon,1,0,0.4315123144561419,"Nahrin, Baghlan Province, Afghanistan",,network
+"Nahrin District, Baghlan Province",,1,"Nahrin District, Baghlan Province",0,relation,admin2,polygon,1,0,0.4315123144561419,"Nahrin, Baghlan Province, Afghanistan",,network
+Nakuru County,,1,Nakuru County,0,node,city,bbox,1,0,0.1467214290074006,"County Government of Nakuru, Department of Education, ICT & e-Learning, Nakuru East, Nakuru, 20100, Kenya",,cache
+"Nakuru County, Kenya",,1,"Nakuru County, Kenya",0,way,other,polygon,1,0,4.0000762951049326e-05,"Kenya Women Finance Trust Offices, Eldama Ravine-Eldoret Road, Eldama Ravine, Baringo, Kenya",,network
+New Jersey,us,1,New Jersey,0,relation,admin1,polygon,1,0,0.7945428500899242,"New Jersey, United States",,cache
+New York City,us,1,New York City,0,relation,city,polygon,1,0,0.8817923363604117,"New York, United States",,cache
+"New York City, New York",us,1,"New York City, New York",0,relation,city,polygon,1,0,0.8817923363604117,"New York, United States",,network
+Nias,ad,1,Nias,0,relation,other,polygon,1,0,0.5016649783748569,"Pulau Nias, North Sumatra, Sumatra, Indonesia",,cache
+"Nias (island), Indonesia",ad,1,"Nias (island), Indonesia",0,relation,other,polygon,1,0,0.5016649783748569,"Pulau Nias, North Sumatra, Indonesia",,network
+Nias Island,ad,1,Nias Island,0,way,other,polygon,1,0,0.07194870560319186,"Nias Island, Kivalliq Region, Nunavut, Canada",,cache
+"Nias Island, Indonesia",ad,1,"Nias Island, Indonesia",0,relation,other,polygon,1,0,0.5016649783748569,"Pulau Nias, North Sumatra, Indonesia",,network
+"Nias, Indonesia",ad,1,"Nias, Indonesia",0,relation,other,polygon,1,0,0.5016649783748569,"Pulau Nias, North Sumatra, Sumatra, Indonesia",,network
+Niigata,,1,Niigata,0,relation,admin1,polygon,1,0,0.6866667214086105,"Niigata Prefecture, Japan",,cache
+Niigata Prefecture,,1,Niigata Prefecture,0,relation,admin1,polygon,1,0,0.6866667214086105,"Niigata Prefecture, Japan",,network
+Niigata-ken,,1,Niigata-ken,0,relation,admin1,polygon,1,0,0.6866667214086105,"Niigata Prefecture, Japan",,cache
+"Niigata-ken, Japan",,1,"Niigata-ken, Japan",0,relation,admin1,polygon,1,0,0.6866667214086105,"Niigata Prefecture, Japan",,network
+Nimroz Province,,0,Nimroz Province,0,,,,0,0,,,no match,cache
+North Carolina,,1,North Carolina,0,relation,admin1,polygon,1,0,0.7750297851452792,"North Carolina, United States",,cache
+North Eastern US,mm,0,North Eastern US,0,,,,0,0,,,no match,cache
+Northern Japan,,1,Northern Japan,0,way,other,polygon,1,0,0.448964384003649,"Northern Farm, Abira, Yufutsu County, Iburi Subprefecture, Hokkaido Prefecture, Hokkaido Region, 059-1432, Japan",,network
+"Northern Red Sea coast, Saudi Arabia",,1,Saudi Arabia,1,relation,country,polygon,1,0,0.7911931619845199,Saudi Arabia,,network
+Northern Samar,ph,1,Northern Samar,0,relation,admin1,polygon,1,0,0.5208900822171276,"Northern Samar, Eastern Visayas, Philippines",,network
+Northern Samar Province,ph,1,Samar Province,1,relation,other,polygon,1,0,0.0800550019073777,"DepED Samar, Barangay 7, Poblacion, San Andres, Catbalogan, Samar, Eastern Visayas, 6700, Philippines",,network
+Odisha,,1,Odisha,0,relation,admin1,polygon,1,0,0.635739602562838,"Odisha, India",,cache
+Orissa,,1,Orissa,0,relation,admin1,polygon,1,0,0.635739602562838,"Odisha, India",,cache
+"Orissa (Odisha), India",,1,"Orissa (Odisha), India",0,way,other,polygon,1,0,0.08006161364156554,"Archaeological Survey of India, Kapileshwar, Ward 59, South East Zone, Bhubaneswar Municipal Corporation, Bhubaneswar (M.Corp.), Khordha, Odisha, India",,network
+"Orissa state, India",,1,India,1,relation,country,polygon,1,0,0.8910953652546315,India,,network
+"Orissa, India",,1,"Orissa, India",0,relation,admin1,polygon,1,0,0.635739602562838,"Odisha, India",,network
+Pacific Coast of Ecuador,np,0,Pacific Coast of Ecuador,0,,,,0,0,,,no match,cache
+Paktia Province,,1,Paktia Province,0,relation,admin1,polygon,1,0,0.5192591415146263,"Paktia Province, Afghanistan",,cache
+Paktika Province,,1,Paktika Province,0,relation,admin1,polygon,1,0,0.5116633199479257,"Paktika Province, Afghanistan",,cache
+Panjshir Valley,,0,Panjshir Valley,0,,,,0,0,,,no match,network
+Panjshir valley (Takhar province),,0,Panjshir valley (Takhar province),0,,,,0,0,,,no match,network
+Paradise,,1,Paradise,0,relation,other,polygon,1,0,0.5972005028559073,"Paradise, Clark County, Nevada, United States",,cache
+"Paradise, California",,1,"Paradise, California",0,relation,city,polygon,1,0,0.4743815337974522,"Paradise, Butte County, California, 95969, United States",,network
+Peregrine,us,1,Peregrine,0,relation,other,polygon,1,0,0.08006714656290528,"Peregrine, Lincoln, Lancaster County, Nebraska, United States",,network
+Port Alberni,,1,Port Alberni,0,relation,city,polygon,1,0,0.49847122757648055,"Port Alberni, Alberni-Clayoquot Regional District, British Columbia, Canada",,cache
+"Port Alberni, Canada",,1,"Port Alberni, Canada",0,relation,city,polygon,1,0,0.49847122757648055,"Port Alberni, Alberni-Clayoquot Regional District, British Columbia, Canada",,network
+"Port Reading, New Jersey",us,1,"Port Reading, New Jersey",0,relation,other,polygon,1,0,0.40906086839840655,"Port Reading, Woodbridge Township, Middlesex County, New Jersey, 07064, United States",,cache
+Port-au-Prince,,1,Port-au-Prince,0,relation,city,polygon,1,0,0.6270070805755692,"Port-au-Prince Arrondissement, West, Haiti",,cache
+Puerto Rico,,1,Puerto Rico,0,relation,admin1,polygon,1,0,0.780195936484418,"Puerto Rico, United States",,cache
+Puntland,,1,Puntland,0,relation,admin1,polygon,1,0,0.5464705262107562,"Puntland, Somalia",,cache
+"Puntland, Somalia",,1,"Puntland, Somalia",0,relation,admin1,polygon,1,0,0.5464705262107562,"Puntland, Somalia",,network
+Qala-i-Naw,,1,Qala-i-Naw,0,node,city,bbox,1,0,0.40554112705548934,"Qala i Naw, Badghis Province, Afghanistan",,network
+Qala-i-Naw District,,1,Qala-i-Naw District,0,relation,admin2,polygon,1,0,0.2869812649426343,"Qala i Naw, Badghis Province, Afghanistan",,network
+Qamla-I-Naw,,0,Qamla-I-Naw,0,,,,0,0,,,no match,network
+Qamla-I-Naw District (Badghis Province),,0,Qamla-I-Naw District (Badghis Province),0,,,,0,0,,,no match,network
+Queensland,au,1,Queensland,0,relation,admin1,polygon,1,0,0.7390159483307399,"Queensland, Australia",,cache
+Ragged Island,,1,Ragged Island,0,relation,other,polygon,1,0,0.45005934006990783,Rugged Island,,cache
+Ragged Island (The Bahamas),,1,Ragged Island (The Bahamas),0,relation,city,polygon,1,0,0.40238599906523964,"Ragged Island, Bahamas",,network
+"Ragged Island, The Bahamas",,1,"Ragged Island, The Bahamas",0,relation,city,polygon,1,0,0.40238599906523964,"Ragged Island, Bahamas",,network
+Red Sea coast (Eritrea),,0,Red Sea coast (Eritrea),0,,,,0,0,,,no match,cache
+Red Sea coast (Sudan),,0,Red Sea coast (Sudan),0,,,,0,0,,,no match,cache
+"Red Sea coast, Eritrea",,1,Eritrea,1,relation,country,polygon,1,0,0.7081105858050415,Eritrea,,cache
+"Red Sea coast, Sudan",,1,Sudan,1,relation,country,polygon,1,0,0.7524114574079375,Sudan,,cache
+Riau,,1,Riau,0,relation,admin1,polygon,1,0,0.6249445802343562,"Riau, Sumatra, Indonesia",,cache
+Russia,,1,Russia,0,relation,country,polygon,1,0,0.9369385991476754,Russia,,cache
+"Saint Paul, Minnesota",,1,"Saint Paul, Minnesota",0,relation,city,polygon,1,0,0.6467045767108192,"Saint Paul, Ramsey County, Minnesota, United States",,network
+Samangan Province,,1,Samangan Province,0,relation,admin1,polygon,1,0,0.5075354900693441,"Samangan Province, Afghanistan",,network
+Samburu County,,1,Samburu County,0,way,other,polygon,1,0,4.646295872430026e-05,"samburu County Offices, A4, Maralal, Maralal ward, Samburu Central, Samburu, Kenya",,cache
+"Samburu County, Kenya",,1,"Samburu County, Kenya",0,way,other,polygon,1,0,4.5001144426596745e-05,"Sadhana Forest Kenya, Near Lekuru Market, C78, Kisima, Lodokejek ward, Samburu Central, Samburu, Kenya",,network
+San Giuliano,dz,1,San Giuliano,0,relation,city,polygon,1,0,0.5173926426359247,"San-Giuliano, Corte, Upper Corsica, Corsica, Metropolitan France, 20230, France",,cache
+"San Giuliano, Italy",dz,1,Italy,1,way,other,polygon,1,0,0.2702882353650111,"Embassy of Italy, 18, Chevalley, El Biar, Bouzareah District, Algiers, 16030, Algeria",,network
+Santa Catarina,br,1,Santa Catarina,0,relation,admin1,polygon,1,0,0.6650783248349116,"Santa Catarina, South Region, Brazil",,cache
+Santa Catarina (state),br,1,Santa Catarina (state),0,node,city,bbox,1,0,0.14671166781109327,"Santa Catarina, Lerma, State of Mexico, 52055, Mexico",,network
+Santa Catarina state,br,1,Santa Catarina state,0,node,city,bbox,1,0,0.14671166781109327,"Santa Catarina, Lerma, State of Mexico, 52055, Mexico",,network
+Sar-e Pol Province,,1,Sar-e Pol Province,0,relation,admin1,polygon,1,0,0.48398692916338737,"Sar-e Pol Province, Afghanistan",,network
+Saripul Province,,1,Saripul Province,0,node,city,bbox,1,0,0.24930035976498935,"Сарипул, Kushoniyon District, Khatlon Region, 733036, Tajikistan",,cache
+Saudi Arabia's northern Red Sea coast,,1,Saudi Arabia,2,relation,country,polygon,1,1,0.7911931619845199,Saudi Arabia,,network
+Shikoku,,1,Shikoku,0,relation,other,polygon,1,0,0.6658425879736809,"Shikoku, Japan",,network
+Shikoku area,,0,Shikoku area,0,,,,0,0,,,no match,cache
+"Shikoku area, Japan",,1,Japan,1,relation,country,polygon,1,0,0.9383765725984483,Japan,,network
+Shikoku region,,0,Shikoku region,0,,,,0,0,,,no match,network
+Sichuan,,1,Sichuan,0,relation,admin1,polygon,1,0,0.7147622984966593,"Sichuan, China",,cache
+Sichuan Province,,1,Sichuan Province,0,relation,admin1,polygon,1,0,0.7147622984966593,"Sichuan, China",,cache
+"Sichuan Province, China",,1,"Sichuan Province, China",0,relation,admin1,polygon,1,0,0.7147622984966593,"Sichuan, China",,network
+"Sichuan province, China",,1,"Sichuan province, China",0,relation,admin1,polygon,1,0,0.7147622984966593,"Sichuan, China",,cache
+"Sichuan, China",,1,"Sichuan, China",0,relation,admin1,polygon,1,0,0.7147622984966593,"Sichuan, China",,network
+Sidi Ifni,,1,Sidi Ifni,0,relation,city,polygon,1,0,0.4534965645646641,"Sidi Ifni, Pachalik de Sidi Ifni, Sidi Ifni Province, Guelmim-Oued Noun, Morocco",,cache
+"Sidi Ifni, Morocco",,1,"Sidi Ifni, Morocco",0,relation,city,polygon,1,0,0.4534965645646641,"Sidi Ifni, Pachalik de Sidi Ifni, Sidi Ifni Province, Guelmim-Oued Noun, Morocco",,network
+Sindhupalchowk,np,1,Sindhupalchowk,0,relation,admin2,polygon,1,0,0.46345383833304,"Sindhupalchowk, Bagamati Province, Nepal",,cache
+Sindhupalchowk District,np,0,Sindhupalchowk District,0,,,,0,0,,,no match,cache
+Skopje,dz,1,Skopje,0,relation,city,polygon,1,0,0.6863621222585223,"Skopje, Municipality of Centar, City of Skopje, North Macedonia",,cache
+"Skopje, Former Yugoslav Republic of Macedonia",dz,0,"Skopje, Former Yugoslav Republic of Macedonia",0,,,,0,0,,,no match,network
+Sokhtray District (Helmand Province),,0,Sokhtray District (Helmand Province),0,,,,0,0,,,no match,network
+Somaliland,,1,Somaliland,0,relation,country,polygon,1,0,0.6233755849555958,"Somaliland, Somalia",,cache
+"Somaliland, Somalia",,1,"Somaliland, Somalia",0,relation,country,polygon,1,0,0.6233755849555958,"Somaliland, Somalia",,network
+South Kalimantan,,1,South Kalimantan,0,relation,admin1,polygon,1,0,0.6254220346028778,"South Kalimantan, Kalimantan, Indonesia",,cache
+"South Kalimantan, Indonesia",,1,"South Kalimantan, Indonesia",0,relation,admin1,polygon,1,0,0.6254220346028778,"South Kalimantan, Indonesia",,network
+Southern China,,1,China,1,relation,country,polygon,1,0,0.9041723947646134,China,,cache
+Southern Germany,,1,Southern Germany,0,way,other,polygon,1,0,0.6315315301397632,"European Southern Observatory, 2, Karl-Schwarzschild-Straße, Hochschul- und Forschungszentrum, Garching bei München, Landkreis München, Bavaria, 85748, Germany",,network
+Southern Leyte,ph,1,Southern Leyte,0,relation,admin1,polygon,1,0,0.5196120642340484,"Southern Leyte, Eastern Visayas, Philippines",,cache
+Southern Leyte Province,ph,1,Leyte Province,1,node,neighbourhood,bbox,1,0,0.08003500190737771,"Leyte, Santa Marta, Batán, Matina, Limón Province, 70502, Costa Rica",,cache
+Southwest Tasmania,,1,Southwest Tasmania,0,relation,other,polygon,1,0,0.18157831638402872,"Southwest, Tasmania, 7116, Australia",,cache
+"Southwest Tasmania, Australia",,1,"Southwest Tasmania, Australia",0,relation,other,polygon,1,0,0.18157831638402872,"Southwest, Tasmania, 7116, Australia",,network
+St. Louis,,1,St. Louis,0,relation,city,polygon,1,0,0.7152835326900137,"Saint Louis, Missouri, United States",,cache
+St. Louis Airport,,1,St. Louis Airport,0,relation,other,polygon,1,0,0.2954185985350713,"Saint Louis Airport, Ancienne Route de Taxiway, Khor, Ngalléle Nord, Saint-Louis, Département de Saint-Louis, Saint-Louis Region, 32000, Senegal",,cache
+"St. Louis, Missouri",,1,"St. Louis, Missouri",0,relation,city,polygon,1,0,0.7152835326900137,"Saint Louis, Missouri, United States",,network
+State Primary School at Farkia,in,0,State Primary School at Farkia,0,,,,0,0,,,no match,network
+"State Primary School at Farkia, Chamoli district, Uttarakhand",in,1,Uttarakhand,1,relation,admin1,polygon,1,0,0.6610712250486577,"Uttarakhand, India",,network
+"State Primary School, Farkia",in,1,Farkia,1,node,city,bbox,1,0,0.4948059991981721,"Farkiya, Ihsem Subdistrict, Ariha District, Idleb Governorate, Syria",,network
+State of Santa Catarina,br,1,State of Santa Catarina,0,node,city,bbox,1,0,0.14671166781109327,"Santa Catarina, Lerma, State of Mexico, 52055, Mexico",,network
+Sudan's Red Sea coast,,1,Sudan,2,relation,country,polygon,1,1,0.7524114574079375,Sudan,,network
+Sulawesi,za,1,Sulawesi,0,relation,other,polygon,1,0,0.6725698814839046,"Sulawesi, Indonesia",,cache
+Sulawesi Island,za,1,Sulawesi Island,0,relation,other,polygon,1,0,0.6725698814839046,"Sulawesi, Indonesia",,network
+"Sulawesi Island, Indonesia",za,1,Indonesia,1,way,other,polygon,1,0,0.37735982282950553,"Embassy of the Republic of Indonesia, 949, Francis Baard Street, Arcadia, Tshwane Ward 92, Pretoria, City of Tshwane Metropolitan Municipality, Gauteng, 0082, South Africa",,network
+"Sulawesi, Indonesia",za,1,Indonesia,1,way,other,polygon,1,0,0.37735982282950553,"Embassy of the Republic of Indonesia, 949, Francis Baard Street, Arcadia, Tshwane Ward 92, Pretoria, City of Tshwane Metropolitan Municipality, Gauteng, 0082, South Africa",,network
+Sumatra,,1,Sumatra,0,relation,admin1,polygon,1,0,0.7063859252466634,"Sumatra, Indonesia",,cache
+"Sumatra, Indonesia",,1,"Sumatra, Indonesia",0,relation,other,polygon,1,0,0.7063859252466634,"Sumatra, Indonesia",,network
+Surigao del Norte,ph,1,Surigao del Norte,0,relation,admin1,polygon,1,0,0.5243412885670303,"Surigao del Norte, Caraga, Philippines",,network
+Surigao del Norte Province,ph,1,Surigao del Norte Province,0,way,other,polygon,1,0,5.3404287785107464e-05,"Province of Surigao del Norte Sangguniang Panlalawigan, Capitol Road, Espina Village, Surigao City, Surigao del Norte, Caraga, 8400, Philippines",,network
+Surigao del Sur,ph,1,Surigao del Sur,0,relation,admin1,polygon,1,0,0.5189991173955274,"Surigao del Sur, Caraga, Philippines",,network
+Surigao del Sur Province,ph,0,Surigao del Sur Province,0,,,,0,0,,,no match,network
+Takhar Province,,1,Takhar Province,0,relation,admin1,polygon,1,0,0.516217014343525,"Takhar Province, Afghanistan",,cache
+Terranova di Pollino,it,1,Terranova di Pollino,0,relation,city,polygon,1,0,0.5189043066165434,"Terranova di Pollino, Potenza, Basilicata, Italy",,cache
+"Terranova di Pollino, Potenza Province, Basilicata, Italy",it,1,Italy,1,relation,country,polygon,1,0,0.9472892328660153,Italy,,network
+Three Mile Island,jp,1,Three Mile Island,0,relation,other,polygon,1,0,0.18929199030239088,"Three Mile Island, Londonderry Township, Dauphin County, Pennsylvania, United States",,cache
+Twin Cities Area,,1,Twin Cities Area,0,way,other,polygon,1,0,6.296711680776711e-05,"Castel Area Health Centre, Constantin Lane, Castel, Vacoas-Phoenix, Plaines Wilhems, 74232, Mauritius",,network
+Twin Cities area,,1,Twin Cities area,0,way,other,polygon,1,0,6.296711680776711e-05,"Castel Area Health Centre, Constantin Lane, Castel, Vacoas-Phoenix, Plaines Wilhems, 74232, Mauritius",,cache
+"Twin Cities area, Minnesota",,1,Minnesota,1,relation,admin1,polygon,1,0,0.7735178270105365,"Minnesota, United States",,network
+USA,ch,1,USA,0,relation,country,polygon,1,0,1.0,United States,,network
+United Kingdom,gb,1,United Kingdom,0,relation,country,polygon,1,0,0.9388533772580386,United Kingdom,,cache
+United Kingdom of Great Britain and Northern Ireland,gb,1,United Kingdom of Great Britain and Northern Ireland,0,relation,country,polygon,1,0,0.9388533772580386,United Kingdom,,cache
+United States,ch,1,United States,0,way,other,polygon,1,0,7.90165560387124e-05,"Mission of the United States of America, 11, Route de Pregny, Chambésy, Pregny-Chambésy, Geneva, 1292, Switzerland",,cache
+United States of America,ch,1,United States of America,0,way,other,polygon,1,0,7.90165560387124e-05,"Mission of the United States of America, 11, Route de Pregny, Chambésy, Pregny-Chambésy, Geneva, 1292, Switzerland",,network
+Urozgan Province,,1,Urozgan Province,0,relation,admin1,polygon,1,0,0.5109708556325196,"Uruzgan Province, Afghanistan",,network
+Uruzgan Province,,1,Uruzgan Province,0,relation,admin1,polygon,1,0,0.5109708556325196,"Uruzgan Province, Afghanistan",,cache
+Uttarakhand,in,1,Uttarakhand,0,relation,admin1,polygon,1,0,0.6610712250486577,"Uttarakhand, India",,cache
+Vale do Itajaí,br,1,Vale do Itajaí,0,way,other,polygon,1,0,0.0800590943770504,"Vale Brilhante - Indústria e Comércio, Rio do Meio, Itajaí, Santa Catarina, South Region, Brazil",,cache
+Vale do Itajaí (Itajaí Valley),br,0,Vale do Itajaí (Itajaí Valley),0,,,,0,0,,,no match,network
+Vale do Itapocu,br,1,Vale do Itapocu,0,way,other,polygon,1,0,5.67750057220877e-05,"AMVALI – Associação dos Municípios do Vale do Itapocu, 88, Rua Arthur Gumz, Vila Nova, Jaraguá do Sul, Santa Catarina, South Region, 89259-340, Brazil",,cache
+Vale do Itapocu (Itapocu Valley),br,0,Vale do Itapocu (Itapocu Valley),0,,,,0,0,,,no match,network
+Venezuela Caribbean coast,,0,Venezuela Caribbean coast,0,,,,0,0,,,no match,network
+Venezuela's Caribbean coast,,1,Venezuela,2,relation,country,polygon,1,1,0.8116687367632285,Venezuela,,network
+Verapaz,sv,1,Verapaz,0,relation,admin2,polygon,1,0,0.31074813956852465,"Verapaz, San Vicente Sur, San Vicente, El Salvador",,cache
+"Verapaz, El Salvador",sv,1,"Verapaz, El Salvador",0,relation,admin2,polygon,1,0,0.31074813956852465,"Verapaz, San Vicente Sur, San Vicente, El Salvador",,network
+Victoria,au,1,Victoria,0,relation,admin1,polygon,1,0,0.6858710563331263,"Victoria, Australia",,cache
+Virginia,za,1,Virginia,0,node,city,bbox,1,0,0.2753675655596695,"Virginia, Matjhabeng Local Municipality, Lejweleputswa District Municipality, Free State, 9431, South Africa",,cache
+"Virginia, Free State",za,1,"Virginia, Free State",0,node,city,bbox,1,0,0.2753675655596695,"Virginia, Matjhabeng Local Municipality, Lejweleputswa District Municipality, Free State, 9431, South Africa",,network
+"Virginia, Free State, South Africa",za,1,"Virginia, Free State, South Africa",0,node,city,bbox,1,0,0.2753675655596695,"Virginia, Matjhabeng Local Municipality, Lejweleputswa District Municipality, Free State, 9431, South Africa",,network
+Volcán de Fuego,,0,Volcán de Fuego,0,,,,0,0,,,no match,cache
+"Volcán de Fuego, Guatemala",,1,Guatemala,1,relation,country,polygon,1,0,0.7597479191596458,Guatemala,,network
+Wardak Province,,1,Wardak Province,0,relation,admin1,polygon,1,0,0.5094814470626285,"Maidan Wardak Province, Afghanistan",,cache
+Washington State,,1,Washington State,0,relation,admin1,polygon,1,0,0.7636665168418444,"Washington, United States",,network
+Washington State coast,,0,Washington State coast,0,,,,0,0,,,no match,network
+"Washington State, USA",,1,"Washington State, USA",0,relation,admin1,polygon,1,0,0.7636665168418444,"Washington, United States",,network
+West Java,,1,West Java,0,relation,admin1,polygon,1,0,0.7000841052831706,"West Java, Java, Indonesia",,cache
+West Sumatera,,1,West Sumatera,0,relation,admin1,polygon,1,0,0.6329312142517515,"West Sumatra, Indonesia",,network
+West coast of Aceh,ad,0,West coast of Aceh,0,,,,0,0,,,no match,cache
+"West coast of Aceh Province, Indonesia",ad,1,Indonesia,1,relation,country,polygon,1,0,0.865911372798923,Indonesia,,network
+"West coast of Aceh, Indonesia",ad,1,Indonesia,1,relation,country,polygon,1,0,0.865911372798923,Indonesia,,network
+West coast of Kyushu Island,,0,West coast of Kyushu Island,0,,,,0,0,,,no match,network
+West-Central to Northwest Central Iowa,,0,West-Central to Northwest Central Iowa,0,,,,0,0,,,no match,network
+Western Europe,,1,Western Europe,0,way,neighbourhood,polygon,1,0,0.13341032806897077,"Western Europe, Siarova, Kastrychnitski District, Minsk, Belarus",,network
+Western coast of Kyushu Island,,0,Western coast of Kyushu Island,0,,,,0,0,,,no match,cache
+"Western coast of Kyushu Island, Japan",,1,Japan,1,relation,country,polygon,1,0,0.9383765725984483,Japan,,network
+Wolfe Ranch,us,0,Wolfe Ranch,0,,,,0,0,,,no match,network
+Yogyakarta,,1,Yogyakarta,0,relation,admin1,polygon,1,0,0.6036404434363883,"Special Region of Yogyakarta, Java, Indonesia",,cache
+Yulmarab village,,0,Yulmarab village,0,,,,0,0,,,no match,network
+Yulmarab village (Mazar-e-Sharif),,0,Yulmarab village (Mazar-e-Sharif),0,,,,0,0,,,no match,network
+Zabul Province,,1,Zabul Province,0,relation,admin1,polygon,1,0,0.5119277148736227,"Zabul Province, Afghanistan",,cache
+Zemmouri,,1,Zemmouri,0,relation,city,polygon,1,0,0.4314221691781169,"Zemmouri, Bordj Menaiel District, Boumerdes, Algeria",,cache
+coast of British Columbia,,1,coast of British Columbia,0,way,other,polygon,1,0,7.869764248107145e-05,"Bill Reid Gallery of Northwest Coast Art, 639, Hornby Street, Financial District, Downtown, Vancouver, Metro Vancouver Regional District, British Columbia, V6C 3L2, Canada",,network
+coasts of British Columbia,,0,coasts of British Columbia,0,,,,0,0,,,no match,cache
+coasts of Washington State,,0,coasts of Washington State,0,,,,0,0,,,no match,cache
+northern Japan,,1,northern Japan,0,way,other,polygon,1,0,0.448964384003649,"Northern Farm, Abira, Yufutsu County, Iburi Subprefecture, Hokkaido Prefecture, Hokkaido Region, 059-1432, Japan",,cache
+west coast of Aceh,ad,0,west coast of Aceh,0,,,,0,0,,,no match,cache
+"west coast of Aceh, Indonesia",ad,1,Indonesia,1,relation,country,polygon,1,0,0.865911372798923,Indonesia,,cache
+west coast of Kyushu Island,,0,west coast of Kyushu Island,0,,,,0,0,,,no match,cache
+western Europe,,1,western Europe,0,way,neighbourhood,polygon,1,0,0.13341032806897077,"Western Europe, Siarova, Kastrychnitski District, Minsk, Belarus",,cache
+western coast of Kyushu Island,,0,western coast of Kyushu Island,0,,,,0,0,,,no match,cache

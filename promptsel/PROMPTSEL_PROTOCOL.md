@@ -451,4 +451,49 @@ make promptsel-score              # -> promptsel/PROMPTSEL_SCORES.md (refuses un
 
 ## 14. Deviations log
 
-_None yet. Append dated entries below; do not edit entries above._
+_Append dated entries below; do not edit entries above._
+
+**2026-11-02 — full run, geocoding and scoring (no deviation from the
+protocol).**
+- **Run.** `make promptsel-run PSEL_WORKERS=6` against `acd5455`, preflight
+  clean.
+  - 800 of 800 calls returned on the first attempt: no errored window, no
+    retry.
+  - All 800 were served as `openai/gpt-5` by the OpenAI provider, with finish
+    reason `stop`.
+  - 10:02–13:55 UTC (1 h 52 min); cost $26.42.
+  - Every run recorded its prompt's pinned `system_sha16` and the production
+    `schema_sha256`.
+- **Geocoding.** `make promptsel-geocode`, public endpoint, user agent
+  `undrr-fonte/0.1`, 14:56–15:01 local.
+  - 430 distinct (location, hint) pairs over the 14 runs; 352 resolved, 78
+    "no match".
+  - 274 keys fetched from the network, within the preflight's bound of 310.
+    The root cache's size and mtime were unchanged.
+  - Preflight bookkeeping: it reported 223 pairs needing the network, while
+    `resolutions.csv` labels 224. The walk marks a pair as uncached only when
+    it adds a new missing key, so "Samangan Province" was counted as cached:
+    its only uncached key had already been missed by an earlier pair. Live,
+    that earlier pair stopped before reaching the key, so "Samangan Province"
+    fetched it itself. The key bound is unaffected, and no confidence depends
+    on the label.
+- **Scoring.** `make promptsel-score`; all three self-checks passed with no
+  override:
+  - the Experiment A reproduction;
+  - `explode_rows` equal to `explode_extractions`;
+  - the Azure production geocoding check.
+
+  All 10 runs cover all 80 windows, with no window dropped.
+- **Recorded here because §10 does not give it a verdict:**
+  - The selection verdict is defined on R2, all windows.
+  - Under S2 (without the 5 `gold_validation` windows), p1 and p4 are
+    resolved-better than p5 on both primary F1s:
+    - p1: Δ detection F1 +2.5 pp, interval lower bound +0.0004 pp; Δ pooled
+      F1 +2.5 pp (+0.7 to +4.3).
+    - p4: Δ detection F1 +4.6 pp (+0.4 to +9.0); Δ pooled F1 +3.6 pp (+0.7 to
+      +6.3).
+  - On those 5 windows (8 gold events), fresh p5 matched 6 of 8 events in both
+    replicates; p1 matched 2 of 8. Experiment B's `full` r2, the same request,
+    matched 3 of 8.
+  - Reported in `PROMPTSEL_SCORES.md` §13 and quoted with the primary verdict.
+    The verdict is not re-labelled.
