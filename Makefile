@@ -12,6 +12,7 @@
 	ablation-run ablation-score \
 	promptsel-prompts promptsel-dry-run promptsel-smoke promptsel-freeze promptsel-run \
 	promptsel-geocode-preflight promptsel-geocode promptsel-score \
+	supervised-setup supervised-parse supervised-freeze supervised-run supervised-score \
 	or-check-models or-build-docs or-dry-run or-smoke or-run or-agreement or-score \
 	or-docsample-build or-docsample-dry-run or-docsample-smoke or-docsample-run \
 	or-docsample-agreement or-docsample-score or-citations or-stratified
@@ -452,6 +453,44 @@ promptsel-geocode:
 #    promptsel_geocode_pairs.csv. Refuses until all 10 runs exist; PARTIAL=1 previews.
 promptsel-score:
 	$(VENV_PYTHON) -m promptsel.score_promptsel $(if $(PARTIAL),--allow-partial,)
+
+# --------------------------------------------------------------------------
+# Supervised event extractor — a trained, non-LLM baseline
+# (benchmark_supervised/README.md).
+#
+# Transformer NER (spaCy en_core_web_trf, OntoNotes 5) + MaxEnt classifiers for
+# event triggers, event coreference and year/place arguments, trained on
+# Experiment A's blind gold only. Every window is predicted by a model that
+# never saw it: leave-one-window-out (primary) and 5-fold x 3 seeds. No API calls.
+# --------------------------------------------------------------------------
+
+# 0. One-off: torch + the transformer pipeline (not part of the main install).
+supervised-setup:
+	$(VENV_PYTHON) -m pip install -e ".[supervised]" -c constraints.txt
+	$(VENV_PYTHON) -m pip install "en_core_web_trf @ https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl"
+	$(VENV_PYTHON) -m spacy download en_core_web_lg
+
+# 1. Parse the 45 windows with both NER models -> benchmark_supervised/outputs/parsed/.
+supervised-parse:
+	$(VENV_PYTHON) -m benchmark_supervised.parse
+
+# 2. Pin code + hyperparameters -> benchmark_supervised/FROZEN.json, before any
+#    scored run. The runner refuses to write a scored run that differs from it.
+supervised-freeze:
+	$(VENV_PYTHON) -m benchmark_supervised.run --freeze $(if $(FORCE),--force,)
+
+# 3. LOWO (primary) + 5-fold x seeds 48-50 -> benchmark_supervised/runs/. ~1 min.
+supervised-run:
+	$(VENV_PYTHON) -m benchmark_supervised.run $(if $(FORCE),--force,)
+	for seed in 48 49 50; do \
+		$(VENV_PYTHON) -m benchmark_supervised.run --kfold 5 --seed $$seed $(if $(FORCE),--force,) || exit 1; \
+	done
+
+# 4. Experiment A's scorer, unchanged, over its systems + the supervised runs
+#    -> benchmark_supervised/SUPERVISED_SCORES.md, supervised_scores.json,
+#    supervised_pairs.csv. eval/ is not written.
+supervised-score:
+	$(VENV_PYTHON) -m benchmark_supervised.score
 
 # --------------------------------------------------------------------------
 # Multi-model benchmark — prompt 5 held fixed, the model varied via OpenRouter,

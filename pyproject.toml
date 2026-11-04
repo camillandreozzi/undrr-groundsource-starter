@@ -38,6 +38,14 @@ dev = [
 ner = [
     "spacy>=3.8",
 ]
+# The supervised extractor (benchmark_supervised/): torch via the spaCy
+# transformer pipeline, plus scikit-learn for the classifiers. Neither model is
+# on PyPI: `make supervised-setup` installs en_core_web_trf and en_core_web_lg.
+supervised = [
+    "spacy>=3.8",
+    "spacy-curated-transformers>=0.2.2,<1.0.0",
+    "scikit-learn>=1.4",
+]
 
 [project.scripts]
 fonte-extract = "fonte.app_event_focus:main"

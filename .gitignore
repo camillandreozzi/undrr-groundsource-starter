@@ -23,3 +23,7 @@ benchmark_ner/outputs/
 benchmark_openrouter/outputs/
 # Experiment D's local copy of the Nominatim keys it needs (large; resolutions.csv is tracked).
 promptsel/geocode/nominatim_cache.json
+# Supervised extractor: the parse cache (re-created by `make supervised-parse`), and
+# the in-sample wiring check, which must never be quoted as a result.
+benchmark_supervised/outputs/
+benchmark_supervised/runs_smoke/

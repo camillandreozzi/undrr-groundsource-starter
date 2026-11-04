@@ -1,0 +1,1137 @@
+{
+  "label": "Supervised extractor (LOWO)",
+  "scheme": "lowo",
+  "windows": 45,
+  "folds": 45,
+  "records": 86,
+  "rows": 117,
+  "seconds": 4.7,
+  "created_at": "2026-11-04T07:20:45+00:00",
+  "gold_sha256": "5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c",
+  "ner_models": {
+    "en_core_web_trf": "en_core_web_trf-3.8.0",
+    "en_core_web_lg": "en_core_web_lg-3.8.0"
+  },
+  "config": {
+    "classifier": "L2 logistic regression (sklearn lbfgs), DictVectorizer + MaxAbsScaler",
+    "C": 1.0,
+    "threshold": 0.5,
+    "clustering": "average linkage, cut at 1 - threshold",
+    "max_locations": 10,
+    "max_snippets": 3,
+    "bow_reach": 15,
+    "sent_cap": 10,
+    "dep_cap": 12,
+    "year_range": [
+      1900,
+      2035
+    ],
+    "last_event_year": 2026,
+    "snippet_max": 300,
+    "ner_models": [
+      "en_core_web_trf",
+      "en_core_web_lg"
+    ],
+    "place_labels": [
+      "FAC",
+      "GPE",
+      "LOC"
+    ]
+  },
+  "freeze": {
+    "frozen": true,
+    "frozen_at": "2026-11-04T07:20:40+00:00",
+    "code_matches": true,
+    "config_matches": true
+  },
+  "candidate_ceilings": {
+    "verifiable_events": 170,
+    "events_with_a_trigger": 141,
+    "gold_year_endpoints": 182,
+    "year_endpoints_among_candidates": 179,
+    "gold_locations": 275,
+    "locations_among_candidates": 268
+  },
+  "fold_training": [
+    {
+      "test": [
+        "2ac6c0c345fd"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1074,
+          227
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1267,
+          147
+        ],
+        "place": [
+          4813,
+          302
+        ]
+      }
+    },
+    {
+      "test": [
+        "eed6f268ab54"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1087,
+          224
+        ],
+        "coref": [
+          916,
+          129
+        ],
+        "year": [
+          1257,
+          146
+        ],
+        "place": [
+          4790,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "a2b9296b53f0"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1062,
+          221
+        ],
+        "coref": [
+          901,
+          123
+        ],
+        "year": [
+          1269,
+          146
+        ],
+        "place": [
+          4776,
+          298
+        ]
+      }
+    },
+    {
+      "test": [
+        "b67cfd601f06"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1034,
+          223
+        ],
+        "coref": [
+          912,
+          128
+        ],
+        "year": [
+          1263,
+          144
+        ],
+        "place": [
+          4808,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "48dff75f3721"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1075,
+          220
+        ],
+        "coref": [
+          894,
+          131
+        ],
+        "year": [
+          1226,
+          142
+        ],
+        "place": [
+          4708,
+          299
+        ]
+      }
+    },
+    {
+      "test": [
+        "9b5affbb7023"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1085,
+          226
+        ],
+        "coref": [
+          921,
+          132
+        ],
+        "year": [
+          1265,
+          147
+        ],
+        "place": [
+          4794,
+          303
+        ]
+      }
+    },
+    {
+      "test": [
+        "cdb86e09706a"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1091,
+          226
+        ],
+        "coref": [
+          921,
+          131
+        ],
+        "year": [
+          1271,
+          147
+        ],
+        "place": [
+          4830,
+          307
+        ]
+      }
+    },
+    {
+      "test": [
+        "d79139dbf7f9"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1079,
+          221
+        ],
+        "coref": [
+          901,
+          125
+        ],
+        "year": [
+          1209,
+          145
+        ],
+        "place": [
+          4789,
+          302
+        ]
+      }
+    },
+    {
+      "test": [
+        "8685a544c056"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1084,
+          225
+        ],
+        "coref": [
+          919,
+          131
+        ],
+        "year": [
+          1267,
+          146
+        ],
+        "place": [
+          4762,
+          296
+        ]
+      }
+    },
+    {
+      "test": [
+        "9168470c06bc"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1057,
+          211
+        ],
+        "coref": [
+          786,
+          110
+        ],
+        "year": [
+          1075,
+          138
+        ],
+        "place": [
+          4564,
+          289
+        ]
+      }
+    },
+    {
+      "test": [
+        "026e56737586"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1082,
+          222
+        ],
+        "coref": [
+          907,
+          128
+        ],
+        "year": [
+          1257,
+          145
+        ],
+        "place": [
+          4792,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "0ed4212872da"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1055,
+          223
+        ],
+        "coref": [
+          912,
+          130
+        ],
+        "year": [
+          1248,
+          145
+        ],
+        "place": [
+          4786,
+          298
+        ]
+      }
+    },
+    {
+      "test": [
+        "583badf1f312"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1097,
+          228
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1275,
+          148
+        ],
+        "place": [
+          4834,
+          308
+        ]
+      }
+    },
+    {
+      "test": [
+        "bc1ea3b07526"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1071,
+          222
+        ],
+        "coref": [
+          907,
+          128
+        ],
+        "year": [
+          1233,
+          145
+        ],
+        "place": [
+          4795,
+          299
+        ]
+      }
+    },
+    {
+      "test": [
+        "7ab2cfef5eda"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1069,
+          223
+        ],
+        "coref": [
+          912,
+          132
+        ],
+        "year": [
+          1215,
+          143
+        ],
+        "place": [
+          4054,
+          287
+        ]
+      }
+    },
+    {
+      "test": [
+        "8153b2a4a347"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1083,
+          224
+        ],
+        "coref": [
+          916,
+          130
+        ],
+        "year": [
+          1269,
+          146
+        ],
+        "place": [
+          4814,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "1f33826e6452"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1093,
+          227
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1273,
+          147
+        ],
+        "place": [
+          4826,
+          307
+        ]
+      }
+    },
+    {
+      "test": [
+        "801c0ff14769"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1080,
+          227
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1267,
+          147
+        ],
+        "place": [
+          4777,
+          306
+        ]
+      }
+    },
+    {
+      "test": [
+        "96c5ff82e507"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1018,
+          220
+        ],
+        "coref": [
+          894,
+          128
+        ],
+        "year": [
+          1245,
+          143
+        ],
+        "place": [
+          4714,
+          299
+        ]
+      }
+    },
+    {
+      "test": [
+        "c2773610c0a0"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1089,
+          223
+        ],
+        "coref": [
+          912,
+          128
+        ],
+        "year": [
+          1259,
+          146
+        ],
+        "place": [
+          4776,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "e90ba2073253"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1098,
+          228
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1275,
+          148
+        ],
+        "place": [
+          4834,
+          308
+        ]
+      }
+    },
+    {
+      "test": [
+        "37d2beb438d5"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1080,
+          222
+        ],
+        "coref": [
+          907,
+          132
+        ],
+        "year": [
+          1251,
+          140
+        ],
+        "place": [
+          4708,
+          302
+        ]
+      }
+    },
+    {
+      "test": [
+        "4cd721900ee0"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1025,
+          205
+        ],
+        "coref": [
+          669,
+          127
+        ],
+        "year": [
+          1041,
+          129
+        ],
+        "place": [
+          3610,
+          286
+        ]
+      }
+    },
+    {
+      "test": [
+        "8be019afcbf4"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1090,
+          221
+        ],
+        "coref": [
+          901,
+          128
+        ],
+        "year": [
+          1251,
+          144
+        ],
+        "place": [
+          4646,
+          297
+        ]
+      }
+    },
+    {
+      "test": [
+        "7b4674fa394f"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1075,
+          226
+        ],
+        "coref": [
+          921,
+          132
+        ],
+        "year": [
+          1269,
+          146
+        ],
+        "place": [
+          4808,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "ef3284a19a8c"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1095,
+          225
+        ],
+        "coref": [
+          919,
+          129
+        ],
+        "year": [
+          1269,
+          147
+        ],
+        "place": [
+          4821,
+          306
+        ]
+      }
+    },
+    {
+      "test": [
+        "caefffbc2a7d"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1044,
+          222
+        ],
+        "coref": [
+          907,
+          130
+        ],
+        "year": [
+          1243,
+          144
+        ],
+        "place": [
+          4790,
+          306
+        ]
+      }
+    },
+    {
+      "test": [
+        "95aa14d1fba7"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1076,
+          228
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1275,
+          148
+        ],
+        "place": [
+          4834,
+          308
+        ]
+      }
+    },
+    {
+      "test": [
+        "823c2dca5fb0"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1096,
+          226
+        ],
+        "coref": [
+          921,
+          132
+        ],
+        "year": [
+          1265,
+          146
+        ],
+        "place": [
+          4816,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "000cdf2a700c"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1068,
+          227
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1272,
+          147
+        ],
+        "place": [
+          4807,
+          297
+        ]
+      }
+    },
+    {
+      "test": [
+        "400a22faa453"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1068,
+          224
+        ],
+        "coref": [
+          916,
+          132
+        ],
+        "year": [
+          1231,
+          144
+        ],
+        "place": [
+          4706,
+          300
+        ]
+      }
+    },
+    {
+      "test": [
+        "a0b24df3c2ac"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1078,
+          222
+        ],
+        "coref": [
+          907,
+          131
+        ],
+        "year": [
+          1240,
+          143
+        ],
+        "place": [
+          4734,
+          298
+        ]
+      }
+    },
+    {
+      "test": [
+        "6c88572c62a9"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1075,
+          222
+        ],
+        "coref": [
+          907,
+          126
+        ],
+        "year": [
+          1269,
+          146
+        ],
+        "place": [
+          4796,
+          296
+        ]
+      }
+    },
+    {
+      "test": [
+        "da1ee2c839c2"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1074,
+          224
+        ],
+        "coref": [
+          916,
+          129
+        ],
+        "year": [
+          1261,
+          146
+        ],
+        "place": [
+          4792,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "19de5cb11ee6"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1048,
+          221
+        ],
+        "coref": [
+          901,
+          123
+        ],
+        "year": [
+          1233,
+          146
+        ],
+        "place": [
+          4734,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "d45cae8a45e8"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1083,
+          226
+        ],
+        "coref": [
+          921,
+          132
+        ],
+        "year": [
+          1271,
+          146
+        ],
+        "place": [
+          4808,
+          303
+        ]
+      }
+    },
+    {
+      "test": [
+        "97fd66b811be"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1067,
+          226
+        ],
+        "coref": [
+          921,
+          131
+        ],
+        "year": [
+          1272,
+          147
+        ],
+        "place": [
+          4826,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "c6cddb8769ae"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1085,
+          225
+        ],
+        "coref": [
+          919,
+          129
+        ],
+        "year": [
+          1273,
+          147
+        ],
+        "place": [
+          4820,
+          302
+        ]
+      }
+    },
+    {
+      "test": [
+        "36e764048b3f"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1087,
+          223
+        ],
+        "coref": [
+          912,
+          129
+        ],
+        "year": [
+          1257,
+          145
+        ],
+        "place": [
+          4720,
+          301
+        ]
+      }
+    },
+    {
+      "test": [
+        "354615997953"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1026,
+          221
+        ],
+        "coref": [
+          901,
+          121
+        ],
+        "year": [
+          1257,
+          145
+        ],
+        "place": [
+          4832,
+          306
+        ]
+      }
+    },
+    {
+      "test": [
+        "3cf0887f92c2"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1095,
+          227
+        ],
+        "coref": [
+          922,
+          132
+        ],
+        "year": [
+          1272,
+          147
+        ],
+        "place": [
+          4823,
+          305
+        ]
+      }
+    },
+    {
+      "test": [
+        "95ad8da9b4eb"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1055,
+          212
+        ],
+        "coref": [
+          802,
+          130
+        ],
+        "year": [
+          1149,
+          133
+        ],
+        "place": [
+          4330,
+          278
+        ]
+      }
+    },
+    {
+      "test": [
+        "eee30cae2a71"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1089,
+          224
+        ],
+        "coref": [
+          916,
+          130
+        ],
+        "year": [
+          1269,
+          146
+        ],
+        "place": [
+          4798,
+          304
+        ]
+      }
+    },
+    {
+      "test": [
+        "dd1e284afc3b"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1075,
+          216
+        ],
+        "coref": [
+          856,
+          124
+        ],
+        "year": [
+          1251,
+          142
+        ],
+        "place": [
+          4672,
+          298
+        ]
+      }
+    },
+    {
+      "test": [
+        "f42eb42f7230"
+      ],
+      "train_windows": 44,
+      "examples": {
+        "trigger": [
+          1095,
+          226
+        ],
+        "coref": [
+          921,
+          131
+        ],
+        "year": [
+          1274,
+          147
+        ],
+        "place": [
+          4829,
+          306
+        ]
+      }
+    }
+  ]
+}

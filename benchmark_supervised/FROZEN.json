@@ -1,0 +1,48 @@
+{
+  "frozen_at": "2026-11-04T07:20:40+00:00",
+  "code": {
+    "benchmark_supervised/parse.py": "a1ce6eec9aada0e24aa1c88a41a7d1f141713e762ae83588abbc0d80ca119913",
+    "benchmark_supervised/features.py": "c001218395f0790f1c06df3c071a2afd1860fcd190790262b25263c7053474cd",
+    "benchmark_supervised/model.py": "450df8f818cbdac7d37c6bee94053c7a42c53ce1ac7f90d9fb0a67c564495415",
+    "benchmark_supervised/run.py": "ae0bb9edb05c7aded22dcf44603e6f259da9a361f0d07bb279926ed2c19afbd4",
+    "benchmark_ner/hazard_lexicon.py": "e391cf9c3f2d5b92bcf2a488cb695adbaac46d28a0480b4f63d8058bbd831816",
+    "benchmark_ner/ner_extract.py": "1a92d3b655553deee4e26e124cfb17f7ea2eeb540360cae96bf4fe3a6dd5d3a9",
+    "eval/event_matching.py": "c60f7e5135f61fe8df441efe0775813415577d76c719ab4dfd5c4200fb3675e3"
+  },
+  "config": {
+    "classifier": "L2 logistic regression (sklearn lbfgs), DictVectorizer + MaxAbsScaler",
+    "C": 1.0,
+    "threshold": 0.5,
+    "clustering": "average linkage, cut at 1 - threshold",
+    "max_locations": 10,
+    "max_snippets": 3,
+    "bow_reach": 15,
+    "sent_cap": 10,
+    "dep_cap": 12,
+    "year_range": [
+      1900,
+      2035
+    ],
+    "last_event_year": 2026,
+    "snippet_max": 300,
+    "ner_models": [
+      "en_core_web_trf",
+      "en_core_web_lg"
+    ],
+    "place_labels": [
+      "FAC",
+      "GPE",
+      "LOC"
+    ]
+  },
+  "ner_models": {
+    "en_core_web_trf": "en_core_web_trf-3.8.0",
+    "en_core_web_lg": "en_core_web_lg-3.8.0"
+  },
+  "gold_sha256": "5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c",
+  "windows": 45,
+  "runs": [
+    "lowo (primary)",
+    "kfold 5, seeds 48 49 50 (sensitivity)"
+  ]
+}

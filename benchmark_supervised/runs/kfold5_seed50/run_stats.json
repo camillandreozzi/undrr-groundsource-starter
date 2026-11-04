@@ -1,0 +1,217 @@
+{
+  "label": "Supervised extractor (5-fold, seed 50)",
+  "scheme": "kfold5_seed50",
+  "windows": 45,
+  "folds": 5,
+  "records": 70,
+  "rows": 104,
+  "seconds": 1.0,
+  "created_at": "2026-11-04T07:20:52+00:00",
+  "gold_sha256": "5c66d9f9305e0be698a3414fb363ba70634e407e18953d2fe434254eb4d91c7c",
+  "ner_models": {
+    "en_core_web_trf": "en_core_web_trf-3.8.0",
+    "en_core_web_lg": "en_core_web_lg-3.8.0"
+  },
+  "config": {
+    "classifier": "L2 logistic regression (sklearn lbfgs), DictVectorizer + MaxAbsScaler",
+    "C": 1.0,
+    "threshold": 0.5,
+    "clustering": "average linkage, cut at 1 - threshold",
+    "max_locations": 10,
+    "max_snippets": 3,
+    "bow_reach": 15,
+    "sent_cap": 10,
+    "dep_cap": 12,
+    "year_range": [
+      1900,
+      2035
+    ],
+    "last_event_year": 2026,
+    "snippet_max": 300,
+    "ner_models": [
+      "en_core_web_trf",
+      "en_core_web_lg"
+    ],
+    "place_labels": [
+      "FAC",
+      "GPE",
+      "LOC"
+    ]
+  },
+  "freeze": {
+    "frozen": true,
+    "frozen_at": "2026-11-04T07:20:40+00:00",
+    "code_matches": true,
+    "config_matches": true
+  },
+  "candidate_ceilings": {
+    "verifiable_events": 170,
+    "events_with_a_trigger": 141,
+    "gold_year_endpoints": 182,
+    "year_endpoints_among_candidates": 179,
+    "gold_locations": 275,
+    "locations_among_candidates": 268
+  },
+  "fold_training": [
+    {
+      "test": [
+        "eed6f268ab54",
+        "8685a544c056",
+        "bc1ea3b07526",
+        "1f33826e6452",
+        "96c5ff82e507",
+        "d45cae8a45e8",
+        "97fd66b811be",
+        "95ad8da9b4eb",
+        "f42eb42f7230"
+      ],
+      "train_windows": 36,
+      "examples": {
+        "trigger": [
+          869,
+          184
+        ],
+        "coref": [
+          747,
+          116
+        ],
+        "year": [
+          1041,
+          116
+        ],
+        "place": [
+          4008,
+          234
+        ]
+      }
+    },
+    {
+      "test": [
+        "583badf1f312",
+        "c2773610c0a0",
+        "8be019afcbf4",
+        "7b4674fa394f",
+        "ef3284a19a8c",
+        "823c2dca5fb0",
+        "000cdf2a700c",
+        "19de5cb11ee6",
+        "eee30cae2a71"
+      ],
+      "train_windows": 36,
+      "examples": {
+        "trigger": [
+          963,
+          197
+        ],
+        "coref": [
+          859,
+          110
+        ],
+        "year": [
+          1162,
+          132
+        ],
+        "place": [
+          4368,
+          265
+        ]
+      }
+    },
+    {
+      "test": [
+        "2ac6c0c345fd",
+        "9168470c06bc",
+        "026e56737586",
+        "801c0ff14769",
+        "e90ba2073253",
+        "37d2beb438d5",
+        "caefffbc2a7d",
+        "36e764048b3f",
+        "dd1e284afc3b"
+      ],
+      "train_windows": 36,
+      "examples": {
+        "trigger": [
+          893,
+          174
+        ],
+        "coref": [
+          665,
+          93
+        ],
+        "year": [
+          943,
+          112
+        ],
+        "place": [
+          3998,
+          252
+        ]
+      }
+    },
+    {
+      "test": [
+        "a2b9296b53f0",
+        "b67cfd601f06",
+        "9b5affbb7023",
+        "d79139dbf7f9",
+        "7ab2cfef5eda",
+        "8153b2a4a347",
+        "95aa14d1fba7",
+        "a0b24df3c2ac",
+        "3cf0887f92c2"
+      ],
+      "train_windows": 36,
+      "examples": {
+        "trigger": [
+          877,
+          191
+        ],
+        "coref": [
+          838,
+          109
+        ],
+        "year": [
+          1077,
+          125
+        ],
+        "place": [
+          3754,
+          246
+        ]
+      }
+    },
+    {
+      "test": [
+        "48dff75f3721",
+        "cdb86e09706a",
+        "0ed4212872da",
+        "4cd721900ee0",
+        "400a22faa453",
+        "6c88572c62a9",
+        "da1ee2c839c2",
+        "c6cddb8769ae",
+        "354615997953"
+      ],
+      "train_windows": 36,
+      "examples": {
+        "trigger": [
+          790,
+          166
+        ],
+        "coref": [
+          579,
+          100
+        ],
+        "year": [
+          877,
+          107
+        ],
+        "place": [
+          3208,
+          235
+        ]
+      }
+    }
+  ]
+}
